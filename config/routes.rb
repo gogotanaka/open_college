@@ -6,6 +6,12 @@ OpenCollege::Application.routes.draw do
   resources :class_grades, only: [:create, :destroy]
   resources :relation_class_room_users, only: [:create, :destroy]
 
+  resources :guides do
+    member do
+      get :intro, :reader
+    end
+  end
+
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

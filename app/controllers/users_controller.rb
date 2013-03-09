@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to OpenCollege!"
-      redirect_to @user
+      redirect_to intro_guide_url(@user)
     else
       render 'new'
     end

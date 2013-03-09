@@ -66,6 +66,9 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   width: 960px;
   margin: 0 auto;
 }
+.text_center {
+  text-align: center;
+}
 .btn {
   background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #f0f0f0));
   background:-webkit-linear-gradient(#fff, #f0f0f0);
@@ -147,6 +150,10 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 .btn_middle {
   padding: 10px 13px;
+}
+.btn_large {
+  padding: 12px 28px;
+  font-size: 16px;
 }
 .btn_large_radius {
   @include rounded-corners(18px);
