@@ -185,6 +185,27 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .auth_form {
   width: 400px;
   margin: 60px auto;
+  .message_box {
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.12) inset, 0 1px 0 rgba(0,0,0,0.05) inset;
+    -moz-box-shadow: 0 0 3px rgba(0,0,0,0.12) inset, 0 1px 0 rgba(0,0,0,0.05) inset;
+    box-shadow:0 0 3px rgba(0,0,0,0.12) inset, 0 1px 0 rgba(0,0,0,0.05) inset;
+    -webkit-border-radius :5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background: #a4a4a4;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #9c9c9c), color-stop(100%, #a4a4a4));
+    background-image: -webkit-linear-gradient(#9c9c9c,#a4a4a4);
+    background-image: -moz-linear-gradient(#9c9c9c,#a4a4a4);
+    background-image: -o-linear-gradient(#9c9c9c,#a4a4a4);
+    background-image: linear-gradient(#9c9c9c,#a4a4a4);
+    text-shadow: 0 -1px #838484;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 0 0 15px;
+    font-weight: bold
+  }
   form {
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.075);

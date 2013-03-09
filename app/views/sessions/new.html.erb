@@ -4,6 +4,9 @@
       <h1>Sign in</h1>
     </div>
     <div class="auth_form_body">
+      <% flash.each do |key, value| %>
+        <div class="message_box"><%= value %></div>
+      <% end %>
       <div class="input_block">
         <div class="input_label">
           <%= f.label :email %>
