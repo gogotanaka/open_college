@@ -28,44 +28,6 @@
       .setting {
         float: right;
         margin: 18px 30px 0;
-        .login {
-          background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #f0f0f0));
-          background:-webkit-linear-gradient(#fff, #f0f0f0);
-          background:-moz-linear-gradient(#fff, #f0f0f0);
-          background:-o-linear-gradient(#fff, #f0f0f0);
-          background:linear-gradient(#ffffff,#f0f0f0);
-          background-color: #f0f0f0;
-          border: 1px solid #cbcbcb;
-          border-bottom-color: #bebebe;
-          border-top-color: #d1d1d1;
-          -webkit-border-radius: 18px;
-          -moz-border-radius: 18px;
-          border-radius: 18px;
-          color: #444;
-          cursor: pointer;
-          font-size: 13px;
-          font-weight: bold;
-          text-shadow:0 1px white;
-          white-space:nowrap;
-          padding: 10px 13px;
-          &:hover {
-            border-color: #cbcbcb #c1c1c1 #b7b7b7;
-            text-decoration: none;
-          }
-          &:active {
-            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f0f0), color-stop(100%, #fff));
-            background: -webkit-linear-gradient(#f0f0f0, #fff);
-            background: -moz-linear-gradient(#f0f0f0, #fff);
-            background: -o-linear-gradient(#f0f0f0, #fff);
-            background: linear-gradient(#f0f0f0,#ffffff);
-            -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.33) inset;
-            -moz-box-shadow: 0 0 3px rgba(0,0,0,0.33) inset;
-            box-shadow: 0 0 3px rgba(0,0,0,0.33) inset;
-            border-color: #b7b7b7 #c1c1c1 #cbcbcb;
-            text-decoration: none;
-          }
-
-        }
       }
     }
     

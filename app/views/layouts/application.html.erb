@@ -14,8 +14,9 @@
           <%= link_to "Settings", edit_user_path(current_user) %>
           <%= link_to "Sign out", signout_path, method: "delete" %>
         <% else %>
-         <%= link_to "OpenCollege", root_path, class: "logo" %>
-          <%= link_to "Sign in", signin_path %>
+          <%= link_to "OpenCollege", root_path, class: "logo" %>
+          <%= link_to "Sign in", signin_path, class: "btn header_signin" %>
+          <%= link_to "Sign up", signup_path, class: "btn_primary header_signup" %>
         <% end %>
       </div>
     </header>
