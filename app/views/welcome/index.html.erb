@@ -1,0 +1,56 @@
+<div id="top_container">
+  <div class="inside">
+    <div id="top" class="clearfix">
+      <div id="logo">
+        <%= link_to 'OpenCollege', '/'%>
+      </div>
+      <div class="setting">
+        <%= link_to 'ログイン', signin_path, class: "login" %>
+      </div>
+    </div>
+    <div id="slider_container" class="clearfix">
+      <div id="slider_left">
+        <div id="phone">
+          <%= image_tag 'phones.png' %>
+        </div>
+      </div>
+      <div id="slider_right">
+        <h1 class="">大学の授業の新しい形</h1>
+        <%= form_for(@user) do |f| %>
+          <p>OpenCollegeを始めよう！<span>アカウント登録</span></p>
+          <div class="form_container">
+            <%= f.email_field :email, placeholder: "メールアドレス", class: "field_input mail_form"%>
+          </div>
+          <div class="form_container">
+            <div class="clearfix">
+              <div class="half_cotainer">
+                <%= f.password_field :password, placeholder: "パスワード", class: "field_input half_form" %>
+              </div>
+              <div class="half_cotainer latter">
+                <%= f.password_field :password_confirmation, placeholder: "パスワード（確認）", class: "field_input half_form" %>
+              </div>
+            </div>
+          </div>
+          <div class="terms">アカウント登録をすると、<a href="/terms">利用規約</a>と<a href="/privacy">プライバシーポリシー</a>に同意したものを見なされます。</div>
+          <%= f.submit "アカウント登録", class: "input_submit" %>
+        <% end %>
+      </div>
+    </div>  
+  </div>
+</div>
+<div id="middle_container">
+  <div class="inside">
+    <h1>大学の授業のすべてがオープンに</h1>
+    <ul>
+      <li>
+        <h2>あなたの大学での順位がわかる</h2>
+      </li>
+      <li>
+        <h2>おすすめの授業を教えてくれる</h2>
+      </li>
+      <li>
+        <h2>あなたにパーソナライズした情報</h2>
+      </li>
+    </ul>
+  </div>
+</div>

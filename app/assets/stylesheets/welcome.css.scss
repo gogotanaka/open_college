@@ -1,0 +1,210 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.welcome {
+  #top_container {
+    background: url("main-bg.jpg") no-repeat scroll center top transparent;
+    width: 100%;
+    padding: 30px 0;
+    
+    #top {
+      width: 800px;
+      margin: 0 auto 50px;
+      #logo {
+        opacity: 0.9;
+        font-size: 34px;
+        float: left;
+        font-weight: bold;
+        a {
+          color: #fff;
+          text-shadow: 0 1px 1px #333333;
+          text-decoration: none;
+          
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+      .setting {
+        float: right;
+        margin: 18px 30px 0;
+        .login {
+          background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #f0f0f0));
+          background:-webkit-linear-gradient(#fff, #f0f0f0);
+          background:-moz-linear-gradient(#fff, #f0f0f0);
+          background:-o-linear-gradient(#fff, #f0f0f0);
+          background:linear-gradient(#ffffff,#f0f0f0);
+          background-color: #f0f0f0;
+          border: 1px solid #cbcbcb;
+          border-bottom-color: #bebebe;
+          border-top-color: #d1d1d1;
+          -webkit-border-radius: 18px;
+          -moz-border-radius: 18px;
+          border-radius: 18px;
+          color: #444;
+          cursor: pointer;
+          font-size: 13px;
+          font-weight: bold;
+          text-shadow:0 1px white;
+          white-space:nowrap;
+          padding: 10px 13px;
+          &:hover {
+            border-color: #cbcbcb #c1c1c1 #b7b7b7;
+            text-decoration: none;
+          }
+          &:active {
+            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f0f0), color-stop(100%, #fff));
+            background: -webkit-linear-gradient(#f0f0f0, #fff);
+            background: -moz-linear-gradient(#f0f0f0, #fff);
+            background: -o-linear-gradient(#f0f0f0, #fff);
+            background: linear-gradient(#f0f0f0,#ffffff);
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.33) inset;
+            -moz-box-shadow: 0 0 3px rgba(0,0,0,0.33) inset;
+            box-shadow: 0 0 3px rgba(0,0,0,0.33) inset;
+            border-color: #b7b7b7 #c1c1c1 #cbcbcb;
+            text-decoration: none;
+          }
+
+        }
+      }
+    }
+    
+    #slider_container {
+      width: 760px;
+      margin: auto;
+      
+      #slider_left {
+        float: left;
+        width: 360px;
+        #phone {
+          margin: -30px 0 0 0px;
+        }
+      }
+      #slider_right {
+        float: left;
+        width: 400px;
+        color: #fff;
+        h1 {
+          font-weight: bold;
+          text-shadow: 0 1px 3px #000;
+          font-size: 34px;
+          margin: 30px 0 20px 0;
+        }
+        p {
+          margin: 14px 0 0;
+          font-size: 16px;
+          font-weight: normal;
+          line-height: 24px;
+          text-shadow: 0 1px 1px #000000;
+          
+          span {
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 0 5px;
+          }
+        }
+        .form_container {
+          margin: 6px 0;
+          .half_cotainer {
+            width: 160px;
+            float: left;
+          }
+          .latter {
+            margin-left: 10px;
+          }
+        }
+        .field_input {
+          padding: 0 10px;
+          height: 35px;
+          outline: 0 none;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          border-radius: 4px 4px 4px 4px;
+          background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+          color: #B4B4B4 !important;
+          font-weight: normal;
+          font-size: 14px !important;
+          font-family: Helvetica,Arial,sans-serif;
+          line-height: 16px;
+        }
+        .half_form {
+          width: 160px;
+        }
+        .mail_form {
+          width: 330px;
+        }
+        .input_submit {
+          background: #076faf;
+          background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#076faf),color-stop(1,#1b8bce));
+          background-image: -webkit-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
+          background-image: -moz-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
+          background-image: -ms-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
+          background-image: -o-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
+          background-image: linear-gradient(bottom,#076faf 0,#1b8bce 100%);
+          border: 1px solid #0A537D;
+          border-radius: 18px;
+          box-shadow: 0 0 1px rgba(255, 255, 255, 0.5) inset;
+          color: #FFFFFF;
+          font: bold 13px "Helvetica Neue",Arial,Helvetica,sans-serif;
+          margin: 5px 0 15px;
+          padding: 8px 13px 6px;
+          cursor: pointer;
+        }
+        .input_submit:hover {
+          background-color: #076FAF;
+          background-image:-webkit-gradient(linear,left bottom,left top,color-stop(1,#076faf),color-stop(0,#076faf));
+          background-image:-webkit-linear-gradient(bottom,#076faf 100%,#076faf 0);
+          background-image:-moz-linear-gradient(bottom,#076faf 100%,#076faf 0);
+          background-image:-ms-linear-gradient(bottom,#076faf 100%,#076faf 0);
+          background-image:-o-linear-gradient(bottom,#076faf 100%,#076faf 0);
+          background-image:linear-gradient(bottom,#076faf 100%,#076faf 0);
+        }
+        .input_submit:active {
+          position: relative;
+          top: 1px;
+        }
+        .terms {
+          opacity: 0.9;
+          line-height: 18px;
+          width: 330px;
+          font-weight: bold;
+          margin: 10px 0 6px 0;
+        }
+      }
+    }
+  }
+  #middle_container {
+    h1 {
+      color: #837A71;
+      font-size: 27px;
+      font-weight: normal;
+      line-height: normal;
+      margin: 0 0 25px;
+      padding: 0;
+      text-align: center;
+    }
+    ul {
+      li {
+        width: 310px;
+        padding: 10px;
+        margin-left: 15px;
+        float: left;
+        background-color: #f3f3f3;
+        background-image: -moz-linear-gradient(#f9f9f9, #f3f3f3);
+        background-image: -webkit-linear-gradient(#f9f9f9, #f3f3f3);
+        background-image: linear-gradient(#f9f9f9, #f3f3f3);
+        text-shadow:0 1px 0 #fff;
+        border: 1px solid #e5e5e5;
+        text-align: center;
+        h2 {
+          color: #555;
+          font-weight: bold;
+          font-size: 14px;
+        }
+      }
+      li:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<h1><%= @user.email %></h1>
+
+<% @user.class_rooms.each do |class_room| %>
+  <%= class_room.name %>
+  <% if ClassGrade.find_by_class_room_id(class_room.id) %>
+    <%= ClassGrade.find_by_class_room_id(class_room.id).grade %>
+  <% end %>
+<% end %>

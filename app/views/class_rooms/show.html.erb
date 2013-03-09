@@ -1,0 +1,17 @@
+<%= @class_room.name %>
+<% if current_user.taking?(@class_room) %>
+<% else %>
+  <%= form_for(current_user.relation_class_room_users.build(class_room_id: @class_room.id)) do |f| %>
+    <%= f.hidden_field :class_room_id %>
+    <%= f.submit "Take this class", class: "btn btn-mini btn-danger" %>
+  <% end %>
+<% end %>
+
+<% if current_user.value?(@class_room) %>
+<% else %>
+  <%= form_for(current_user.class_grades.build(class_room_id: @class_room.id)) do |f| %>
+    <%= f.hidden_field :class_room_id %>
+    <%= f.text_field :grade %>
+    <%= f.submit "Valuation in this class", class: "btn btn-mini btn-danger" %>
+  <% end %>
+<% end %>

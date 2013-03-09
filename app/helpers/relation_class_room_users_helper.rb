@@ -1,0 +1,2 @@
+module RelationClassRoomUsersHelper
+end

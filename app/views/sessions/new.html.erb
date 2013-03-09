@@ -1,0 +1,24 @@
+<div class="auth_form">
+  <%= form_for(:session, url: sessions_path) do |f| %>
+    <div class="auth_form_header">
+      <h1>Sign in</h1>
+    </div>
+    <div class="auth_form_body">
+      <div class="input_block">
+        <div class="input_label">
+          <%= f.label :email %>
+        </div>
+        <%= f.text_field :email, class: "input_wide" %>
+      </div>
+      <div class="input_block">
+        <div class="input_label">
+          <%= f.label :password %>
+        </div>
+        <%= f.password_field :password, class: "input_wide" %>
+      </div>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    </div>
+  <% end %>
+  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</div>

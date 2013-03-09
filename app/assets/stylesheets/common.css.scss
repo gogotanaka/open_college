@@ -1,0 +1,110 @@
+body {
+  background-color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  font-size: 13px;
+}
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a.action {
+  color: #DD0000;
+  text-decoration: underline;
+}
+a.danger {
+  color: #CC0000;
+}
+a.mute {
+  color: #000000;
+}
+a:active, a:focus {
+  outline: medium none;
+  text-decoration: underline;
+}
+.clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.hiragino {
+  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+}
+.inside {
+  width: 960px;
+  margin: 0 auto;
+}
+.logo {
+  float: left;
+  font-size: 25px;
+  margin-top: 10px;
+}
+.main_header {
+  background-color:#f3f3f3;
+  background-image:-moz-linear-gradient(#f9f9f9, #f3f3f3);
+  background-image:-webkit-linear-gradient(#f9f9f9, #f3f3f3);
+  background-image:linear-gradient(#f9f9f9, #f3f3f3);
+  border-bottom: 1px solid #E5E5E5;
+  text-shadow: 0 1px 0 #FFFFFF;
+  height: 44px;
+  a {
+    color: #555;
+    font-weight: bold;
+    &:hover{
+      color: #4183C4;
+      text-decoration: none;
+    }
+  }
+}
+
+.auth_form {
+  width: 400px;
+  margin: 60px auto;
+  form {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.075);
+  }
+  .auth_form_header {
+    padding: 10px 20px;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+    background-color: #6c8393;
+    background-image: -moz-linear-gradient(#7f95a5, #6c8393);
+    background-image: -webkit-linear-gradient(#7f95a5, #6c8393);
+    background-image: linear-gradient(#7f95a5, #6c8393);
+    background-repeat: repeat-x;
+    border: 1px solid #6e8290;
+    border-bottom-color: #586873;
+    border-radius: 4px 4px 0 0;
+    h1 {
+      font-size: 16px;
+    }
+  }
+  .auth_form_body {
+    padding: 20px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px; 
+    background-color: #fff;
+    border: 1px solid #d8dee2;
+    border-top-color: white;
+    border-radius: 0 0 4px 4px;
+    .input_block {
+      margin: 5px 0 15px;
+      .input_label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .input_wide {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
