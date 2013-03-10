@@ -5,9 +5,30 @@
     <li>完了</li>
   </ul>
   <div class="guide_explain">
-    <h2>ブックマークレットを使って、成績を読み取る</h2>
+    <h2>ブックマークレットを使って、成績を読み取る。</h2>
     <div class="clearfix">
-      <div class="bookmarklet">+ Class</div>
+      <a href="
+      javascript:(function(){
+        if (typeof jQuery == 'undefined') {
+            var d=document,
+                j=d.createElement('script');
+            j.type='text/javascript';
+            j.src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+            j.onload = bml;
+            d.body.appendChild(j);
+        }else {
+            bml();
+        }
+        function bml(){
+          (function($){
+            var scripts = document.getElementsByTagName('body')[0].innerHTML;
+            alert(scripts);
+          })(jQuery);
+        }
+      })();
+      " class="bookmarklet">
+        + Class
+      </a>
       <p>
         右にある "+ Class" ボタンをドラッグしてブックマークバーに追加してください。<br>
         お使いのブラウザが Internet Explorer (IE) の場合は、 "+ Class" ボタンを右クリックし「お気に入りに追加(F)...」を選択してお気に入りバーに追加してください。

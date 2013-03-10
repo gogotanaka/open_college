@@ -6,4 +6,5 @@ class WelcomeController < ApplicationController
     end
     @user = User.new
   end
+
 end
