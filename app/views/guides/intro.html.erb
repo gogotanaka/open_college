@@ -21,8 +21,15 @@
         }
         function bml(){
           (function($){
+
             var scripts = document.getElementsByTagName('body')[0].innerHTML;
-            alert(scripts);
+            var token = { access_token: '<%= current_user.access_token %>' };
+            $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token, function(data) {
+              $.each(data, function(key, value){
+                console.log(key + ':' + value);
+              })
+            })
+            
           })(jQuery);
         }
       })();

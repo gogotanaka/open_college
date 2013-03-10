@@ -7,7 +7,8 @@ module Api
       respond_to :json
 
       def analyze
-        respond_with User.all
+        @user = User.find_by_access_token(params[:access_token])
+        respond_with @user
       end
 
       private
