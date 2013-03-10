@@ -27,8 +27,8 @@
             $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token, function(data) {
               $.each(data, function(key, value){
                 console.log(key + ':' + value);
-                console.log(scripts);
               })
+              console.log(scripts);
             })
             
           })(jQuery);
