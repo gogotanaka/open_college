@@ -19,7 +19,7 @@ module Api
         end
 
         def allow_cross_domain_access
-          response.headers["Access-Control-Allow-Origin"] = "https://www2.adst.keio.ac.jp/rcs/servlet/jp.ac.keio.rcs.servlet.view.TopMenuServlet"
+          response.headers["Access-Control-Allow-Origin"] = "https://www2.adst.keio.ac.jp"
           response.headers["Access-Control-Allow-Headers"] = "Content-Type"
           response.headers["Access-Control-Allow-Methods"] = "PUT,DELETE,POST,GET,OPTIONS"
         end
