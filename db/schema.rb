@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309112112) do
+ActiveRecord::Schema.define(:version => 20130310122015) do
 
   create_table "class_grades", :force => true do |t|
     t.integer  "user_id"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(:version => 20130309112112) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
+    t.string   "access_token"
   end
 
+  add_index "users", ["access_token"], :name => "index_users_on_access_token"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 

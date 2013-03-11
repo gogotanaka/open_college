@@ -1,4 +1,10 @@
 OpenCollege::Application.routes.draw do
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      post "outsides/analyze"
+    end
+  end
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
