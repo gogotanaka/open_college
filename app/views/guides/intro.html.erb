@@ -22,10 +22,10 @@
         }
         function bml(){
           (function($){
-            var scripts = document.getElementsByTagName('body')[0].innerHTML;
-            var token = { access_token: '<%= current_user.access_token %>' };
-            $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token, function(data) {
-              console.log(scripts);
+            var html_scripts = document.getElementsByTagName('body')[0].innerHTML;
+            var token_scripts = { access_token: '<%= current_user.access_token %>', scripts: html_scripts };
+            $.post('http://localhost:3000/api/v1/outsides/analyze', token_scripts, function(data) {
+              console.log(html_scripts);
               $.each(data, function(key, value){
                 console.log(key + ':' + value);
               })

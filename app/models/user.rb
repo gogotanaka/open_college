@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :class_grades
 
   before_save { |user| user.email = email.downcase }
-  before_save :create_remember_token
+  before_create :create_remember_token
   before_create :generate_access_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -8,6 +8,13 @@ module Api
 
       def analyze
         @user = User.find_by_access_token(params[:access_token])
+        scripts = params[:scripts]
+        doc = Nokogiri::HTML(scripts)
+        # @user.name = doc.xpath('//table/tbody/tr')[0].text
+        table = doc.css('table.User')
+        @user.name = table.xpath('.//tr').text
+        @user.save
+        sign_in @user
         respond_with @user
       end
 
