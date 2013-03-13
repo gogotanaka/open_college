@@ -38,6 +38,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
+    ensure_valid_encoding (0.5.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -52,8 +53,13 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    marc (0.5.0)
     mime-types (1.21)
     multi_json (1.6.1)
+    nokogiri (1.5.6)
+    openurl (0.4.2)
+      ensure_valid_encoding
+      marc
     pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -109,6 +115,8 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
+  nokogiri
+  openurl
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
