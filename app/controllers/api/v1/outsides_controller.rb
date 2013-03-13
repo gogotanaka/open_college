@@ -55,11 +55,21 @@ module Api
               if find_class_year
                 find_class = find_class_year.class_rooms.find_by_year(node.xpath('.//td')[5].text.to_i)
                 if find_class
-                  @user.take!(find_class)
+                  if @user.taking?(find_class)
+                  else
+                    @user.take!(find_class)
+                  end
+                  if @user.value?(find_class)
+                  else
+                    @user.value!(find_class, node.xpath('.//td')[2].text)
+                  end
                 else
                   new_class_room = ClassRoom.new
                   new_class_room.class_room_for_year_id = find_class_year.id
+                  new_class_room.year = node.xpath('.//td')[5].text.to_i
                   new_class_room.save
+                  @user.take!(new_class_room)
+                  @user.value!(new_class_room, node.xpath('.//td')[2].text)
                 end
               else
                 analyze_class_room_for_year = ClassRoomForYear.new
