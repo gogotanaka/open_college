@@ -14,7 +14,7 @@ OpenCollege::Application.routes.draw do
 
   resources :guides do
     member do
-      get :intro, :reader
+      get :intro, :reader, :finish
     end
   end
 

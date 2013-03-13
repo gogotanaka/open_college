@@ -58,30 +58,91 @@
       color: #837A71;
       font-size: 18px;
       font-weight: normal;
-      margin: 20px 0 8px 0;
+      margin: 20px 0 12px 0;
     }
-    .bookmarklet {
-      float: right;
-      display: block;
-      width: 110px;
-      margin-left: 30px;
-      padding: 13px 0;
-      border-radius: 18px;
-      background-color: rgb(91,197,73);
-      color: #fff;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      &:hover {
-        text-decoration: none;
+    .bookmarklet_container {
+      margin-bottom: 20px;
+      .bookmarklet {
+        float: right;
+        display: block;
+        width: 100px;
+        margin-left: 30px;
+        padding: 11px 0;
+        border-radius: 18px;
+        background-color: rgb(91,197,73);
+        border: 1px solid rgb(71,177,53);
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        &:hover {
+          text-decoration: none;
+        }
+        &:active {
+          text-decoration: none;
+        }
+      }
+      p {
+        color: #666;
+        line-height: 21px;
       }
     }
-    p {
-      color: #666;
-      line-height: 19px;
-    }
+    
     .guide_link {
-      margin-top: 40px;
+      margin: 40px 0;
+    }
+    ul {
+      padding-top: 10px;
+      li {
+        width: 200px;
+        margin-left: 20px;
+        text-align: center;
+        font-size: 15px;
+        float: left;
+        p {
+          margin-bottom: 16px;
+          line-height: 20px;
+          span.circle {
+            background-color: rgb(91,197,73);
+            border-radius: 10px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            color: #fff;
+            margin-right: 6px;
+          }
+        }
+        img {
+          box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+        }
+      }
+      li.first {
+        margin-left: 0;
+      }
+    }
+    .magical_bookmarklet {
+      margin: 40px 0 20px;
+      text-align: center;
+      img {
+        box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+      }
+      p {
+        margin-bottom: 10px;
+        line-height: 20px;
+        font-size: 15px;
+        text-align: left;
+        span.circle {
+          background-color: rgb(91,197,73);
+          border-radius: 10px;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          color: #fff;
+          margin-right: 6px;
+          text-align: center;
+        }
+
+      }
     }
   }
 }

@@ -11,7 +11,6 @@ module Api
         scripts = params[:scripts]
         doc = Nokogiri::HTML(scripts)
         user_info = doc.xpath('//table/tbody/tr')[0].text.split
-        @user.name = ""
 
         if University.find_by_name(user_info[2])
           @user.university_id = University.find_by_name(user_info[2]).id
@@ -42,6 +41,9 @@ module Api
           @user.school_subject_id = school_subject.id
         end 
         @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i
+
+        user_decision = doc.css('table.User')[0].xpath('.//td').text
+        @user.play = user_decision
 
         table = doc.css('table.User')[1]
         table.xpath('.//tr').each do |node|

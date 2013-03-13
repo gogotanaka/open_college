@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  attr_accessible :email, :first_name, :last_name, :name, :password, :password_confirmation, :school_year, :university_id, :department_id, :school_subject_id
+  attr_accessible :email, :first_name, :last_name, :name, :password, :password_confirmation, :school_year, :play, :university_id, :department_id, :school_subject_id
 
   belongs_to :university
   belongs_to :department

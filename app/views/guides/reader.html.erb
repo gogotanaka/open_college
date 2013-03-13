@@ -6,15 +6,26 @@
   </ul>
   <div class="guide_explain">
     <h2>成績を読み取る</h2>
-    <div class="clearfix">
-      <div class="bookmarklet">+ Class</div>
-      <p>
-        右にある "+ Class" ボタンをドラッグしてブックマークバーに追加してください。<br>
-        お使いのブラウザが Internet Explorer (IE) の場合は、 "+ Class" ボタンを右クリックし「お気に入りに追加(F)...」を選択してお気に入りバーに追加してください。
-      </p>
+    <ul class="clearfix">
+      <li class="first">
+        <p><span class="circle">1</span><%= link_to "keio.jp", "https://login.keio.jp/koid/", target: "_blank" %>でログイン</p>
+        <%= image_tag 'keio_jp.png', width: "180px"%>
+      </li>
+      <li>
+        <p><span class="circle">2</span>"学業成績表"をクリック</p>
+        <%= image_tag 'click_grade.png', width: "180px"%>
+      </li>
+      <li>
+        <p><span class="circle">3</span>学事webでログイン</p>
+        <%= image_tag 'gakuji_pass.png', width: "180px"%>
+      </li>
+    </ul>
+    <div class="magical_bookmarklet">
+      <p><span class="circle">4</span>先ほど追加した+classボタンをクリック</p>
+      <%= image_tag 'click_bookmarklet.png', width: "600px"%>
     </div>
     <div class="guide_link text_center">
-      <%= link_to "次へ", "/", class: "btn btn_large btn_large_radius" %>
+      <%= link_to "次へ", finish_guide_path(current_user), class: "btn btn_large btn_large_radius" %>
     </div>
   </div>
 </div>

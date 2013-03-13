@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="form_container">
-            <%= f.email_field :email, placeholder: "メールアドレス", class: "field_input mail_form"%>
+            <%= f.email_field :email, placeholder: "メールアドレス (ex) test@gmail.com", class: "field_input mail_form"%>
           </div>
           <div class="form_container">
             <div class="clearfix">
@@ -41,7 +41,7 @@
               </div>
             </div>
           </div>
-          <div class="terms">アカウント登録をすると、<a href="/terms">利用規約</a>と<a href="/privacy">プライバシーポリシー</a>に同意したものを見なされます。</div>
+          <div class="terms">現在は慶應義塾大学のみに対応しています。</div>
           <%= f.submit "アカウント登録", class: "input_submit" %>
         <% end %>
       </div>
@@ -51,15 +51,18 @@
 <div id="middle_container">
   <div class="inside">
     <h1>大学の授業のすべてがオープンに</h1>
-    <ul>
+    <ul class="clearfix">
       <li>
-        <h2>あなたの大学での順位がわかる</h2>
+        <%= image_tag 'communicate.png', width: "220px"%>
+        <h2>大学での順位がわかる</h2>
       </li>
       <li>
+        <%= image_tag 'devices.png', width: "220px"%>
         <h2>おすすめの授業を教えてくれる</h2>
       </li>
       <li>
-        <h2>あなたにパーソナライズした情報</h2>
+        <%= image_tag 'network.png', width: "220px"%>
+        <h2>パーソナライズした情報</h2>
       </li>
     </ul>
   </div>

@@ -128,6 +128,7 @@
         .terms {
           opacity: 0.9;
           line-height: 18px;
+          text-shadow: 0 1px 3px #000;
           width: 330px;
           font-weight: bold;
           margin: 10px 0 6px 0;
@@ -136,6 +137,7 @@
     }
   }
   #middle_container {
+    padding-bottom: 60px;
     h1 {
       color: #837A71;
       font-size: 27px;
@@ -151,17 +153,11 @@
         padding: 10px;
         margin-left: 15px;
         float: left;
-        background-color: #f3f3f3;
-        background-image: -moz-linear-gradient(#f9f9f9, #f3f3f3);
-        background-image: -webkit-linear-gradient(#f9f9f9, #f3f3f3);
-        background-image: linear-gradient(#f9f9f9, #f3f3f3);
-        text-shadow:0 1px 0 #fff;
-        border: 1px solid #e5e5e5;
         text-align: center;
         h2 {
           color: #555;
-          font-weight: bold;
-          font-size: 14px;
+          font-size: 18px;
+          margin-top: 20px;
         }
       }
       li:first-child {
