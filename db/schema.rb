@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310122015) do
+ActiveRecord::Schema.define(:version => 20130312075423) do
 
   create_table "class_grades", :force => true do |t|
     t.integer  "user_id"
@@ -23,12 +23,32 @@ ActiveRecord::Schema.define(:version => 20130310122015) do
 
   add_index "class_grades", ["user_id", "class_room_id"], :name => "index_class_grades_on_user_id_and_class_room_id"
 
-  create_table "class_rooms", :force => true do |t|
+  create_table "class_room_for_years", :force => true do |t|
     t.string   "name"
+    t.string   "teacher_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "university_id"
+  end
+
+  add_index "class_room_for_years", ["name"], :name => "index_class_room_for_years_on_name"
+  add_index "class_room_for_years", ["university_id"], :name => "index_class_room_for_years_on_university_id"
+
+  create_table "class_rooms", :force => true do |t|
     t.string   "term"
-    t.datetime "year"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "year"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "class_room_for_year_id"
+  end
+
+  add_index "class_rooms", ["class_room_for_year_id"], :name => "index_class_rooms_on_class_room_for_year_id"
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.integer  "university_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "relation_class_room_users", :force => true do |t|
@@ -40,18 +60,40 @@ ActiveRecord::Schema.define(:version => 20130310122015) do
 
   add_index "relation_class_room_users", ["user_id", "class_room_id"], :name => "index_relation_class_room_users_on_user_id_and_class_room_id"
 
+  create_table "school_subjects", :force => true do |t|
+    t.string   "name"
+    t.integer  "department_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "universities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "school_year"
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.string   "access_token"
+    t.integer  "university_id"
+    t.integer  "department_id"
+    t.integer  "school_subject_id"
   end
 
   add_index "users", ["access_token"], :name => "index_users_on_access_token"
+  add_index "users", ["department_id"], :name => "index_users_on_department_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["school_subject_id"], :name => "index_users_on_school_subject_id"
+  add_index "users", ["university_id"], :name => "index_users_on_university_id"
 
 end

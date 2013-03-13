@@ -1,8 +1,9 @@
-<h1><%= @user.email %><%= @user.name %></h1>
+<h1><%= @user.email %><%= @user.name %><%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year %>年</h1>
 
 <% @user.class_rooms.each do |class_room| %>
-  <%= class_room.name %>
+  <%= class_room.class_room_for_year.name %>
+  <%= class_room.class_room_for_year.teacher_name %>
   <% if ClassGrade.find_by_class_room_id(class_room.id) %>
     <%= ClassGrade.find_by_class_room_id(class_room.id).grade %>
-  <% end %>
+  <% end %><br>
 <% end %>
