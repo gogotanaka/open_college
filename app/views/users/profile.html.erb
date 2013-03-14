@@ -17,26 +17,36 @@
       </ul>
     </div>
     <div class="right_box">
-      <div class="each_school_year">
-        <% @user.class_rooms.order("year DESC").each_with_index do |class_room, i| %>
-          <% if i == 0 %>
-            <h3><%= class_room.year %>年度</h3>
-          <% end %>
-          <%= class_room.class_room_for_year.name %>
-          <%= class_room.class_room_for_year.teacher_name %>
-          
-          <% if ClassGrade.find_by_class_room_id(class_room.id) %>
-            <%= ClassGrade.find_by_class_room_id(class_room.id).grade %>
-          <% end %><br>
-        <% end %>
-      </div>
-      <div class="each_school_year">
-        <h3>2011年度</h3>
-        aa
-      </div>
-      
-        
-      
+      <% class_year = @user.class_rooms.group_by { |t| t.year } %>
+      <% class_year.each do |year, class_rooms| %>
+        <div class="each_school_year">
+          <h3><%= year %>年度</h3>
+          <div class="class_body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>授業名</th>
+                  <th>教授名</th>
+                  <th>年度</th>
+                  <th>評定</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% class_rooms.each do |class_room| %>
+                  <tr>
+                    <td><%= class_room.class_room_for_year.name %></td>
+                    <td><%= class_room.class_room_for_year.teacher_name %></td>
+                    <td><%= class_room.year %></td>
+                    <% if ClassGrade.find_by_class_room_id(class_room.id) %>
+                      <td><%= ClassGrade.find_by_class_room_id(class_room.id).grade %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
