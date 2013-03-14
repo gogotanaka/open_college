@@ -1,4 +1,27 @@
-<%= @class_room.name %>
+<div class="home">
+  <div class="inside clearfix">
+    <div class="left_box">
+      <ul>
+        <li>
+          <p class="class_name"><%= @class_room.class_room_for_year.name %></p>
+          <p class="teacher_name"><%= @class_room.class_room_for_year.teacher_name %></p>
+        </li>
+        <li>
+          
+        </li>
+      </ul>
+    </div>
+    <div class="right_box">
+      <h2>2012年度</h2>
+      <% @class_room.class_grades.order("grade").each do |grade| %>
+        <%= grade.grade %>
+      <% end %>
+      ここにjqueryでグラフを壁画する予定
+    </div>
+  </div>
+</div>
+
+
 <% if current_user.taking?(@class_room) %>
 <% else %>
   <%= form_for(current_user.relation_class_room_users.build(class_room_id: @class_room.id)) do |f| %>

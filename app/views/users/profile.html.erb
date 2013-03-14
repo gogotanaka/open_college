@@ -34,7 +34,7 @@
               <tbody>
                 <% class_rooms.each do |class_room| %>
                   <tr>
-                    <td><%= class_room.class_room_for_year.name %></td>
+                    <td><%= link_to class_room.class_room_for_year.name, class_room_for_year_path(class_room.class_room_for_year.id) %></td>
                     <td><%= class_room.class_room_for_year.teacher_name %></td>
                     <td><%= class_room.year %></td>
                     <% if ClassGrade.find_by_class_room_id(class_room.id) %>

@@ -13,6 +13,7 @@ OpenCollege::Application.routes.draw do
   end
   
   resources :sessions, only: [:new, :create, :destroy]
+  resources :class_room_for_years
   resources :class_rooms
   resources :class_grades, only: [:create, :destroy]
   resources :relation_class_room_users, only: [:create, :destroy]

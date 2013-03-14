@@ -5,7 +5,6 @@ class ClassRoomsController < ApplicationController
 
   def show
     @class_room = ClassRoom.find(params[:id])
-    @page_title = @class_room.name
   end
 
   def new

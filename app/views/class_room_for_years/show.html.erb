@@ -1,0 +1,20 @@
+<div class="home">
+  <div class="inside clearfix">
+    <div class="left_box">
+      <ul>
+        <li>
+          <p class="class_name"><%= @class_room_for_year.name %></p>
+          <p class="teacher_name"><%= @class_room_for_year.teacher_name %></p>
+        </li>
+        <li>
+        </li>
+      </ul>
+    </div>
+    <div class="right_box">
+      <% @class_room_for_year.class_rooms.order("year DESC").each do |class_room| %>
+        <h2><%= class_room.year %>年度</h2>
+        ここにjqueryでグラフを壁画する予定
+      <% end %>
+    </div>
+  </div>
+</div>
