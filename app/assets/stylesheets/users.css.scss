@@ -5,7 +5,7 @@
 .users {
   .home {
     .rank_container {
-      margin: 30px 0 50px 0;
+      margin: 40px 0 50px 0;
       h2 {
         color: #837A71;
         font-size: 22px;
@@ -36,6 +36,63 @@
         }
         li:first-child {
           margin-left: 0;
+        }
+      }
+    }
+  }
+  .profile {
+    padding: 30px 0;
+    .left_box {
+      width: 220px;
+      float: left;
+      ul {
+        li {
+          padding-bottom: 12px;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 18px;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+        .name {
+          font-size: 22px;
+        }
+        .info {
+          font-size: 17px;
+          line-height: 23px;
+          .university_name {
+            font-size: 22px;
+            margin-bottom: 8px;
+          }
+        }
+        .gpa {
+          font-size: 30px;
+          span {
+            color: #aaa;
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+    .right_box {
+      width: 700px;
+      margin-left: 40px;
+      float: left;
+      .each_school_year {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        margin-bottom:20px;
+        h3 {
+          margin: 0;
+          border-top-left-radius: 3px;
+          border-top-right-radius: 3px;
+          border-bottom: 1px solid #ddd;
+          padding: 10px;
+          line-height:100%;
+          background: #f7f7f7;
         }
       }
     }

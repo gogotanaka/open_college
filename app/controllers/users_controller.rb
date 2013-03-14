@@ -43,6 +43,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    @user = User.find(params[:id])
+  end
+
   private
 
     def signed_in_user

@@ -1,0 +1,43 @@
+<div class="profile">
+  <div class="inside clearfix">
+    <div class="left_box">
+      <ul>
+        <li class="name">
+          <%= @user.last_name %><%= @user.first_name %>
+        </li>
+        <li class="info">
+          <p class="university_name"><%= @user.university.name %></p>
+          <%= @user.department.name %>
+          <%= @user.school_subject.name %>
+          <%= @user.school_year %>年
+        </li>
+        <li class="gpa">
+          <span>GPA</span>4.8
+        </li>
+      </ul>
+    </div>
+    <div class="right_box">
+      <div class="each_school_year">
+        <% @user.class_rooms.order("year DESC").each_with_index do |class_room, i| %>
+          <% if i == 0 %>
+            <h3><%= class_room.year %>年度</h3>
+          <% end %>
+          <%= class_room.class_room_for_year.name %>
+          <%= class_room.class_room_for_year.teacher_name %>
+          
+          <% if ClassGrade.find_by_class_room_id(class_room.id) %>
+            <%= ClassGrade.find_by_class_room_id(class_room.id).grade %>
+          <% end %><br>
+        <% end %>
+      </div>
+      <div class="each_school_year">
+        <h3>2011年度</h3>
+        aa
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</div>
+

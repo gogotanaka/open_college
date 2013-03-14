@@ -12,8 +12,9 @@
         <% if signed_in? %>
           <%= link_to "OpenCollege", user_path(current_user), class: "logo" %>
           <ul>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            <li><%= link_to "プロフィール", profile_user_path(current_user) %></li>
+            <li><%= link_to "設定", edit_user_path(current_user) %></li>
+            <li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
           </ul>
         <% else %>
           <%= link_to "OpenCollege", root_path, class: "logo" %>

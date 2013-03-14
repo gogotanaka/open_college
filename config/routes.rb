@@ -6,7 +6,12 @@ OpenCollege::Application.routes.draw do
     end
   end
   
-  resources :users
+  resources :users do
+    member do
+      get :profile
+    end
+  end
+  
   resources :sessions, only: [:new, :create, :destroy]
   resources :class_rooms
   resources :class_grades, only: [:create, :destroy]
