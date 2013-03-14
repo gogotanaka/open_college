@@ -53,12 +53,13 @@
       font-size: 20px;
       font-weight: normal;
       margin-bottom: 30px;
+      line-height: 26px;
     }
     h3 {
       color: #837A71;
       font-size: 18px;
       font-weight: normal;
-      margin: 20px 0 12px 0;
+      margin: 40px 0 12px 0;
     }
     .bookmarklet_container {
       margin-bottom: 20px;
@@ -89,7 +90,7 @@
     }
     
     .guide_link {
-      margin: 40px 0;
+      margin: 40px 0 60px;
     }
     ul {
       padding-top: 10px;
@@ -142,6 +143,40 @@
           text-align: center;
         }
 
+      }
+    }
+    .repeat_famous {
+      margin: 40px 0;
+      .left_box {
+        width: 200px;
+        float: left;
+        img {
+          box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+        }
+      }
+      .right_box {
+        width: 420px;
+        float: left;
+        margin-left: 20px;
+        color: #000;
+        h3 {
+          margin: 0 0 20px;
+          color: #333;
+          font-weight: bold;
+        }
+        h4 {
+          font-size: 15px;
+          line-height: 20px;
+        }
+        p {
+          border-left: 2px solid #ccc;
+          font-size: 15px;
+          color: #777;
+          padding: 0 0 0 10px;
+          margin-top: 12px;
+          line-height: 20px;
+          font-style: italic;
+        }
       }
     }
   }

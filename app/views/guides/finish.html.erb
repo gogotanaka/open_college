@@ -5,6 +5,40 @@
     <li class="active"><b class="caret"></b>完了</li>
   </ul>
   <div class="guide_explain">
-    <h2><%= current_user.play %>おめでとう！</h2>
+    <% if current_user.play == "進級" %>
+      <h2>
+        <%= current_user.play %>おめでとう！
+      </h2>
+      <%= link_to "OpenCollegeの世界へ！", user_path(current_user) %>
+    <% elsif current_user.play == "原級" %>
+      <h2>普通の人生なんてつまらない、そう思わないかい？</h2>
+      <div class="repeat_famous clearfix">
+        <div class="left_box">
+          <%= image_tag 'koizumi.jpg', width: "200px"%>
+        </div>
+        <div class="right_box">
+          <h3>慶応義塾大学経済学部にて留年。浪人も２度経験している。</h3>
+          <h4>「抵抗勢力」・「自民党をぶっ壊す」など、小泉語録とよばれる数多くの言葉を残している。
+郵便局の民営化を実現した。</h4>
+          <p class="quote times">失敗のない人間は面白くない。</p>
+        </div>
+      </div>
+      <div class="repeat_famous clearfix">
+        <div class="left_box">
+          <%= image_tag 'murakami.jpg', width: "200px"%>
+        </div>
+        <div class="right_box">
+          <h3>早稲田大学第一文学部にて３回留年。</h3>
+          <h4>「ノルウェイの森」に代表される、現代文学で最も評価の高い文学者の1人である。</h4>
+          <p class="quote times">もし君の選択や努力が徒労に終わることを宿命づけられていたとしても、それでもなお君は確固として君であり、君以外のなにものでもない。君は君としてまちがいなく前に進んでいる。心配しなくていい。</p>
+        </div>
+      </div>
+      <h2 class="text_center">
+        大学の授業って面白くないやつばっかでやる気でないけど、卒業しないとお話にならなかったりする世の中だからこれをつくった。<br>少しでも力になればいいなぁと思う。
+      </h2>
+      <div class="text_center"><%= link_to "ホームへ", user_path(current_user), class: "btn btn_large btn_large_radius" %></div>
+    <% else %>
+      <h2>よくわからんが・・・</h2>
+    <% end %>
   </div>
 </div>
