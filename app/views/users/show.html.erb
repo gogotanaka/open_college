@@ -1,3 +1,59 @@
+<div class="home">
+  <div class="inside">
+    <div class="rank_container">
+      <h2>総合</h2>
+      <ul class="clearfix">
+        <li>
+          <div class="rank">100位</div>
+          <p><%= @user.university.name %>・10000人</p>
+        </li>
+        <li>
+          <div class="rank">8位</div>
+          <p><%= @user.department.name %>・1500人</p>
+        </li>
+        <li>
+          <div class="rank">1位</div>
+          <p><%= @user.school_subject.name %>・100人</p>
+        </li>
+      </ul>
+    </div>
+    <div class="rank_container">
+      <h2>2012年</h2>
+      <ul class="clearfix">
+        <li>
+          <div class="rank">100位</div>
+          <p><%= @user.university.name %>・10000人</p>
+        </li>
+        <li>
+          <div class="rank">8位</div>
+          <p><%= @user.department.name %>・1500人</p>
+        </li>
+        <li>
+          <div class="rank">1位</div>
+          <p><%= @user.school_subject.name %>・100人</p>
+        </li>
+      </ul>
+    </div>
+    <div class="rank_container">
+      <h2>2011年</h2>
+      <ul class="clearfix">
+        <li>
+          <div class="rank">100位</div>
+          <p><%= @user.university.name %>・10000人</p>
+        </li>
+        <li>
+          <div class="rank">8位</div>
+          <p><%= @user.department.name %>・1500人</p>
+        </li>
+        <li>
+          <div class="rank">1位</div>
+          <p><%= @user.school_subject.name %>・100人</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <h1><%= @user.email %><br>
   <%= @user.last_name %><%= @user.first_name %><br>
   <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year %>年</h1>

@@ -8,11 +8,13 @@
   </head>
   <body class="<%= controller.controller_name %>">
     <header class="main_header">
-      <div class="inside">
+      <div class="inside clearfix">
         <% if signed_in? %>
           <%= link_to "OpenCollege", user_path(current_user), class: "logo" %>
-          <%= link_to "Settings", edit_user_path(current_user) %>
-          <%= link_to "Sign out", signout_path, method: "delete" %>
+          <ul>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+          </ul>
         <% else %>
           <%= link_to "OpenCollege", root_path, class: "logo" %>
           <%= link_to "Sign in", signin_path, class: "btn header_signin" %>
