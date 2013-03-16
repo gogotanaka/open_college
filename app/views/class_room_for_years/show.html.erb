@@ -1,14 +1,27 @@
-
-
 <div class="home">
   <div class="inside clearfix">
     <div class="left_box">
       <ul>
         <li>
           <p class="class_name"><%= @class_room_for_year.name %></p>
-          <p class="teacher_name"><%= @class_room_for_year.teacher_name %></p>
+          <p class="teacher_name"><%= link_to @class_room_for_year.teacher.name, teacher_path(@class_room_for_year.teacher.id) %></p>
         </li>
         <li>
+          <p class="topic">全体</p>
+          <ul class="clearfix">
+            <li>
+              20%<br>A
+            </li>
+            <li>
+              30%<br>B
+            </li>
+            <li>
+              40%<br>C
+            </li>
+            <li>
+              10%<br>D
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

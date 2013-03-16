@@ -1,0 +1,5 @@
+<%= @teacher.name %>
+
+<% @teacher.class_room_for_years.each do |class_room_for_year| %>
+  <%= class_room_for_year.name %>
+<% end %>

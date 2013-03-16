@@ -12,6 +12,7 @@ module Api
         doc = Nokogiri::HTML(scripts)
         user_info = doc.xpath('//table/tbody/tr')[0].text.split
 
+        # about university
         if University.find_by_name(user_info[2])
           @user.university_id = University.find_by_name(user_info[2]).id
         else 
@@ -21,6 +22,7 @@ module Api
           @user.university_id = university.id
         end
 
+        # about department
         if Department.find_by_name(user_info[4])
           @user.department_id = Department.find_by_name(user_info[4]).id
         else
@@ -53,7 +55,7 @@ module Api
             else
               nbsp = Nokogiri::HTML("&nbsp;").text
               analyze_class_name = node.xpath('.//td')[0].text.gsub(nbsp, "")
-              find_class_year = ClassRoomForYear.find_by_name(analyze_class_name)
+              find_class_year = ClassRoomForYear.find_by_name_and_teacher_name(analyze_class_name, node.xpath('.//td')[1].text)
               if find_class_year
                 find_class = find_class_year.class_rooms.find_by_year(node.xpath('.//td')[5].text.to_i)
                 if find_class
@@ -77,6 +79,15 @@ module Api
                 analyze_class_room_for_year = ClassRoomForYear.new
                 analyze_class_room_for_year.name = analyze_class_name
                 analyze_class_room_for_year.university_id = @user.university_id
+                find_teacher = Teacher.find_by_name(node.xpath('.//td')[1].text)
+                if find_teacher
+                  analyze_class_room_for_year.teacher_id = find_teacher.id
+                else
+                  analyze_teacher = Teacher.new
+                  analyze_teacher.name = node.xpath('.//td')[1].text
+                  analyze_teacher.save
+                  analyze_class_room_for_year.teacher_id = analyze_teacher.id
+                end
                 analyze_class_room_for_year.teacher_name = node.xpath('.//td')[1].text
                 analyze_class_room_for_year.save
                 new_class_room = ClassRoom.new

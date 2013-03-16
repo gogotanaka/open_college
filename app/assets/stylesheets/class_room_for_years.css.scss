@@ -16,6 +16,25 @@
           &:last-child {
             border-bottom: none;
           }
+          .topic {
+            font-size: 20px;
+            margin-bottom: 14px;
+          }
+          ul {
+            li {
+              width: 25%;
+              float: left;
+              text-align: center;
+              border-left: 1px dashed #aaa;
+              border-bottom: none;
+              padding-bottom: 0;
+              font-size: 16px;
+              line-height: 22px;
+              &:first-child {
+                border-left: none;
+              }
+            }
+          }
         }
         .class_name {
           font-size: 24px;
