@@ -12,34 +12,12 @@ module Api
         doc = Nokogiri::HTML(scripts)
         user_info = doc.xpath('//table/tbody/tr')[0].text.split
 
-        if University.find_by_name(user_info[2])
-          @user.university_id = University.find_by_name(user_info[2]).id
-        else 
-          university = University.new
-          university.name = user_info[2]
-          university.save
-          @user.university_id = university.id
-        end
+        @user.university = University.find_by_name(user_info[2]) ? University.find_by_name(user_info[2]) : University.create(name: user_info[2])
 
-        if Department.find_by_name(user_info[4])
-          @user.department_id = Department.find_by_name(user_info[4]).id
-        else
-          department = Department.new
-          department.name = user_info[4]
-          department.university_id = @user.university_id
-          department.save
-          @user.department_id = department.id
-        end
+        @user.department = Department.find_by_name(user_info[4]) ? Department.find_by_name(user_info[4]) : @user.university.departments.create(name: user_info[4])
 
-        if SchoolSubject.find_by_name(user_info[5])
-          @user.school_subject_id = SchoolSubject.find_by_name(user_info[5]).id
-        else
-          school_subject = SchoolSubject.new
-          school_subject.name = user_info[5]
-          school_subject.department_id = @user.department_id
-          school_subject.save
-          @user.school_subject_id = school_subject.id
-        end 
+        @user.school_subject = SchoolSubject.find_by_name(user_info[5]) ? SchoolSubject.find_by_name(user_info[5]) : @user.department.create(name: user_info[5])
+    
         @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i
 
         user_decision = doc.css('table.User')[0].xpath('.//td').text
