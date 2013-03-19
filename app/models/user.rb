@@ -53,7 +53,9 @@ class User < ActiveRecord::Base
         result += 0
       end
     end
-    result
+    result = result.to_f
+    count = class_grades.where(grade: ['Ａ', 'Ｂ', 'Ｃ', 'Ｄ']).count
+    sprintf( "%.2f", result / count )
   end
 
   private

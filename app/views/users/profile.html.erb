@@ -12,8 +12,7 @@
           <%= @user.school_year %>年
         </li>
         <li class="gpa">
-          <%= @user.class_grades.calculate %>
-          <span>GPA</span>4.8
+          <span>GPA</span><%= @user.calculate %>
         </li>
       </ul>
     </div>
