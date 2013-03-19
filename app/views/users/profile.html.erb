@@ -12,12 +12,13 @@
           <%= @user.school_year %>年
         </li>
         <li class="gpa">
+          <%= @user.class_grades.calculate %>
           <span>GPA</span>4.8
         </li>
       </ul>
     </div>
     <div class="right_box">
-      <% class_year = @user.class_rooms.group_by { |t| t.year } %>
+      <% class_year = @user.class_rooms.order('year DESC').group_by { |t| t.year } %>
       <% class_year.each do |year, class_rooms| %>
         <div class="each_school_year">
           <h3><%= year %>年度</h3>

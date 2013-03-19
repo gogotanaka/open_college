@@ -1,24 +1,25 @@
-<%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<div class="edit">
+  <div class="mini_inside">
+    <h2>Edit My Account</h2>
+    <div class="form_container">
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  
-  <%= f.label :play %>
-  <%= f.text_field :play %>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+        
+        <%= f.label :play %>
+        <%= f.text_field :play %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-<% end %>
+        <%= f.submit "Save Profile", class: "btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>

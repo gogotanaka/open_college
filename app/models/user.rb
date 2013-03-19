@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
 
   has_secure_password
@@ -36,6 +37,24 @@ class User < ActiveRecord::Base
     class_grades.create!(class_room_id: class_room.id, grade: grade)
   end
 
+  def calculate
+    result = 0
+    class_grades.each do |class_grade|
+      case class_grade.grade
+      when "Ａ"
+        result += 4
+      when "Ｂ"
+        result += 3
+      when "Ｃ"
+        result += 2
+      when "Ｄ"
+        result += 1
+      else
+        result += 0
+      end
+    end
+    result
+  end
 
   private
 
