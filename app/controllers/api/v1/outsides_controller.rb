@@ -27,21 +27,19 @@ module Api
               nbsp = Nokogiri::HTML("&nbsp;").text
               class_name, teacher_name, value, year = tds[0].text.gsub(nbsp, ""), tds[1].text, tds[2].text, tds[5].text.to_i
               teacher = Teacher.find_by_name(teacher_name)
-              unless teacher
+              if teacher
+                class_year = teacher.class_room_for_years.find_by_name(class_name)
+                if class_year
+                  class_room = class_year.class_rooms.find_by_year(year) ? class_year.class_rooms.find_by_year(year) : class_year.class_rooms.create(year: year)
+                else
+                  class_year = @user.university.class_room_for_years.create(name: class_name)
+                  class_room = class_year.class_rooms.create(year: year)
+                end
+              else
                 teacher = Teacher.create(name: teacher_name)
                 class_year = @user.university.class_room_for_years.create(name: class_name)
                 teacher.class_room_for_years << class_year
                 class_room = class_year.class_rooms.create(year: year)
-              else
-                class_year = teacher.class_room_for_years.find_by_name(class_name)
-                unless class_year
-                  class_year = @user.university.class_room_for_years.create(name: class_name)
-                else
-                  class_room = class_year.class_rooms.find_by_year(year)
-                  unless class_room
-                    class_room = class_year.class_rooms.create(year: year)
-                  end
-                end
               end
               @user.take!(class_room) unless @user.taking?(class_room)
               @user.value!(class_room, value) unless @user.value?(class_room)
