@@ -17,41 +17,37 @@ module Api
         @user.school_subject = SchoolSubject.find_by_name(user_info[5]) ? SchoolSubject.find_by_name(user_info[5]) : @user.department.school_subjects.create(name: user_info[5])
         @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i
 
-        user_decision = doc.css('table.User')[0].xpath('.//td').text
+        user_decision = doc.css('table.User')[0].css('td').text
         @user.play = user_decision
         table = doc.css('table.User')[1]
-        table.xpath('.//tr').each do |node|
-          unless node.xpath('.//th').any?
-            unless node.xpath('.//td').count == 1 || node.xpath('.//td').count == 2
+        table.css('tr').each do |node|
+          tds = node.css('td')
+          unless node.css('th').any?
+            unless tds.count == 1 || tds.count == 2
               nbsp = Nokogiri::HTML("&nbsp;").text
-              analyze_class_name = node.xpath('.//td')[0].text.gsub(nbsp, "")
-              find_class_year = ClassRoomForYear.find_by_name_and_teacher_name(analyze_class_name, node.xpath('.//td')[1].text)
-              if find_class_year
-                find_class = find_class_year.class_rooms.find_by_year(node.xpath('.//td')[5].text.to_i)
-                if find_class
-                  @user.take!(find_class) unless @user.taking?(find_class)
-                  @user.value!(find_class, node.xpath('.//td')[2].text) unless @user.value?(find_class)
-                else
-                  new_class_room = find_class_year.class_rooms.create(year: node.xpath('.//td')[5].text.to_i)
-                  @user.take!(new_class_room)
-                  @user.value!(new_class_room, node.xpath('.//td')[2].text)
-                end
+              class_name, teacher_name, value, year = tds[0].text.gsub(nbsp, ""), tds[1].text, tds[2].text, tds[5].text.to_i
+              teacher = Teacher.find_by_name(teacher_name)
+              unless teacher
+                teacher = Teacher.create(name: teacher_name)
+                class_year = @user.university.class_room_for_years.create(name: class_name)
+                teacher.class_room_for_years << class_year
+                class_room = class_year.class_rooms.create(year: year)
               else
-                analyze_class_room_for_year = @user.university.class_room_for_years.create(name: analyze_class_name)
-
-                find_teacher = Teacher.find_by_name(node.xpath('.//td')[1].text)
-                analyze_class_room_for_year.teacher = find_teacher ? find_teacher : Teacher.create(name: node.xpath('.//td')[1].text)
-
-                analyze_class_room_for_year.teacher_name = node.xpath('.//td')[1].text
-                analyze_class_room_for_year.save
-                new_class_room = analyze_class_room_for_year.class_rooms.create(year: node.xpath('.//td')[5].text.to_i)
-                @user.take!(new_class_room)
-                @user.value!(new_class_room, node.xpath('.//td')[2].text)
+                class_year = teacher.class_room_for_years.find_by_name(class_name)
+                unless class_year
+                  class_year = @user.university.class_room_for_years.create(name: class_name)
+                else
+                  class_room = class_year.class_rooms.find_by_year(year)
+                  unless class_room
+                    class_room = class_year.class_rooms.create(year: year)
+                  end
+                end
               end
+              @user.take!(class_room) unless @user.taking?(class_room)
+              @user.value!(class_room, value) unless @user.value?(class_room)
             end
           end
         end
-
         @user.save
         sign_in @user
         respond_with @user
