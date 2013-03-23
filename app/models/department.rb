@@ -3,5 +3,6 @@ class Department < ActiveRecord::Base
 
   belongs_to :university
   has_many :users
+  has_many :class_grades, through: :users, source: :class_grades
   has_many :school_subjects
 end

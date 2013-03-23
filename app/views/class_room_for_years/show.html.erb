@@ -37,19 +37,19 @@
               data = 
               [
                 {
-                  y: <%= class_room.class_grades.where("grade = ?", "Ａ").count %>,
+                  y: <%= class_room.class_grades.where("grade = ?", 4).count %>,
                   color: colors[0]
                 },
                 {
-                  y: <%= class_room.class_grades.where("grade = ?", "Ｂ").count %>,
+                  y: <%= class_room.class_grades.where("grade = ?", 3).count %>,
                   color: colors[1]
                 },
                 {
-                  y: <%= class_room.class_grades.where("grade = ?", "Ｃ").count %>,
+                  y: <%= class_room.class_grades.where("grade = ?", 2).count %>,
                   color: colors[2]
                 },
                 {
-                  y: <%= class_room.class_grades.where("grade = ?", "Ｄ").count %>,
+                  y: <%= class_room.class_grades.where("grade = ?", 1).count %>,
                   color: colors[3]
                 },
                 {
