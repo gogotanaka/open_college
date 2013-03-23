@@ -9,7 +9,36 @@
       <h2>
         <%= current_user.play %>おめでとう！
       </h2>
-      <%= link_to "OpenCollegeの世界へ！", user_path(current_user) %>
+      <div class="rank_container">
+        <div class="rank_topic">
+          <h2>
+            あなたの学業成績・総合
+          </h2>
+          <div class="social_button">
+            <span>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="<%= current_user.last_name %><%= current_user.first_name %>の学業成績は、<%= current_user.university.name %>で100位、<%= current_user.department.name %>で8位、<%= current_user.school_subject.name %>で1位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </span>
+            <span>
+              <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
+            </span>
+          </div>
+        </div>        
+        <ul class="clearfix">
+          <li>
+            <div class="rank">100位</div>
+            <p><%= current_user.university.name %>・10000人</p>
+          </li>
+          <li>
+            <div class="rank">8位</div>
+            <p><%= current_user.department.name %>・1500人</p>
+          </li>
+          <li>
+            <div class="rank">1位</div>
+            <p><%= current_user.school_subject.name %>・100人</p>
+          </li>
+        </ul>
+      </div>
     <% elsif current_user.play == "原級" %>
       <h2>普通の人生なんてつまらない、そう思わないかい？</h2>
       <div class="repeat_famous clearfix">
@@ -36,9 +65,9 @@
       <h2 class="text_center">
         大学の授業って面白くないやつばっかでやる気でないけど、卒業しないとお話にならなかったりする世の中だからこれをつくった。<br>少しでも力になればいいなぁと思う。
       </h2>
-      <div class="text_center"><%= link_to "ホームへ", user_path(current_user), class: "btn btn_large btn_large_radius" %></div>
     <% else %>
       <h2>よくわからんが・・・</h2>
     <% end %>
+    <div class="text_center"><%= link_to "ホームへ", user_path(current_user), class: "btn btn_large btn_large_radius" %></div>
   </div>
 </div>

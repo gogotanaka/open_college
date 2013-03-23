@@ -179,5 +179,49 @@
         }
       }
     }
+    .rank_container {
+      margin-bottom: 50px;
+      .rank_topic {
+        border-bottom: 1px solid #e5e9ed;
+        padding-bottom: 34px;
+        margin-bottom: 26px;
+        h2 {
+          margin: 0;
+        }
+        .social_button {
+          margin-top: -22px;
+          span {
+            float: right;
+            margin: 0 10px;
+          }
+        }
+      }
+      ul {
+        li {
+          width: 200px;
+          margin-left: 20px;
+          float: left;
+          background-color: #dcf7dd;
+          border: 1px solid #bbd2bc;
+          border-top-color: #d1ead2;
+          border-radius: 5px;
+          padding: 30px 20px;
+          text-align: center;
+          .rank {
+            text-shadow:1px 1px 0 #fff;
+            color: #4183C4;
+            font-size: 40px;
+            margin-bottom: 18px;
+          }
+          p {
+            font-size: 14px;
+            margin: 0;
+          }
+        }
+        li:first-child {
+          margin-left: 0;
+        }
+      }
+    }
   }
 }
