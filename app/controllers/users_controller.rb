@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) GPA').group('user_id').to_a.map{|x|sprintf( "%.2f", x.GPA )}
   end
 
   def new

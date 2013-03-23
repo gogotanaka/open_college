@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20130316031325) do
   create_table "class_grades", :force => true do |t|
     t.integer  "user_id"
     t.integer  "class_room_id"
-    t.string   "grade"
+    t.integer  "grade"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -52,15 +52,6 @@ ActiveRecord::Schema.define(:version => 20130316031325) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
-
-  create_table "relation_class_room_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "class_room_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "relation_class_room_users", ["user_id", "class_room_id"], :name => "index_relation_class_room_users_on_user_id_and_class_room_id"
 
   create_table "school_subjects", :force => true do |t|
     t.string   "name"

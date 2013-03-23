@@ -8,10 +8,8 @@ class User < ActiveRecord::Base
   belongs_to :university
   belongs_to :department
   belongs_to :school_subject
-  has_many :relation_class_room_users
-  has_many :class_rooms, through: :relation_class_room_users
+  has_many :class_rooms, through: :class_grades, source: :class_room
   has_many :class_grades
-
   before_save { |user| user.email = email.downcase }
   before_create :create_remember_token
   before_create :generate_access_token
@@ -21,41 +19,28 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  def taking?(class_room)
-    relation_class_room_users.find_by_class_room_id(class_room.id)
-  end
-
-  def take!(class_room)
-    relation_class_room_users.create!(class_room_id: class_room.id)
-  end
-
   def value?(class_room)
     class_grades.find_by_class_room_id(class_room.id)
   end
 
   def value!(class_room, grade)
-    class_grades.create!(class_room_id: class_room.id, grade: grade)
+    case grade
+    when "Ａ"
+      value = 4
+    when "Ｂ"
+      value = 3
+    when "Ｃ"
+      value = 2
+    when "Ｄ"
+      value = 1
+    else
+    end
+    class_grades.create!(class_room_id: class_room.id, grade: value)
   end
 
   def calculate
-    result = 0
-    class_grades.each do |class_grade|
-      case class_grade.grade
-      when "Ａ"
-        result += 4
-      when "Ｂ"
-        result += 3
-      when "Ｃ"
-        result += 2
-      when "Ｄ"
-        result += 1
-      else
-        result += 0
-      end
-    end
-    result = result.to_f
-    count = class_grades.where(grade: ['Ａ', 'Ｂ', 'Ｃ', 'Ｄ']).count
-    sprintf( "%.2f", result / count )
+    gpa = self.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) GPA').group('user_id')[0].GPA
+    sprintf( "%.2f", gpa )
   end
 
   private

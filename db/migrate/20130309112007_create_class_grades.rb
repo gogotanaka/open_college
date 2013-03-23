@@ -3,7 +3,7 @@ class CreateClassGrades < ActiveRecord::Migration
     create_table :class_grades do |t|
       t.integer :user_id
       t.integer :class_room_id
-      t.string :grade
+      t.integer :grade
 
       t.timestamps
     end

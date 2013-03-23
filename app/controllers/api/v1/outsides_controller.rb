@@ -41,7 +41,6 @@ module Api
                 teacher.class_room_for_years << class_year
                 class_room = class_year.class_rooms.create(year: year)
               end
-              @user.take!(class_room) unless @user.taking?(class_room)
               @user.value!(class_room, value) unless @user.value?(class_room)
             end
           end

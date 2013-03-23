@@ -4,15 +4,16 @@
       <h2>総合</h2>
       <ul class="clearfix">
         <li>
-          <div class="rank">100位</div>
+         <%= @rank_all_in_university %>
+          <div class="rank"><%= @rank_all_in_university %>位</div>
           <p><%= @user.university.name %>・10000人</p>
         </li>
         <li>
-          <div class="rank">8位</div>
+          <div class="rank"><%= @rank_all_in_department %>位</div>
           <p><%= @user.department.name %>・1500人</p>
         </li>
         <li>
-          <div class="rank">1位</div>
+          <div class="rank"><%= @rank_all_in_school_subject %>位</div>
           <p><%= @user.school_subject.name %>・100人</p>
         </li>
       </ul>
@@ -21,15 +22,15 @@
       <h2>2012年度</h2>
       <ul class="clearfix">
         <li>
-          <div class="rank">100位</div>
+          <div class="rank"><%= @rank_2012_in_university %>位</div>
           <p><%= @user.university.name %>・10000人</p>
         </li>
         <li>
-          <div class="rank">8位</div>
+          <div class="rank"><%= @rank_2012_in_department %>位</div>
           <p><%= @user.department.name %>・1500人</p>
         </li>
         <li>
-          <div class="rank">1位</div>
+          <div class="rank"><%= @rank_2012_in_school_subject %>位</div>
           <p><%= @user.school_subject.name %>・100人</p>
         </li>
       </ul>
@@ -38,15 +39,15 @@
       <h2>2011年度</h2>
       <ul class="clearfix">
         <li>
-          <div class="rank">100位</div>
+          <div class="rank"><%= @rank_2011_in_university %>位</div>
           <p><%= @user.university.name %>・10000人</p>
         </li>
         <li>
-          <div class="rank">8位</div>
+          <div class="rank"><%= @rank_2011_in_department %>位</div>
           <p><%= @user.department.name %>・1500人</p>
         </li>
         <li>
-          <div class="rank">1位</div>
+          <div class="rank"><%= @rank_2011_in_school_subject %>位</div>
           <p><%= @user.school_subject.name %>・100人</p>
         </li>
       </ul>
