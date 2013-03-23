@@ -1,20 +1,7 @@
 <div id="top_container">
   <div class="inside">
-    <div id="top" class="clearfix">
-      <div id="logo">
-        <%= link_to 'OpenCollege', '/'%>
-      </div>
-      <div class="setting">
-        <%= link_to 'ログイン', signin_path, class: "btn btn_middle btn_large_radius" %>
-      </div>
-    </div>
     <div id="slider_container" class="clearfix">
       <div id="slider_left">
-        <div id="phone">
-          <%= image_tag 'phones.png' %>
-        </div>
-      </div>
-      <div id="slider_right">
         <h1 class="">大学の授業の新しい形</h1>
         <%= form_for(@user) do |f| %>
           <p>OpenCollegeを始めよう！<span>アカウント登録</span></p>
@@ -44,6 +31,11 @@
           <div class="terms">現在は慶應義塾大学のみに対応しています。</div>
           <%= f.submit "アカウント登録", class: "input_submit" %>
         <% end %>
+      </div>
+      <div id="slider_right">
+        <div id="desktop">
+          <%= image_tag 'imac.png' %>
+        </div>
       </div>
     </div>  
   </div>

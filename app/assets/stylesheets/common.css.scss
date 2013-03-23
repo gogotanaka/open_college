@@ -166,12 +166,19 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   @include rounded-corners(18px);
 }
 .main_header {
-  background-color:#f3f3f3;
-  background-image:-moz-linear-gradient(#f9f9f9, #f3f3f3);
-  background-image:-webkit-linear-gradient(#f9f9f9, #f3f3f3);
-  background-image:linear-gradient(#f9f9f9, #f3f3f3);
+  background-color: #f3f3f3;
+  background-image: -moz-linear-gradient(#f9f9f9, #f3f3f3);
+  background-image: -webkit-linear-gradient(#f9f9f9, #f3f3f3);
+  background-image: linear-gradient(#f9f9f9, #f3f3f3);
   border-bottom: 1px solid #E5E5E5;
+  -webkit-box-shadow:0 1px 4px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 1px 4px rgba(0,0,0,0.2);
+  box-shadow:0 1px 4px rgba(0,0,0,0.2);
   height: 44px;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
   ul {
     float: right;
     li {
