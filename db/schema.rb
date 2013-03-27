@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130316031325) do
     t.string   "last_name"
     t.integer  "school_year"
     t.string   "play"
+    t.text     "html"
     t.string   "name"
     t.string   "email"
     t.datetime "created_at",        :null => false
