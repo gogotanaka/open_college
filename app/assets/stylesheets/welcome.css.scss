@@ -15,29 +15,6 @@
     background-image: url("banner.jpg");
     padding: 15px 0 0;
     overflow: hidden;
-    #top {
-      width: 800px;
-      margin: 0 auto 10px;
-      #logo {
-        opacity: 0.9;
-        font-size: 34px;
-        float: left;
-        font-weight: bold;
-        a {
-          color: #fff;
-          text-shadow: 0 1px 1px #333333;
-          text-decoration: none;
-          
-          &:hover {
-            color: #fff;
-          }
-        }
-      }
-      .setting {
-        float: right;
-        margin: 18px 30px 0;
-      }
-    }
     #slider_container {
       width: 862px;
       margin: auto;

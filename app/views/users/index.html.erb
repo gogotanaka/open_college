@@ -1,3 +1,21 @@
-<% @users.each do |user| %>
-  <%= link_to user.first_name, user %>
-<% end %>
+<%- model_class = User -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id, profile_user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.last_name %> <%= user.first_name %></td>
+        <td><%= link_to "HTML", source_user_path(user), class: "btn btn_mini" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
