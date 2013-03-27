@@ -35,7 +35,7 @@
                 <% class_rooms.each do |class_room| %>
                   <tr>
                     <td><%= link_to class_room.class_room_for_year.name, class_room_for_year_path(class_room.class_room_for_year.id) %></td>
-                    <td><%= class_room.class_room_for_year.teacher_name %></td>
+                    <td><%= class_room.class_room_for_year.teacher.name %></td>
                     <td><%= class_room.year %></td>
                     <td><%= class_room.get_grade(current_user) %></td>
                   </tr>
