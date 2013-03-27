@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def calculate
-    gpa = self.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) GPA').group('user_id')[0].GPA
+    gpa = self.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a[0].gpa
     sprintf( "%.2f", gpa )
   end
 

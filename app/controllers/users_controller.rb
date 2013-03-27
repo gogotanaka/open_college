@@ -10,11 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) GPA').group('user_id').to_a.map{|x|sprintf( "%.2f", x.GPA )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
 
-    @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) GPA').group('user_id').to_a.map{|x|sprintf( "%.2f", x.GPA )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
 
-    @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) GPA').group('user_id').to_a.map{|x|sprintf( "%.2f", x.GPA )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
   end
 
   def new
