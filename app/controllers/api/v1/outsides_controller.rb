@@ -34,7 +34,7 @@ module Api
                 if class_year
                   class_room = class_year.class_rooms.find_by_year(year) ? class_year.class_rooms.find_by_year(year) : class_year.class_rooms.create(year: year)
                 else
-                  class_year = @user.university.class_room_for_years.create(name: class_name, :teacher_id: teacher.id)
+                  class_year = @user.university.class_room_for_years.create(name: class_name, teacher_id: teacher.id)
                   class_room = class_year.class_rooms.create(year: year)
                 end
               else
