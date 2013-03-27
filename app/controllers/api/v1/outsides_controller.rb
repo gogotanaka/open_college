@@ -39,7 +39,7 @@ module Api
                 end
               else
                 teacher = Teacher.create(name: teacher_name)
-                class_year = @user.university.class_room_for_years.create(name: class_name, :teacher_id: teacher.id)
+                class_year = @user.university.class_room_for_years.create(name: class_name, teacher_id: teacher.id)
                 class_room = class_year.class_rooms.create(year: year)
               end
               @user.value!(class_room, value) unless @user.value?(class_room)
