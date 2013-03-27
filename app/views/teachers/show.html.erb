@@ -1,5 +1,5 @@
-<%= @teacher.name %>
+<%= @teacher.name if @teacher %>
 
 <% @teacher.class_room_for_years.each do |class_room_for_year| %>
-  <%= class_room_for_year.name %>
+  <%= class_room_for_year.name if class_room_for_year %>
 <% end %>
