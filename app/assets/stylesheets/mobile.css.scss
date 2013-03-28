@@ -1,0 +1,19 @@
+.m_main_container {
+  width: 100%;
+}
+
+.m_welcome {
+  padding: 20px 10px;
+  .m_brand {
+    text-align: center;
+    h1 {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+  }
+}
