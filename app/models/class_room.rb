@@ -15,7 +15,7 @@ class ClassRoom < ActiveRecord::Base
       'B'
     when 2
       'C'
-    when 1
+    when 0
       'D'
     else
     	"放棄"
