@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
     when "Ｃ"
       value = 2
     when "Ｄ"
-      value = 1
+      value = 0
     else
     end
     class_grades.create!(class_room_id: class_room.id, grade: value)
