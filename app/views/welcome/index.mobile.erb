@@ -3,3 +3,12 @@
   <h2>大学の授業の新しい形</h2>
   <%= image_tag 'banner.jpg', width: "100%" %>
 </div>
+<div class="attention">
+  現在は慶應義塾大学のみ利用可能です。  
+</div>
+<div class="m_welcome_btn_container">
+  <%= link_to "アカウント登録", signup_path, class: "m_btn_primary m_btn_large" %>
+</div>
+<div class="m_welcome_btn_container">
+  <%= link_to "ログイン", signin_path, class: "m_btn m_btn_large" %>
+</div>
