@@ -1,0 +1,71 @@
+<div class="m_guide_container">
+  <ul class="m_guide_nav_container clearfix">
+    <span class="step">STEP</span>
+    <li class="m_active">1</li>
+    <span>></span>
+    <li>2</li>
+    <span>></span>
+    <li>3</li>
+  </ul>
+  <div class="m_guide_explain">
+    <h2 class="topic">「+Class」ブックマークレットを登録</h2>
+    <ul class="list_explain">
+      <li>
+        <h3>
+          1. このページをブックマークする
+        </h3>
+      </li>
+      <li>
+        <h3>
+          2. 下記コードをコピーする
+          <p class="code">
+            javascript:(function(){
+              if (typeof jQuery == 'undefined') {
+                  var d=document,
+                      j=d.createElement('script');
+                  j.type='text/javascript';
+                  j.src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+                  j.onload = bml;
+                  d.body.appendChild(j);
+              }else {
+                  bml();
+              }
+              function bml(){
+                (function($){
+                  var html_scripts = document.getElementsByTagName('body')[0].innerHTML;
+                  var u_id = <%= current_user.id %>;
+                  var token_scripts = { access_token: '<%= current_user.access_token %>', scripts: html_scripts };
+                  $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token_scripts, function(data) {
+                    location.href = 'https://open-college.herokuapp.com/guides/' + u_id + '/finish';
+                  })
+                })(jQuery);
+              }
+            })();
+          </p>
+        </h3>
+      </li>
+      <li>
+        <h3>
+          3. ブックマーク一覧から、先ほど登録したこのページを選択
+        </h3>
+      </li>
+      <li>
+        <h3>
+          4. 名称欄を「+Class」など、わかりやすいものに変更
+        </h3>
+      </li>
+      <li>
+        <h3>
+          5. アドレス欄に、先ほどコピーしたコードを貼付ける
+        </h3>
+      </li>
+      <li>
+        <h3>
+          6. 「完了」をタップ
+        </h3>
+      </li>
+    </ul>
+    <p class="m_intro_next">以上の手順で、iPhoneからも「+Class」ブックマークレットをご利用いただけます。次に「+Class」の使用方法を説明します。</p>
+    <%= link_to "「+Class」の使用方法", reader_guide_path(current_user), class: "m_btn m_btn_large"  %>
+  </div>
+</div>
