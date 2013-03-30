@@ -12,14 +12,14 @@
     <header class="m_main_header">
       <div class="clearfix">
         <% if signed_in? %>
-          <%= link_to "OpenCollege", user_path(current_user), class: "logo" %>
+          <%= link_to "OpenCollege", user_path(current_user), class: "m_logo" %>
           <ul>
             <li><%= link_to "プロフィール", profile_user_path(current_user) %></li>
             <li><%= link_to "設定", edit_user_path(current_user) %></li>
             <li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
           </ul>
         <% else %>
-          <%= link_to "OpenCollege", root_path, class: "logo" %>
+          <%= link_to "OpenCollege", root_path, class: "m_logo" %>
           <%= link_to "ログイン", signin_path, class: "m_btn m_header_signin" %>
           <%= link_to "登録", signup_path, class: "m_btn_primary m_header_signup" %>
         <% end %>

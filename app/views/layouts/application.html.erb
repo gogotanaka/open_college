@@ -12,10 +12,21 @@
       <div class="inside clearfix">
         <% if signed_in? %>
           <%= link_to "OpenCollege", user_path(current_user), class: "logo" %>
+          <div class="autocomplete">
+            <%= form_tag class_room_for_years_path, method: :get do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Seach", class: "autocomplete_form" %>
+            <% end %>
+          </div>
           <ul>
-            <li><%= link_to "プロフィール", profile_user_path(current_user) %></li>
-            <li><%= link_to "設定", edit_user_path(current_user) %></li>
-            <li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
+            <li class="header_user_menu">
+              <a href="#" class="drop"><%= current_user.last_name %> <%= current_user.first_name %> <span class="triangle">▼</span></a>
+              <ul>
+                <li><%= link_to "順位", profile_user_path(current_user) %></li>
+                <li><%= link_to "成績表", profile_user_path(current_user) %></li>
+                <li><%= link_to "設定", edit_user_path(current_user) %></li>
+                <li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
+              </ul>
+            </li>
           </ul>
         <% else %>
           <%= link_to "OpenCollege", root_path, class: "logo" %>
