@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
 
   def value?(class_room)
     class_grades.find_by_class_room_id(class_room.id)

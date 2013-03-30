@@ -6,6 +6,10 @@ class ClassRoomForYearsController < ApplicationController
 
   def show
     @class_room_for_year = ClassRoomForYear.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
 end

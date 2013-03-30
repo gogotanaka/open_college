@@ -16,10 +16,13 @@
             <%= form_tag class_room_for_years_path, method: :get do %>
               <%= text_field_tag :search, params[:search], placeholder: "Seach", class: "autocomplete_form" %>
             <% end %>
+            <div class="search_icon">
+              <%= image_tag "search_icon.png", width: "20px" %>
+            </div>
           </div>
           <ul>
             <li class="header_user_menu">
-              <a href="#" class="drop"><%= current_user.last_name %> <%= current_user.first_name %> <span class="triangle">▼</span></a>
+              <a href="#" class="drop">You&nbsp;<span class="triangle">▼</span></a>
               <ul>
                 <li><%= link_to "順位", profile_user_path(current_user) %></li>
                 <li><%= link_to "成績表", profile_user_path(current_user) %></li>

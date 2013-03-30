@@ -227,9 +227,15 @@ ul.ui-autocomplete {
   .autocomplete {
     float: left;
     margin: 9px 0 0 20px;
+    position: relative;
     .autocomplete_form {
       height: 26px;
       width: 300px;
+    }
+    .search_icon {
+      position: absolute;
+      top: 3px;
+      right: 5px;
     }
   }
   ul {
@@ -243,7 +249,6 @@ ul.ui-autocomplete {
       border-right-color: rgba(255,255,255,0.1);
       border-left: 1px solid #06365f;
       border-left-color: rgba(0,0,0,0.1);
-      
       a {
         text-shadow:0 1px 1px rgba(0,0,0,0.6);
         color: #fff;

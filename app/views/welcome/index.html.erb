@@ -6,16 +6,6 @@
         <%= form_for(@user) do |f| %>
           <p>OpenCollegeを始めよう！<span>アカウント登録</span></p>
           <div class="form_container">
-            <div class="clearfix">
-              <div class="half_cotainer">
-                <%= f.text_field :last_name, placeholder: "姓", class: "field_input half_form" %>
-              </div>
-              <div class="half_cotainer latter">
-                <%= f.text_field :first_name, placeholder: "名", class: "field_input half_form" %>
-              </div>
-            </div>
-          </div>
-          <div class="form_container">
             <%= f.email_field :email, placeholder: "メールアドレス", class: "field_input mail_form"%>
           </div>
           <div class="form_container">
@@ -28,7 +18,10 @@
               </div>
             </div>
           </div>
-          <div class="terms">現在は慶應義塾大学のみに対応しています。</div>
+          <div class="terms">現在は慶應義塾大学のみに対応しています。<br>ご要望・フィードバックがあれば
+            <a href="">@yukihariguchi</a>
+            にメンションください。
+          </div>
           <%= f.submit "アカウント登録", class: "input_submit" %>
         <% end %>
       </div>
