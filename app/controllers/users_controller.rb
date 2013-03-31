@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "ようこそ、OpenCollegeへ！"
+      flash[:success] = "ようこそ、OpenCollegeへ！すべてのSTEPを終えたら、OpenCollegeを使うことができます。所要時間は約3分です。"
       redirect_to intro_guide_url(@user)
     else
       render 'new'
