@@ -1,11 +1,11 @@
 <div class="guide_container">
   <ul class="guide_nav_container clearfix">
-    <li>ブックマーク</li>
-    <li class="active"><b class="caret"></b>読み取り</li>
-    <li>完了</li>
+    <li>1. <span>「+Class」を登録</span></li>
+    <li class="active"><b class="caret"></b>2. <span>「+Class」の使用方法</span></li>
+    <li>3. <span>完了</span></li>
   </ul>
   <div class="guide_explain">
-    <h2>成績を読み取る</h2>
+    <h2>「+Class」ブックマークレットの使用方法</h2>
     <ul class="clearfix">
       <li class="first">
         <p><span class="circle">1</span><%= link_to "keio.jp", "https://login.keio.jp/koid/", target: "_blank" %>でログイン</p>
@@ -24,8 +24,9 @@
       <p><span class="circle">4</span>先ほど追加した+classボタンをクリック</p>
       <%= image_tag 'click_bookmarklet.png', width: "600px"%>
     </div>
-    <div class="guide_link text_center">
-      <%= link_to "次へ", finish_guide_path(current_user), class: "btn btn_large btn_large_radius" %>
+    <div class="magical_bookmarklet">
+      <p><span class="circle">5</span>解析が終わったら、自動でSTEP「3」にとびます</p>
+      <%= image_tag 'click_bookmarklet.png', width: "600px"%>
     </div>
   </div>
 </div>

@@ -8,6 +8,9 @@
     <li>3</li>
   </ul>
   <div class="m_guide_explain">
+    <% flash.each do |key, value| %>
+      <div class="m_message_box_<%= key %>"><%= value %></div>
+    <% end %>
     <h2 class="topic">「+Class」ブックマークレットを登録</h2>
     <ul class="list_explain">
       <li>

@@ -1,3 +1,4 @@
+# coding: utf-8
 class UsersController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :show, :edit, :update]
@@ -10,12 +11,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-    @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-    @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-    respond_to do |format|
-      format.html
-      format.mobile
+    if @user.university
+      @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+      @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+      @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+      respond_to do |format|
+        format.html
+        format.mobile
+      end
+    else
+      flash[:error] = '成績の解析が完了していません。もう一度誘導にしたがってやり直してください。解析が完了したら、OpenCollegeを使うことができます。解析したデータは匿名で、大学の授業をオープンにすること、あなたの授業選びのツール、のみに使われます。'
+      redirect_to intro_guide_url(@user)
     end
   end
 
@@ -31,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to OpenCollege!"
+      flash[:success] = "ようこそ、OpenCollegeへ！"
       redirect_to intro_guide_url(@user)
     else
       render 'new'
