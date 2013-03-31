@@ -22,7 +22,14 @@
           </div>
           <ul>
             <li class="header_user_menu">
-              <a href="#" class="drop">You&nbsp;<span class="triangle">▼</span></a>
+              <a href="#" class="drop">
+	              <% if current_user.first_name.present? && current_user.last_name.present? %>
+			            <%= current_user.last_name %> <%= current_user.first_name %>
+			          <% else %>
+			            You
+			          <% end %>
+	              <span class="triangle">▼</span>
+              </a>
               <ul>
                 <li><%= link_to "順位", profile_user_path(current_user) %></li>
                 <li><%= link_to "成績表", profile_user_path(current_user) %></li>
