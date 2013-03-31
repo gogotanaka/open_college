@@ -398,18 +398,46 @@
         margin: 20px 0;
         line-height: 19px;
       }
-    }
-    .m_share {
-      margin: 20px 0 50px 0;
-      h2 {
-        color: #837A71;
-        font-size: 18px;
-        margin: 10px 0;
+      .m_share {
+        margin: 20px 0 30px 0;
+        h2 {
+          color: #837A71;
+          font-size: 18px;
+          margin: 10px 0;
+        }
+        span {
+          float: left;
+        }
       }
-      span {
-        float: left;
+      .m_repeat_famous_people {
+        margin: 30px 0;
+        h1 {
+          font-size: 20px;
+          font-weight: bold;
+          margin: 20px 0;
+        }
+        h2 {
+          font-size: 16px;
+          margin: 8px 0;
+          line-height: 22px;
+        }
+        h3 {
+          font-size: 14px;
+          margin: 8px 0;
+          line-height: 20px;
+        }
+        p.m_quote {
+          border-left: 2px solid #ccc;
+          font-size: 15px;
+          color: #777;
+          padding: 0 0 0 10px;
+          margin-top: 12px;
+          line-height: 20px;
+          font-style: italic;
+        }
       }
     }
+    
   }
 }
 .m_rank_container {
