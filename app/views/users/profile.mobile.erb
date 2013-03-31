@@ -13,6 +13,9 @@
       <%= @user.school_subject.name %>
       <%= @user.school_year %>年
     </p>
+    <p>
+      <span>GPA</span><%= @user.calculate %>
+    </p>
   </div>
   <dic class="m_class_grade">
     <% class_year = @user.class_rooms.order('year DESC').group_by { |t| t.year } %>
