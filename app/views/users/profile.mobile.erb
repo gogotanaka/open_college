@@ -2,7 +2,7 @@
   <div class="m_user_info">
     <p>
       <% if current_user.first_name.present? && current_user.last_name.present? %>
-        <%= current_user.last_name %> <%= current_user.last_name %>
+        <%= current_user.last_name %> <%= current_user.first_name %>
       <% else %>
         You
       <% end %>

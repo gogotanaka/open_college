@@ -209,12 +209,11 @@
     float: right;
   }
   .m_autocomplete {
-    float: right;
-    margin: 9px 10px 0 0;
+    margin: 9px 10px 0;
     position: relative;
     .m_autocomplete_form {
       height: 26px;
-      width: 220px;
+      width: 100%;
     }
     .m_search_icon {
       position: absolute;
@@ -531,20 +530,21 @@
   }
 }
 .m_class_room_for_years {
-  padding: 20px 10px 40px;
+  padding: 20px 0 40px;
   .m_home {
     .class_room_info {
       p {
         font-size: 16px;
         margin-bottom: 10px;
+        padding: 0 10px;
       }
       ul.m_grade_rate {
-        width: 360px;
+        width: 320px;
         margin: 20px auto;
         li {
-          width: 80px;
-          height: 80px;
-          padding-top: 22px;
+          width: 70px;
+          height: 70px;
+          padding-top: 18px;
           line-height: 20px;
           border-radius: 40px;
           margin: 0 5px;
@@ -554,6 +554,8 @@
           color: #fff;
         }
       }
+    }
+    .m_class_range {
     }
   }
 }

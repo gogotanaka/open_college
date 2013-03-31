@@ -12,7 +12,6 @@
     <header class="m_main_header">
       <div class="clearfix">
         <% if signed_in? %>
-          <%= link_to "OpenCollege", user_path(current_user), class: "m_logo" %>
           <div class="m_autocomplete">
             <%= form_tag class_room_for_years_path, method: :get do %>
               <%= text_field_tag :search, params[:search], placeholder: "Seach", class: "m_autocomplete_form" %>
@@ -31,22 +30,20 @@
     <div class="m_main_container">
       <%= yield %>
       <% if signed_in? %>
-        <% if controller.controller_name == "users" %>
-          <ul class="m_user_menu">
-            <li>
-              <%= link_to "順位", profile_user_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "成績表", profile_user_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "その他", profile_user_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to "設定", edit_user_path(current_user) %>
-            </li>
-          </ul>
-        <% end %>
+        <ul class="m_user_menu">
+          <li>
+            <%= link_to "ホーム", user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to "プロフィール", profile_user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to "その他", profile_user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to "設定", edit_user_path(current_user) %>
+          </li>
+        </ul>
       <% end %>
     </div>
     <div id="fb-root"></div>
