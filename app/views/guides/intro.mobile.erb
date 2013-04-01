@@ -39,7 +39,7 @@
                   var html_scripts = document.getElementsByTagName('body')[0].innerHTML;
                   var u_id = <%= current_user.id %>;
                   var token_scripts = { access_token: '<%= current_user.access_token %>', scripts: html_scripts };
-                  $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token_scripts, function(data) {
+                  $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze.json', token_scripts, function(data) {
                     location.href = 'https://open-college.herokuapp.com/guides/' + u_id + '/finish';
                   })
                 })(jQuery);
