@@ -48,7 +48,7 @@ module Api
         end
         @user.save
         sign_in @user
-        respond_with @user
+        respond_with (@user, location: nil)
       end
 
       private
