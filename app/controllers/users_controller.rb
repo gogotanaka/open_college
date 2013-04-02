@@ -1,8 +1,8 @@
 # coding: utf-8
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :show, :edit, :update]
-  before_filter :correct_user, only: [:show, :profile, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :rank]
+  before_filter :correct_user, only: [:show, :profile, :edit, :update, :rank]
   before_filter :admin_user, only: [:index, :source, :destroy]
 
   def index
@@ -12,9 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user.university
-      @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-      @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-      @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+      @class_rooms = @user.recommend_difficult_class
       respond_to do |format|
         format.html
         format.mobile
@@ -37,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "ようこそ、OpenCollegeへ！すべてのSTEPを終えたら、OpenCollegeを使うことができます。所要時間は約3分です。"
+      flash[:success] = "ようこそ、OpenCollegeへ！すべてのStepを終えたら、OpenCollegeを使うことができます。所要時間は約3分です。"
       redirect_to intro_guide_url(@user)
     else
       render 'new'
@@ -71,10 +69,25 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
   def source
     @user = User.find(params[:id])
+  end
+
+  def rank
+    @user = User.find(params[:id])
+    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
 
