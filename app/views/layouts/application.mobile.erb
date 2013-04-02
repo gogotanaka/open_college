@@ -17,7 +17,7 @@
           <% else %>
             <div class="m_autocomplete">
               <%= form_tag class_room_for_years_path, method: :get do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Seach", class: "m_autocomplete_form" %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search", class: "m_autocomplete_form" %>
               <% end %>
               <div class="m_search_icon">
                 <%= image_tag "search_icon.png", width: "20px" %>
