@@ -34,8 +34,8 @@
   	              <span class="triangle">▼</span>
                 </a>
                 <ul>
-                  <li><%= link_to "順位", profile_user_path(current_user) %></li>
                   <li><%= link_to "成績表", profile_user_path(current_user) %></li>
+                  <li><%= link_to "順位", rank_user_path(current_user) %></li>
                   <li><%= link_to "設定", edit_user_path(current_user) %></li>
                   <li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
                 </ul>
