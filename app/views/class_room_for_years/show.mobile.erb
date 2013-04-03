@@ -5,10 +5,10 @@
       <%= link_to @class_room_for_year.teacher.name, teacher_path(@class_room_for_year.teacher.id) %>
     </p>
     <ul class="m_grade_rate clearfix">
-      <li>20%<br>A</li>
-      <li>30%<br>B</li>
-      <li>40%<br>C</li>
-      <li>10%<br>D</li>
+      <li><%= @class_room_for_year.percents[0] %>%<br>A</li>
+      <li><%= @class_room_for_year.percents[1] %>%<br>B</li>
+      <li><%= @class_room_for_year.percents[2] %>%<br>C</li>
+      <li><%= @class_room_for_year.percents[3] %>%<br>D</li>
     </ul>
   </div>
   <div class="m_class_range">
