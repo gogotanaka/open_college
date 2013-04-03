@@ -14,7 +14,7 @@
                   plotShadow: false
               },
               title: {
-                  text: '<%= class_room.name %>'
+                  text: '<%= link_to class_room.name, class_room %>'
               },
               tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage}%</b>',
@@ -63,7 +63,7 @@
                   plotShadow: false
               },
               title: {
-                  text: '<%= class_room.name %>'
+                  text: '<%= link_to class_room.name, class_room %>'
               },
               tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage}%</b>',
