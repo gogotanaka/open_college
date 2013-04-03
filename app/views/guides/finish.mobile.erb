@@ -14,43 +14,65 @@
       </h2>
       <div class="m_rank_container">
         <h1>
-          あなたの学業成績・総合
+          あなたの学業成績
         </h1>
         <div class="m_rank">
           <div class="m_rank_header">
             <h2><%= current_user.university.name %>・<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人</h2>
           </div>
           <div class="m_rank_body">
-            <div class="m_user_rank_container clearfix">
-              <div class="m_user_rank">
-                1位
+            <% if @rank_all_in_university == 1 %>
+              <div class="m_current_user_rank clearfix">
+                <div class="m_user_rank">
+                  <%= @rank_all_in_university %>位
+                </div>
+                <div class="m_user_name">
+                  You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+                </div>
               </div>
-              <div class="m_user_name">
-                GPA : <%= current_user.university.rank(current_user.school_year)[0] %>
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
               </div>
-            </div>
-            <div class="m_tententen clearfix">
-              ・<br>・<br>・
-            </div>
-            <div class="m_current_user_rank clearfix">
-              <div class="m_user_rank">
-                <%= @rank_all_in_university %>位
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  最下位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+                </div>
               </div>
-              <div class="m_user_name">
-                You GPA : <%= current_user.calculate %>
+            <% else %>
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  1位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.university.rank(current_user.school_year)[0] %>
+                </div>
               </div>
-            </div>
-            <div class="m_tententen clearfix">
-              ・<br>・<br>・
-            </div>
-            <div class="m_user_rank_container clearfix">
-              <div class="m_user_rank">
-                最下位
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
               </div>
-              <div class="m_user_name">
-                GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+              <div class="m_current_user_rank clearfix">
+                <div class="m_user_rank">
+                  <%= @rank_all_in_university %>位
+                </div>
+                <div class="m_user_name">
+                  You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+                </div>
               </div>
-            </div>
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
+              </div>
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  最下位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="m_rank">
@@ -58,36 +80,58 @@
             <h2><%= current_user.department.name %>・<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人</h2>
           </div>
           <div class="m_rank_body">
-            <div class="m_user_rank_container clearfix">
-              <div class="m_user_rank">
-                1位
+            <% if @rank_all_in_department == 1 %>
+              <div class="m_current_user_rank clearfix">
+                <div class="m_user_rank">
+                  <%= @rank_all_in_department %>位
+                </div>
+                <div class="m_user_name">
+                  You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+                </div>
               </div>
-              <div class="m_user_name">
-                GPA : <%= current_user.department.rank(current_user.school_year)[0] %>
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
               </div>
-            </div>
-            <div class="m_tententen clearfix">
-              ・<br>・<br>・
-            </div>
-            <div class="m_current_user_rank clearfix">
-              <div class="m_user_rank">
-                <%= @rank_all_in_department %>位
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  最下位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
+                </div>
               </div>
-              <div class="m_user_name">
-                You
+            <% else %>
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  1位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.department.rank(current_user.school_year)[0] %>
+                </div>
               </div>
-            </div>
-            <div class="m_tententen clearfix">
-              ・<br>・<br>・
-            </div>
-            <div class="m_user_rank_container clearfix">
-              <div class="m_user_rank">
-                最下位
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
               </div>
-              <div class="m_user_name">
-                GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
+              <div class="m_current_user_rank clearfix">
+                <div class="m_user_rank">
+                  <%= @rank_all_in_department %>位
+                </div>
+                <div class="m_user_name">
+                  You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+                </div>
               </div>
-            </div>
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
+              </div>
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  最下位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="m_rank">
@@ -95,36 +139,58 @@
             <h2><%= current_user.school_subject.name %>・<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人</h2>
           </div>
           <div class="m_rank_body">
-            <div class="m_user_rank_container clearfix">
-              <div class="m_user_rank">
-                1位
+            <% if @rank_all_in_school_subject == 1 %>
+              <div class="m_current_user_rank clearfix">
+                <div class="m_user_rank">
+                  <%= @rank_all_in_school_subject %>位
+                </div>
+                <div class="m_user_name">
+                  You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+                </div>
               </div>
-              <div class="m_user_name">
-                GPA : <%= current_user.school_subject.rank(current_user.school_year)[0] %>
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
               </div>
-            </div>
-            <div class="m_tententen clearfix">
-              ・<br>・<br>・
-            </div>
-            <div class="m_current_user_rank clearfix">
-              <div class="m_user_rank">
-                <%= @rank_all_in_school_subject %>位
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  最下位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
+                </div>
               </div>
-              <div class="m_user_name">
-                You
+            <% else %>
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  1位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.school_subject.rank(current_user.school_year)[0] %>
+                </div>
               </div>
-            </div>
-            <div class="m_tententen clearfix">
-              ・<br>・<br>
-            </div>
-            <div class="m_user_rank_container clearfix">
-              <div class="m_user_rank">
-                最下位
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
               </div>
-              <div class="m_user_name">
-                GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
+              <div class="m_current_user_rank clearfix">
+                <div class="m_user_rank">
+                  <%= @rank_all_in_school_subject %>位
+                </div>
+                <div class="m_user_name">
+                  You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+                </div>
               </div>
-            </div>
+              <div class="m_tententen clearfix">
+                ・<br>・<br>・
+              </div>
+              <div class="m_user_rank_container clearfix">
+                <div class="m_user_rank">
+                  最下位
+                </div>
+                <div class="m_user_name">
+                  GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

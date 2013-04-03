@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         format.mobile
       end
     else
-      flash[:error] = '成績の解析が完了していません。もう一度誘導にしたがってやり直してください。解析が完了したら、OpenCollegeを使うことができます。解析したデータは匿名で、大学の授業をオープンにすること、あなたの授業選びのツール、のみに使われます。'
+      flash[:error] = '成績の解析が完了していません。もう一度誘導にしたがってやり直してください。解析が完了したら、OpenCollegeを使うことができます。解析したデータは匿名で、大学の授業をオープンにすること、授業選びのツール、のみに使われます。'
       redirect_to intro_guide_url(@user)
     end
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "ようこそ、OpenCollegeへ！すべてのStepを終えたら、OpenCollegeを使うことができます。所要時間は約3分です。"
+      flash[:success] = "ようこそ、OpenCollegeへ！すべてのStepを終えたら、OpenCollegeを使うことができます。解析したデータは匿名で、大学の授業をオープンにすること、授業選びのツール、のみに使われます。所要時間は約3分です。"
       redirect_to intro_guide_url(@user)
     else
       render 'new'
