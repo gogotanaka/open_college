@@ -11,5 +11,5 @@ class WelcomeController < ApplicationController
       format.mobile
     end
   end
-
+  
 end

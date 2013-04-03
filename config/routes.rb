@@ -8,7 +8,7 @@ OpenCollege::Application.routes.draw do
   
   resources :users do
     member do
-      get :profile, :source, :rank
+      get :recommend, :source, :rank
     end
   end
   

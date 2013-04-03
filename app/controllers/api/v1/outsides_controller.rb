@@ -17,10 +17,16 @@ module Api
         @user.university = University.find_by_name(user_info[2]) ? University.find_by_name(user_info[2]) : University.create(name: user_info[2])
         @user.department = Department.find_by_name(user_info[4]) ? Department.find_by_name(user_info[4]) : @user.university.departments.create(name: user_info[4])
         @user.school_subject = SchoolSubject.find_by_name(user_info[5]) ? SchoolSubject.find_by_name(user_info[5]) : @user.department.school_subjects.create(name: user_info[5])
-        @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i
-
         user_decision = doc.css('table.User')[0].css('td').text
         @user.play = user_decision
+        if user_decision = "進級"
+          @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i + 1
+        elsif user_decision = "原級"
+          @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i
+        else
+          @user.school_year = user_info[6].gsub(/[^0-9]/,"").to_i + 1
+        end
+        
         table = doc.css('table.User')[1]
         table.css('tr').each do |node|
           tds = node.css('td')

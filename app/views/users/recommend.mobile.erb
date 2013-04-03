@@ -1,0 +1,117 @@
+<div class="m_recommend">
+  <% if @rakutan.present? || @egutan.present? %>
+    <h1>おすすめの授業</h1>
+    <% if @rakutan.present? %>
+      <div class="m_recommend_container">
+        <h2 class="m_recommend_header">ラク単</h2>
+        <div class="m_recommend_body">
+          <div class="clearfix">
+            <% @rakutan.each_with_index do |class_id, i| %>
+              <% class_room = ClassRoom.find(class_id).class_room_for_year %>
+              <script type="text/javascript">
+                $(function () {
+                  $('#r_ratio_container' + <%= i %>).highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: '<%= link_to class_room.name, class_room %>'
+                    },
+                    tooltip: {
+                      pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                      percentageDecimals: 1
+                    },
+                    plotOptions: {
+                      pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                          enabled: true,
+                          color: '#000000',
+                          connectorColor: '#000000',
+                          formatter: function() {
+                              return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                          }
+                        }
+                      }
+                    },
+                    series: [{
+                      type: 'pie',
+                      name: '割合',
+                      data: [
+                        ['A', <%= class_room.percents[0] %>],
+                        ['B', <%= class_room.percents[1] %>],
+                        ['C', <%= class_room.percents[2] %>],
+                        ['D', <%= class_room.percents[3] %>]
+                      ]
+                    }]
+                  });
+                });
+              </script>
+              <div id="r_ratio_container<%= i %>" style="width: 100%; height: 300px; margin: 10px auto"></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if @egutan.present? %>
+      <div class="m_recommend_container">
+        <h2 class="m_recommend_header">エグ単</h2>
+        <div class="m_recommend_body">
+          <div class="clearfix">
+            <% @egutan.each_with_index do |class_id, i| %>
+              <% class_room = ClassRoom.find(class_id).class_room_for_year %>
+              <script type="text/javascript">
+                $(function () {
+                  $('#e_ratio_container' + <%= i %>).highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: '<%= link_to class_room.name, class_room %>'
+                    },
+                    tooltip: {
+                      pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                      percentageDecimals: 1
+                    },
+                    plotOptions: {
+                      pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                          enabled: true,
+                          color: '#000000',
+                          connectorColor: '#000000',
+                          formatter: function() {
+                              return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                          }
+                        }
+                      }
+                    },
+                    series: [{
+                      type: 'pie',
+                      name: '割合',
+                      data: [
+                        ['A', <%= class_room.percents[0] %>],
+                        ['B', <%= class_room.percents[1] %>],
+                        ['C', <%= class_room.percents[2] %>],
+                        ['D', <%= class_room.percents[3] %>]
+                      ]
+                    }]
+                  });
+                });
+              </script>
+              <div id="e_ratio_container<%= i %>" style="width: 100%; height: 300px; margin: 10px auto"></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year + 1 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
+  <% end %>
+</div>

@@ -1,137 +1,54 @@
 <div class="home">
-  <div class="inside">
-    <% if @rakutan.present? || @egutan.present? %>
-      <p class="recommend_topic">おすすめの授業</p>
-      <% if @rakutan.present? %>
-        <p class="recommend_type">ラク単</p>
-        <div class="recommend_body">
-          <div class="clearfix">
-            <% @rakutan.each_with_index do |class_id, i| %>
-              <% class_room = ClassRoom.find(class_id).class_room_for_year %>
-              <script type="text/javascript">
-                $(function () {
-                  $('#r_ratio_container' + <%= i %>).highcharts({
-                    chart: {
-                        plotBackgroundColor: null,
-                        plotBorderWidth: null,
-                        plotShadow: false
-                    },
-                    title: {
-                        text: '<%= link_to class_room.name, class_room %>'
-                    },
-                    tooltip: {
-                      pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                      percentageDecimals: 1
-                    },
-                    plotOptions: {
-                      pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                          enabled: true,
-                          color: '#000000',
-                          connectorColor: '#000000',
-                          formatter: function() {
-                              return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
-                          }
-                        }
-                      }
-                    },
-                    series: [{
-                      type: 'pie',
-                      name: '割合',
-                      data: [
-                        ['A', <%= class_room.percents[0] %>],
-                        ['B', <%= class_room.percents[1] %>],
-                        ['C', <%= class_room.percents[2] %>],
-                        ['D', <%= class_room.percents[3] %>]
-                      ]
-                    }]
-                  });
-                });
-              </script>
-              <div id="r_ratio_container<%= i %>" style="width: 300px; height: 300px; margin: 10px auto; float:left;"></div>
-            <% end %>
+  <div class="inside clearfix">
+    <div class="left_box">
+      <ul>
+        <li class="name">
+          <% if current_user.first_name.present? && current_user.last_name.present? %>
+            <%= current_user.last_name %> <%= current_user.first_name %>
+          <% else %>
+            You
+          <% end %>
+        </li>
+        <li class="info">
+          <p class="university_name"><%= @user.university.name %></p>
+          <%= @user.department.name %>
+          <%= @user.school_subject.name %>
+          <%= @user.school_year %>年
+        </li>
+        <li class="gpa">
+          <span>GPA</span><%= @user.calculate %>
+        </li>
+      </ul>
+    </div>
+    <div class="right_box">
+      <% class_year = @user.class_rooms.order('year DESC').group_by { |t| t.year } %>
+      <% class_year.each do |year, class_rooms| %>
+        <div class="each_school_year">
+          <h3><%= year %>年度</h3>
+          <div class="class_body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>授業名</th>
+                  <th>教授名</th>
+                  <th>年度</th>
+                  <th>評定</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% class_rooms.each do |class_room| %>
+                  <tr>
+                    <td><%= link_to class_room.class_room_for_year.name, class_room_for_year_path(class_room.class_room_for_year.id) %></td>
+                    <td><%= class_room.class_room_for_year.teacher.name if class_room.class_room_for_year.teacher %></td>
+                    <td><%= class_room.year %></td>
+                    <td><%= class_room.get_grade(current_user) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
       <% end %>
-      <% if @egutan.present? %>
-        <p class="recommend_type">エグ単</p>
-        <div class="recommend_body">
-          <div class="clearfix">
-            <% @egutan.each_with_index do |class_id, i| %>
-              <% class_room = ClassRoom.find(class_id).class_room_for_year %>
-              <script type="text/javascript">
-                $(function () {
-                  $('#e_ratio_container' + <%= i %>).highcharts({
-                    chart: {
-                        plotBackgroundColor: null,
-                        plotBorderWidth: null,
-                        plotShadow: false
-                    },
-                    title: {
-                        text: '<%= link_to class_room.name, class_room %>'
-                    },
-                    tooltip: {
-                      pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                      percentageDecimals: 1
-                    },
-                    plotOptions: {
-                      pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                          enabled: true,
-                          color: '#000000',
-                          connectorColor: '#000000',
-                          formatter: function() {
-                              return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
-                          }
-                        }
-                      }
-                    },
-                    series: [{
-                      type: 'pie',
-                      name: '割合',
-                      data: [
-                        ['A', <%= class_room.percents[0] %>],
-                        ['B', <%= class_room.percents[1] %>],
-                        ['C', <%= class_room.percents[2] %>],
-                        ['D', <%= class_room.percents[3] %>]
-                      ]
-                    }]
-                  });
-                });
-              </script>
-              <div id="e_ratio_container<%= i %>" style="width: 300px; height: 300px; margin: 10px auto; float:left;"></div>
-            <% end %>
-          </div>
-        </div>  
-      <% end %>
-    <% else %>
-      <div class="mini_inside">
-        <div class="no_recommend">
-          <p class="no_register_notice">
-            <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year + 2 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
-          </p>
-          <p class="share_topic">
-            ・OpenCollegeをみんなに知らせる。（登録ユーザーが増えるほど、データの正確性が増します。）
-          </p>
-          <div class="social_button clearfix">
-            <span>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="まだレビューや噂で授業を選んでる？もっと客観的で正確なデータをもとに授業を選びたいよね。それがここならできるってわけ。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </span>
-            <span>
-              <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
-            </span>
-          </div>
-          <div class="demo_recommend">
-            <p class="demo_topic">おすすめの授業があれば、以下のように表示されます。</p>
-            <%= image_tag "no_recommend.png", width: "100%" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

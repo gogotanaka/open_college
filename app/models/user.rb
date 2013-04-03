@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   def recommend_difficult_class
     one_more_grade_users = User.joins(:department).where(departments: {id: self.department.id}).where(school_year: self.school_year + 1)
   end
+  
   def recommends
     user = User.where('school_year = ? AND school_subject_id = ?', self.school_year + 1, self.school_subject_id).first
     if user

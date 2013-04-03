@@ -12,11 +12,6 @@ class UsersController < ApplicationController
   def show
     if @user.university
       @user = User.find(params[:id])
-      @rakutan, @egutan = @user.recommends
-      respond_to do |format|
-        format.html
-        format.mobile
-      end
     else
       flash[:error] = '成績の解析が完了していません。もう一度誘導にしたがってやり直してください。解析が完了したら、OpenCollegeを使うことができます。解析したデータは匿名で、大学の授業をオープンにすること、授業選びのツール、のみに使われます。'
       redirect_to intro_guide_url(@user)
@@ -67,8 +62,9 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def profile
+  def recommend
     @user = User.find(params[:id])
+    @rakutan, @egutan = @user.recommends
     respond_to do |format|
       format.html
       format.mobile
