@@ -10,10 +10,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @rakutan, @egutan = @user.school_subject.recommends
     if @user.university
-      @class_rooms = @user.recommend_difficult_class
+      @user = User.find(params[:id])
+      @rakutan, @egutan = @user.school_subject.recommends
       respond_to do |format|
         format.html
         format.mobile
