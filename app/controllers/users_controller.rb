@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @rakutan, @egutan = @user.school_subject.recommends
+    @rakutan, @egutan = @user.recommends
     if @user.university
       @class_rooms = @user.recommend_difficult_class
       respond_to do |format|
