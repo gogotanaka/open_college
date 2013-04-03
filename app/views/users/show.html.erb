@@ -4,12 +4,12 @@
     楽タン
     <% @rakutan.each do |class_id| %>
       <% class_room = ClassRoom.find(class_id).class_room_for_year %>
-      <%= class_room.name %>:<%= class_room.percent %></br>
+      <%= class_room.name %>:<%= class_room.percents %></br>
     <% end %>
     えぐタン
     <% @egutan.each do |class_id| %>
       <% class_room = ClassRoom.find(class_id).class_room_for_year %>
-      <%= class_room.name %>:<%= class_room.percent %></br>
+      <%= class_room.name %>:<%= class_room.percents %></br>
     <% end %>
   </div>
 </div>

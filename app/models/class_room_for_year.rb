@@ -11,7 +11,7 @@ class ClassRoomForYear < ActiveRecord::Base
     class_rooms.order(:name).map {|e| {id: e.id, label: e.name, value: e.name, teacher: e.teacher.name} } 
   end
 
-  def percent
+  def percents
   	denominator = self.class_grades.count
   	a = self.class_grades.where('grade = 4').count * 100 / denominator
   	b = self.class_grades.where('grade = 3').count * 100 / denominator
