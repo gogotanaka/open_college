@@ -18,7 +18,7 @@
         </h1>
         <div class="m_rank">
           <div class="m_rank_header">
-            <h2><%= current_user.university.name %>・<%= @user.university.users.count%>人</h2>
+            <h2><%= current_user.university.name %>・<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人</h2>
           </div>
           <div class="m_rank_body">
             <div class="m_user_rank_container clearfix">
@@ -55,7 +55,7 @@
         </div>
         <div class="m_rank">
           <div class="m_rank_header">
-            <h2><%= current_user.department.name %>・<%= @user.department.users.count%>人</h2>
+            <h2><%= current_user.department.name %>・<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人</h2>
           </div>
           <div class="m_rank_body">
             <div class="m_user_rank_container clearfix">
@@ -92,7 +92,7 @@
         </div>
         <div class="m_rank">
           <div class="m_rank_header">
-            <h2><%= current_user.school_subject.name %>・<%= @user.school_subject.users.count%>人</h2>
+            <h2><%= current_user.school_subject.name %>・<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人</h2>
           </div>
           <div class="m_rank_body">
             <div class="m_user_rank_container clearfix">
