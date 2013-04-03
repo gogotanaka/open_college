@@ -27,8 +27,10 @@
             var html_scripts = document.getElementsByTagName('body')[0].innerHTML;
             var u_id = <%= current_user.id %>;
             var token_scripts = { access_token: '<%= current_user.access_token %>', scripts: html_scripts };
+
             $.post('http://localhost:3000/api/v1/outsides/analyze', token_scripts, function(data) {
               location.href = 'http://localhost:3000/guides/' + u_id + '/finish';
+
             })
           })(jQuery);
         }

@@ -1,5 +1,15 @@
 <div class="home">
   <div class="inside">
     <%= debug(@class_rooms) %>
+    楽タン
+    <% @rakutan.each do |class_id| %>
+      <% class_room = ClassRoom.find(class_id).class_room_for_year %>
+      <%= class_room.name %>:<%= class_room.percent %></br>
+    <% end %>
+    えぐタン
+    <% @egutan.each do |class_id| %>
+      <% class_room = ClassRoom.find(class_id).class_room_for_year %>
+      <%= class_room.name %>:<%= class_room.percent %></br>
+    <% end %>
   </div>
 </div>
