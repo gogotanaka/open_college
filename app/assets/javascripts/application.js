@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require highcharts
-//= require touch-tooltip-fix
+
 //= require_tree .
 
 $(document).ready(function() {
