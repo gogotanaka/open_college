@@ -45,9 +45,9 @@ class User < ActiveRecord::Base
     one_more_grade_users = User.joins(:department).where(departments: {id: self.department.id}).where(school_year: self.school_year + 1)
   end
   def recommends
-    user = User.where('school_year = ?', self.school_year + 0).first
+    user = User.where('school_year = ?', self.school_year + 1).first
     if user
-      recommend = user.class_grades.select('class_room_id, 1.0 * sum(grade)/count(grade) gpa').group('class_room_id').to_a.select{|x| x.gpa.present? }.sort{|a, b| b.gpa <=> a.gpa}.map{|x|x.class_room_id}
+      recommend = user.class_rooms.where('year = 2012').joins(:class_grades).select('class_grades.class_room_id, 1.0 * sum(class_grades.grade)/count(class_grades.grade) gpa').group('class_grades.class_room_id').to_a.select{|x| x.gpa.present? }.sort{|a, b| b.gpa <=> a.gpa}.map{|x|x.class_room_id}
       if recommend.length >12
         @rakutan, @egutan = recommend[0..5], recommend.reverse[0..5]
       else
