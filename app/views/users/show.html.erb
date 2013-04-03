@@ -1,10 +1,52 @@
 <div class="home">
   <div class="inside">
-    <%= debug(@class_rooms) %>
     楽タン
-    <% @rakutan.each do |class_id| %>
+    <% @rakutan.each_with_index do |class_id, i| %>
       <% class_room = ClassRoom.find(class_id).class_room_for_year %>
-      <%= class_room.name %>:<%= class_room.percents %></br>
+      <script type="text/javascript">
+      $(function () {
+        $('#ratio_container' + <%= i %>).highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '<%= class_room.name %>'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '割合',
+                data: [
+                    ['A', <%= class_room.percents[0] %>],
+                    ['B', <%= class_room.percents[1] %>],
+                    ['C', <%= class_room.percents[2] %>],
+                    ['D', <%= class_room.percents[3] %>]
+                ]
+            }]
+        });
+    });
+</script>
+      
+    <div id="ratio_container<%= i %>" style="width: 200px; height: 200px; margin: 0 auto"></div>
     <% end %>
     えぐタン
     <% @egutan.each do |class_id| %>
