@@ -30,6 +30,12 @@
         <% class_rooms.each do |class_room|%>
           <li>
             <%= link_to "#{class_room.name}（#{class_room.teacher.name}）", class_room %>
+            <ul class="clearfix">
+              <li><%= class_room.percents[0] %>%<br>A</li>
+              <li><%= class_room.percents[1] %>%<br>B</li>
+              <li><%= class_room.percents[2] %>%<br>C</li>
+              <li><%= class_room.percents[3] %>%<br>D</li>
+            </ul>
           </li>
         <% end %>
       </ul>
@@ -60,10 +66,6 @@
                 {
                   y: <%= class_room.class_grades.where("grade = ?", 0).count %>,
                   color: colors[3]
-                },
-                {
-                  y: 0,
-                  color: colors[4]
                 }
               ];
               function setChart(name, categories, data, color) {
