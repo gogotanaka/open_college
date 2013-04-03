@@ -1,12 +1,14 @@
 <div class="guide_container">
   <ul class="guide_nav_container clearfix">
-    <li class="active"><b class="caret"></b>ブックマーク</li>
-    <li>読み取り</li>
-    <li>完了</li>
+    <li class="active"><b class="caret"></b>1. <span>「+Class」を登録</span></li>
+    <li>2. <span>「+Class」の使用方法</span></li>
+    <li>3. <span>完了</span></li>
   </ul>
   <div class="guide_explain">
-    <h2>ブックマークレットを使って、成績を読み取る。</h2>
-    <h3>・パソコン</h3>
+    <% flash.each do |key, value| %>
+      <div class="message_box_<%= key %>"><%= value %></div>
+    <% end %>
+    <h2>「+Class」ブックマークレットを登録</h2>
     <div class="clearfix bookmarklet_container">
       <a href="
       javascript:(function(){
@@ -25,8 +27,8 @@
             var html_scripts = document.getElementsByTagName('body')[0].innerHTML;
             var u_id = <%= current_user.id %>;
             var token_scripts = { access_token: '<%= current_user.access_token %>', scripts: html_scripts };
-            $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token_scripts, function(data) {
-              location.href = 'https://open-college.herokuapp.com/guides/' + u_id + '/finish';
+            $.post('https://http://localhost:3000/api/v1/outsides/analyze', token_scripts, function(data) {
+              location.href = 'https://http://localhost:3000/guides/' + u_id + '/finish';
             })
           })(jQuery);
         }
@@ -35,20 +37,15 @@
         + Class
       </a>
       <p>
-        右にある "+ Class" ボタンをドラッグしてブックマークバーに追加してください。<br>
-        お使いのブラウザが Internet Explorer (IE) の場合は、 "+ Class" ボタンを右クリックし「お気に入りに追加(F)...」を選択してお気に入りバーに追加してください。
+        右にある「+ Class」ボタンをドラッグしてブックマークバーに追加してください。<br>
+        お使いのブラウザが Internet Explorer (IE) の場合は、「+ Class」ボタンを右クリックし「お気に入りに追加(F)...」を選択してお気に入りバーに追加してください。
       </p>
     </div>
     <div class="text_center">
       <%= image_tag 'install.gif', width: ""%>
     </div>
     <div class="guide_link text_center">
-      <%= link_to "次へ", reader_guide_path(current_user), class: "btn btn_large btn_large_radius" %>
-    </div>
-    <h3>・スマートフォン</h3>
-    <div class="guide_link text_center">
-      <%= link_to "iPhoneでの使い方", "http://yukihariguchi.com", target: "_blank", class: "btn btn_large" %>
-      &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Androidでの使い方", "http://yukihariguchi.com", target: "_blank", class: "btn btn_large" %>
+      <%= link_to "2. 「+Class」の使用方法", reader_guide_path(current_user), class: "btn btn_large btn_large_radius" %>
     </div>
   </div>
 </div>

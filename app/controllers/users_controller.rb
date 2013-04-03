@@ -1,32 +1,41 @@
+# coding: utf-8
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :show, :edit, :update]
-  before_filter :correct_user, only: [:show, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :rank]
+  before_filter :correct_user, only: [:show, :profile, :edit, :update, :rank]
   before_filter :admin_user, only: [:index, :source, :destroy]
 
   def index
-    @users = User.all
+    @users = User.order("id").all
   end
 
   def show
     @user = User.find(params[:id])
-    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-
-    @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-
-    @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
-    @rakutan, @egutan = @user.school_subject.recommend
+    if @user.university
+      @class_rooms = @user.recommend_difficult_class
+      respond_to do |format|
+        format.html
+        format.mobile
+      end
+    else
+      flash[:error] = '成績の解析が完了していません。もう一度誘導にしたがってやり直してください。解析が完了したら、OpenCollegeを使うことができます。解析したデータは匿名で、大学の授業をオープンにすること、あなたの授業選びのツール、のみに使われます。'
+      redirect_to intro_guide_url(@user)
+    end
   end
 
   def new
     @user = User.new
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to OpenCollege!"
+      flash[:success] = "ようこそ、OpenCollegeへ！すべてのStepを終えたら、OpenCollegeを使うことができます。所要時間は約3分です。"
       redirect_to intro_guide_url(@user)
     else
       render 'new'
@@ -35,6 +44,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
   def update
@@ -56,10 +69,25 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
   def source
     @user = User.find(params[:id])
+  end
+
+  def rank
+    @user = User.find(params[:id])
+    @rank_all_in_university = ClassGrade.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_department = @user.department.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    @rank_all_in_school_subject = @user.school_subject.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a.map{|x|sprintf( "%.2f", x.gpa )}.sort{|a, b| b <=> a}.index(@user.calculate) + 1
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
   end
 
 

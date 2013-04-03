@@ -1,56 +1,5 @@
 <div class="home">
   <div class="inside">
-    <div class="rank_container">
-      <%= @rakutan %><%= @egutan %>
-      <h2>総合</h2>
-      <ul class="clearfix">
-        <li>
-          <div class="rank"><%= @rank_all_in_university %>位</div>
-          <p><%= @user.university.name %>・<%= @user.university.users.count%>人</p>
-        </li>
-        <li>
-          <div class="rank"><%= @rank_all_in_department %>位</div>
-          <p><%= @user.department.name %>・<%= @user.department.users.count%>人</p>
-        </li>
-        <li>
-          <div class="rank"><%= @rank_all_in_school_subject %>位</div>
-          <p><%= @user.school_subject.name %>・<%= @user.school_subject.users.count%>人</p>
-        </li>
-      </ul>
-    </div>
-    <div class="rank_container">
-      <h2>2012年度</h2>
-      <ul class="clearfix">
-        <li>
-          <div class="rank"><%= @rank_2012_in_university %>位</div>
-          <p><%= @user.university.name %>・<%= @user.university.users.count%>人</p>
-        </li>
-        <li>
-          <div class="rank"><%= @rank_2012_in_department %>位</div>
-          <p><%= @user.department.name %>・<%= @user.department.users.count%>人</p>
-        </li>
-        <li>
-          <div class="rank"><%= @rank_2012_in_school_subject %>位</div>
-          <p><%= @user.school_subject.name %>・100人</p>
-        </li>
-      </ul>
-    </div>
-    <div class="rank_container">
-      <h2>2011年度</h2>
-      <ul class="clearfix">
-        <li>
-          <div class="rank"><%= @rank_2011_in_university %>位</div>
-          <p><%= @user.university.name %>・10000人</p>
-        </li>
-        <li>
-          <div class="rank"><%= @rank_2011_in_department %>位</div>
-          <p><%= @user.department.name %>・1500人</p>
-        </li>
-        <li>
-          <div class="rank"><%= @rank_2011_in_school_subject %>位</div>
-          <p><%= @user.school_subject.name %>・100人</p>
-        </li>
-      </ul>
-    </div>
+    <%= debug(@class_rooms) %>
   </div>
 </div>

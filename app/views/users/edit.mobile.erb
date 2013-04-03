@@ -1,0 +1,27 @@
+<div class="m_edit">
+  <h1>Edit My Account</h1>
+  <%= form_for(@user) do |f| %>
+    <div class="m_input_block">
+      <div class="input_label">
+        <%= f.label :first_name %>
+      </div>
+      <%= f.text_field :first_name, class: "input_wide" %>
+    </div>
+    <div class="m_input_block">
+      <div class="input_label">
+        <%= f.label :last_name %>
+      </div>
+      <%= f.text_field :last_name, class: "input_wide" %>
+    </div>
+    <div class="m_input_block">
+      <div class="input_label">
+        <%= f.label :email %>
+      </div>
+      <%= f.text_field :email, class: "input_wide" %>
+    </div>
+    <%= f.submit "Save Profile", class: "m_btn m_btn_large" %>
+  <% end %>
+  <div class="m_logout">
+    <%= link_to "ログアウト", signout_path, method: "delete", class: "m_btn_red m_btn_large" %>
+  </div>
+</div>

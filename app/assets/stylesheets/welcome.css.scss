@@ -12,7 +12,7 @@
     -webkit-box-shadow:inset 0 0 0 black,inset 0 -50px 150px rgba(0,0,0,0.8);
     -moz-box-shadow:inset 0 0 0 black,inset 0 -50px 150px rgba(0,0,0,0.8);
     box-shadow:inset 0 0 0 black,inset 0 -50px 150px rgba(0,0,0,0.8);
-    background-image: url("banner.jpg");
+    background-image: url("blur.jpg");
     padding: 15px 0 0;
     overflow: hidden;
     #slider_container {
@@ -71,35 +71,10 @@
         .mail_form {
           width: 330px;
         }
-        .input_submit {
-          background: #076faf;
-          background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#076faf),color-stop(1,#1b8bce));
-          background-image: -webkit-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
-          background-image: -moz-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
-          background-image: -ms-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
-          background-image: -o-linear-gradient(bottom,#076faf 0,#1b8bce 100%);
-          background-image: linear-gradient(bottom,#076faf 0,#1b8bce 100%);
-          border: 1px solid #0A537D;
+        .welcome_reg_btn {
           border-radius: 18px;
-          box-shadow: 0 0 1px rgba(255, 255, 255, 0.5) inset;
-          color: #FFFFFF;
-          font: bold 13px "Helvetica Neue",Arial,Helvetica,sans-serif;
-          margin: 5px 0 15px;
-          padding: 9px 13px 7px;
-          cursor: pointer;
-        }
-        .input_submit:hover {
-          background-color: #076FAF;
-          background-image:-webkit-gradient(linear,left bottom,left top,color-stop(1,#076faf),color-stop(0,#076faf));
-          background-image:-webkit-linear-gradient(bottom,#076faf 100%,#076faf 0);
-          background-image:-moz-linear-gradient(bottom,#076faf 100%,#076faf 0);
-          background-image:-ms-linear-gradient(bottom,#076faf 100%,#076faf 0);
-          background-image:-o-linear-gradient(bottom,#076faf 100%,#076faf 0);
-          background-image:linear-gradient(bottom,#076faf 100%,#076faf 0);
-        }
-        .input_submit:active {
-          position: relative;
-          top: 1px;
+          padding: 10px 10px 8px;
+          font-size: 12px;
         }
         .terms {
           opacity: 0.9;

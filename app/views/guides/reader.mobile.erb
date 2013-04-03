@@ -1,0 +1,50 @@
+<div class="m_guide_container">
+  <ul class="m_guide_nav_container clearfix">
+    <span class="step">Step</span>
+    <li>1</li>
+    <span>></span>
+    <li class="m_active">2</li>
+    <span>></span>
+    <li>3</li>
+  </ul>
+  <div class="m_guide_explain">
+    <h2 class="topic">「+Class」ブックマークレットの使用方法</h2>
+    <ul class="list_explain">
+      <li>
+        <h3>
+          1. <%= link_to "keio.jp", "https://login.keio.jp/koid/", target: "_blank" %>でログイン
+        </h3>
+        <%= image_tag "keio_jp.jpg", width: "90%" %>
+      </li>
+      <li>
+        <h3>
+          2. "学業成績表"をクリック
+        </h3>
+        <%= image_tag "click_gakuji.jpg", width: "90%" %>
+      </li>
+      <li>
+        <h3>
+          3. 学事webでログイン
+        </h3>
+        <%= image_tag "login_gakuji.jpg", width: "90%" %>
+      </li>
+      <li>
+        <h3>
+          4. 成績が表示されていることを確認
+        </h3>
+        <%= image_tag "grade_page.jpg", width: "90%" %>
+      </li>
+      <li>
+        <h3>
+          5. 先ほど登録した「+Class」とタップ
+        </h3>
+        <%= image_tag "click_class.jpg", width: "90%" %>
+      </li>
+      <li>
+        <h3>
+          6. このページに戻り、下記のリンクを押してStep「3」へいきます。
+        </h3>
+        <%= link_to "Step3", finish_guide_path(current_user), class: "m_btn m_btn_large"  %>
+      </li>
+    </ul>
+</div>

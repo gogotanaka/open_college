@@ -1,7 +1,7 @@
 <div class="home">
   <div class="inside clearfix">
     <div class="left_box">
-      <ul>
+      <ul class="this_class">
         <li>
           <p class="class_name"><%= @class_room_for_year.name %></p>
           <p class="teacher_name"><%= link_to @class_room_for_year.teacher.name, teacher_path(@class_room_for_year.teacher.id) %></p>
@@ -23,6 +23,15 @@
             </li>
           </ul>
         </li>
+      </ul>
+      <p class="relation_class_topic">関連授業のデータ</p>
+      <ul class="relation_class">
+        <% class_rooms = ClassRoomForYear.where(name: "#{@class_room_for_year.name}") %>
+        <% class_rooms.each do |class_room|%>
+          <li>
+            <%= link_to "#{class_room.name}（#{class_room.teacher.name}）", class_room %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="right_box">
@@ -49,7 +58,7 @@
                   color: colors[2]
                 },
                 {
-                  y: <%= class_room.class_grades.where("grade = ?", 1).count %>,
+                  y: <%= class_room.class_grades.where("grade = ?", 0).count %>,
                   color: colors[3]
                 },
                 {
@@ -124,15 +133,7 @@
           });
         </script>
         <div id="graph_container<%= i %>" style="width:100%; height:400px; margin: 0 0 40px 0;"> </div>
-        
-        
-        
-        
-        <% class_room.class_grades.each do |class_grade| %>
-          <%= class_grade.grade %>
-        <% end %>
       <% end %>
-      
     </div>
   </div>
 </div>

@@ -3,7 +3,11 @@
     <div class="left_box">
       <ul>
         <li class="name">
-          <%= @user.last_name %><%= @user.first_name %>
+          <% if current_user.first_name.present? && current_user.last_name.present? %>
+            <%= current_user.last_name %> <%= current_user.first_name %>
+          <% else %>
+            You
+          <% end %>
         </li>
         <li class="info">
           <p class="university_name"><%= @user.university.name %></p>

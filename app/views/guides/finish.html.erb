@@ -1,8 +1,8 @@
 <div class="guide_container">
   <ul class="guide_nav_container clearfix">
-    <li>ブックマーク</li>
-    <li>読み取り</li>
-    <li class="active"><b class="caret"></b>完了</li>
+    <li>1. <span>「+Class」を登録</span></li>
+    <li>2. <span>「+Class」の使用方法</span></li>
+    <li class="active"><b class="caret"></b>3. <span>完了</span></li>
   </ul>
   <div class="guide_explain">
     <% if current_user.play == "進級" %>
@@ -16,11 +16,11 @@
           </h2>
           <div class="social_button">
             <span>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="<%= current_user.last_name %><%= current_user.first_name %>の学業成績は、<%= current_user.university.name %>で<%= @rank_all_in_university %>位、<%= current_user.department.name %>で<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="私の学業成績は、<%= current_user.university.name %>で<%= @rank_all_in_university %>位、<%= current_user.department.name %>で<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </span>
             <span>
-              <div class="fb-like" data-href="<%= store_location %>" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
+              <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
             </span>
           </div>
         </div>        

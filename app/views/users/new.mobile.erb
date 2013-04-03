@@ -1,0 +1,29 @@
+<div class="m_auth_form">
+  <%= form_for(@user) do |f| %>
+    <div class="m_auth_form_header">
+      <h2>Sign up</h2>
+    </div>
+    <div class="m_auth_form_body">
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= f.label :email %>
+        </div>
+        <%= f.email_field :email, class: "input_wide" %>
+      </div>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= f.label :password %>
+        </div>
+        <%= f.password_field :password, class: "input_wide" %>
+      </div>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= f.label :password_confirmation %>
+        </div>
+        <%= f.password_field :password_confirmation, class: "input_wide" %>
+      </div>
+      <%= f.submit "Sign up", class: "m_btn_primary m_btn_large " %>
+    </div>
+  <% end %>
+</div>

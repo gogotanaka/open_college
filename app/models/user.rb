@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
 
   def value?(class_room)
     class_grades.find_by_class_room_id(class_room.id)
@@ -32,7 +30,7 @@ class User < ActiveRecord::Base
     when "Ｃ"
       value = 2
     when "Ｄ"
-      value = 1
+      value = 0
     else
     end
     class_grades.create!(class_room_id: class_room.id, grade: value)
@@ -41,6 +39,10 @@ class User < ActiveRecord::Base
   def calculate
     gpa = self.class_grades.select('user_id, 1.0 * sum(grade)/count(grade) gpa').group('user_id').to_a[0].gpa
     sprintf( "%.2f", gpa )
+  end
+
+  def recommend_difficult_class
+    one_more_grade_users = User.joins(:department).where(departments: {id: self.department.id}).where(school_year: self.school_year + 1)
   end
 
   private

@@ -12,5 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require highcharts
+//= require touch-tooltip-fix
 //= require_tree .
+
+$(document).ready(function() {
+  $(".m_autocomplete, .autocomplete").keypress(function(ev) {
+    if ((ev.which && ev.which === 13) || (ev.keyCode && ev.keyCode === 13)) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+});

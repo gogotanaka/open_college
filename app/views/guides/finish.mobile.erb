@@ -1,0 +1,175 @@
+<div class="m_guide_container">
+  <ul class="m_guide_nav_container clearfix">
+    <span class="step">Step</span>
+    <li>1</li>
+    <span>></span>
+    <li>2</li>
+    <span>></span>
+    <li class="m_active">3</li>
+  </ul>
+  <div class="m_guide_explain">
+    <% if current_user.play == "進級" %>
+      <h2 class="topic">
+        <%= current_user.play %>おめでとう！
+      </h2>
+      <div class="m_rank_container">
+        <h1>
+          あなたの学業成績・総合
+        </h1>
+        <div class="m_rank">
+          <div class="m_rank_header">
+            <h2><%= current_user.university.name %>・<%= @user.university.users.count%>人</h2>
+          </div>
+          <div class="m_rank_body">
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                1位
+              </div>
+              <div class="m_user_name">
+                GPA : 3.8
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_university %>位
+              </div>
+              <div class="m_user_name">
+                You
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : 0.7
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m_rank">
+          <div class="m_rank_header">
+            <h2><%= current_user.department.name %>・<%= @user.department.users.count%>人</h2>
+          </div>
+          <div class="m_rank_body">
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                1位
+              </div>
+              <div class="m_user_name">
+                GPA : 3.8
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_department %>位
+              </div>
+              <div class="m_user_name">
+                You
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : 0.7
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m_rank">
+          <div class="m_rank_header">
+            <h2><%= current_user.school_subject.name %>・<%= @user.school_subject.users.count%>人</h2>
+          </div>
+          <div class="m_rank_body">
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                1位
+              </div>
+              <div class="m_user_name">
+                GPA : 3.8
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_school_subject %>位
+              </div>
+              <div class="m_user_name">
+                You
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>
+            </div>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : 0.7
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m_share">
+        <h2>シェアする</h2>
+        <div class="clearfix">
+          <span>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="私の学業成績は、<%= current_user.university.name %>で<%= @rank_all_in_university %>位、<%= current_user.department.name %>で<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </span>
+          <span>
+            <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
+          </span>
+        </div>
+      </div>
+    <% elsif current_user.play == "原級" %>
+      <h2 class="topic">普通の人生なんてつまらない、そう思わないかい？</h2>
+      <div class="m_repeat_famous_people">
+        <h1>小泉 純一郎</h1>
+        <%= image_tag 'koizumi.jpg', width: "100%"%>
+        <h2>慶応義塾大学経済学部にて留年。浪人も２度経験している。</h2>
+        <h3>「抵抗勢力」・「自民党をぶっ壊す」など、小泉語録とよばれる数多くの言葉を残している。郵便局の民営化を実現した。</h3>
+        <p class="m_quote times">失敗のない人間は面白くない。</p>
+      </div>
+      <div class="m_repeat_famous_people">
+        <h1>村上 春樹</h1>
+        <%= image_tag 'murakami.jpg', width: "100%"%>
+        <h2>早稲田大学第一文学部にて３回留年。</h2>
+        <h3>「ノルウェイの森」に代表される、現代文学で最も評価の高い文学者の1人である。</h3>
+        <p class="m_quote times">もし君の選択や努力が徒労に終わることを宿命づけられていたとしても、それでもなお君は確固として君であり、君以外のなにものでもない。君は君としてまちがいなく前に進んでいる。心配しなくていい。</p>
+      </div>
+      <div class="m_share">
+        <h2>シェアする</h2>
+        <div class="clearfix">
+          <span>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="ビルゲイツ、村上春樹、小泉純一郎、そして俺も留年してる。きっと大丈夫だ。うん。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </span>
+          <span>
+            <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
+          </span>
+        </div>
+      </div>
+    <% else %>
+    <% end %>
+    <%= link_to "ホームへ", user_path(current_user), class: "m_btn m_btn_large"  %>
+  </div>
+</div>

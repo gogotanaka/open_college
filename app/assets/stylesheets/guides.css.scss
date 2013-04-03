@@ -39,6 +39,9 @@
         border-left: solid 7px transparent;
         border-right: solid 7px transparent;
       }
+      span {
+        font-size: 12px;
+      }
     }
     .active {
       color: #fff;
@@ -48,6 +51,31 @@
   .guide_explain {
     background-color: #fff;
     padding: 40px;
+    .message_box_success {
+      padding: 10px 15px;
+      margin: 20px 0;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      color: #468847;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+    }
+    .message_box_error {
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      color: #b94a48;
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      line-height: 19px;
+    }
     h2 {
       color: #837A71;
       font-size: 20px;
@@ -208,7 +236,7 @@
           padding: 30px 20px;
           text-align: center;
           .rank {
-            text-shadow:1px 1px 0 #fff;
+            text-shadow: 1px 1px 0 #fff;
             color: #4183C4;
             font-size: 40px;
             margin-bottom: 18px;

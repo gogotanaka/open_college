@@ -1,0 +1,115 @@
+<div class="m_home">
+  <div class="class_room_info">
+    <p><%= @class_room_for_year.name %></p>
+    <p>
+      <%= link_to @class_room_for_year.teacher.name, teacher_path(@class_room_for_year.teacher.id) %>
+    </p>
+    <ul class="m_grade_rate clearfix">
+      <li>20%<br>A</li>
+      <li>30%<br>B</li>
+      <li>40%<br>C</li>
+      <li>10%<br>D</li>
+    </ul>
+  </div>
+  <div class="m_class_range">
+    <% @class_room_for_year.class_rooms.order("year DESC").each_with_index do |class_room, i| %>
+      <script type="text/javascript">
+        $(function () {
+          var chart;
+          $(document).ready(function() {
+            var colors = Highcharts.getOptions().colors, 
+            categories = ['A', 'B', 'C', 'D', 'その他'], 
+            name = 'Browser brands',
+            data = 
+            [
+              {
+                y: <%= class_room.class_grades.where("grade = ?", 4).count %>,
+                color: colors[0]
+              },
+              {
+                y: <%= class_room.class_grades.where("grade = ?", 3).count %>,
+                color: colors[1]
+              },
+              {
+                y: <%= class_room.class_grades.where("grade = ?", 2).count %>,
+                color: colors[2]
+              },
+              {
+                y: <%= class_room.class_grades.where("grade = ?", 0).count %>,
+                color: colors[3]
+              },
+              {
+                y: 0,
+                color: colors[4]
+              }
+            ];
+            function setChart(name, categories, data, color) {
+              chart.xAxis[0].setCategories(categories, false);
+              chart.series[0].remove(false);
+              chart.addSeries({
+                name: name,
+                data: data,
+                color: color || 'white'
+              }, false);
+              chart.redraw();
+            }
+            chart = new Highcharts.Chart({
+              chart: {
+                renderTo: 'm_graph_container' + <%= i %>,
+                type: 'column'
+              },
+              title: {
+                text: <%= class_room.year %> + '年度'
+              },
+              subtitle: {
+                text: '成績分布グラフ'
+              },
+              xAxis: {
+                categories: categories
+              },
+              yAxis: {
+                title: {
+                  text: '評定ごとの人数'
+                }
+              },
+              legend: {
+                enabled: false
+              },
+              plotOptions: {
+                column: {
+                  cursor: 'pointer',
+                  dataLabels: {
+                    enabled: true,
+                    color: colors[0],
+                    style: {
+                      fontWeight: 'bold'
+                    },
+                    formatter: function() {
+                      return this.y +'人';
+                    }
+                  }
+                }
+              },
+              tooltip: {
+                formatter: function() {
+                  var point = this.point,
+                  s = this.x +':<b>'+ this.y +'人</b><br/>';
+                  return s;
+                }
+              },
+              series: [{
+                name: name,
+                data: data,
+                color: 'white'
+              }],
+              exporting: {
+                enabled: false
+              }
+            });
+          });
+        });
+      </script>
+      <div id="m_graph_container<%= i %>" style="width:100%; height:400px; margin: 20px 0 30px 0;"> </div>
+    <% end %>
+  </div>
+</div>
