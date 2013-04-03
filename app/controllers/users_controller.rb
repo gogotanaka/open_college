@@ -81,11 +81,11 @@ class UsersController < ApplicationController
 
   def rank
     @user = User.find(params[:id])
-    @rank_all_in_university = @user.university.rank.index(@user.calculate) + 1
+    @rank_all_in_university = @user.university.rank(@user.school_year).index(@user.calculate) + 1
 
-    @rank_all_in_department = @user.department.rank.index(@user.calculate) + 1
+    @rank_all_in_department = @user.department.rank(@user.school_year).index(@user.calculate) + 1
 
-    @rank_all_in_school_subject = @user.school_subject.rank.index(@user.calculate) + 1
+    @rank_all_in_school_subject = @user.school_subject.rank(@user.school_year).index(@user.calculate) + 1
 
     respond_to do |format|
       format.html
