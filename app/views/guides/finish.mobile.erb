@@ -26,7 +26,7 @@
                 1位
               </div>
               <div class="m_user_name">
-                GPA : 3.8
+                GPA : <%= current_user.university.rank(current_user.school_year)[0] %>
               </div>
             </div>
             <div class="m_tententen clearfix">
@@ -37,7 +37,7 @@
                 <%= @rank_all_in_university %>位
               </div>
               <div class="m_user_name">
-                You
+                You GPA : <%= current_user.calculate %>
               </div>
             </div>
             <div class="m_tententen clearfix">
@@ -48,7 +48,7 @@
                 最下位
               </div>
               <div class="m_user_name">
-                GPA : 0.7
+                GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@
                 1位
               </div>
               <div class="m_user_name">
-                GPA : 3.8
+                GPA : <%= current_user.department.rank(current_user.school_year)[0] %>
               </div>
             </div>
             <div class="m_tententen clearfix">
@@ -85,7 +85,7 @@
                 最下位
               </div>
               <div class="m_user_name">
-                GPA : 0.7
+                GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
                 1位
               </div>
               <div class="m_user_name">
-                GPA : 3.8
+                GPA : <%= current_user.school_subject.rank(current_user.school_year)[0] %>
               </div>
             </div>
             <div class="m_tententen clearfix">
@@ -122,7 +122,7 @@
                 最下位
               </div>
               <div class="m_user_name">
-                GPA : 0.7
+                GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
               </div>
             </div>
           </div>
