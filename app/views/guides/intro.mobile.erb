@@ -13,6 +13,61 @@
     <% end %>
     <h2 class="topic">「+Class」ブックマークレットを登録</h2>
     <% if request.env["HTTP_USER_AGENT"].include?('Android') %>
+      <ul class="list_explain">
+        <li>
+          <h3>
+            1. サブメニューから「その他」を選択する
+          </h3>
+        </li>
+        <li>
+          <h3>
+            2. 「テキスト選択コピー」を選択する
+          </h3>
+        </li>
+        <li>
+          <h3>
+            3. 下記コードを選択し、コピーする
+            <p class="code">
+              javascript:(function(){
+                if (typeof jQuery == 'undefined') {
+                    var d=document,
+                        j=d.createElement('script');
+                    j.type='text/javascript';
+                    j.src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+                    j.onload = bml;
+                    d.body.appendChild(j);
+                }else {
+                    bml();
+                }
+                function bml(){
+                  (function($){
+                    var html_scripts = document.getElementsByTagName('body')[0].innerHTML;
+                    var token_scripts = { access_token: '<%= current_user.access_token %>', scripts: html_scripts };
+                    $.post('https://open-college.herokuapp.com/api/v1/outsides/analyze', token_scripts, function(data) {
+                    })
+                  })(jQuery);
+                }
+              })();
+            </p>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            4. サブメニューを呼び出し、「ブックマーク」を選択する
+          </h3>
+        </li>
+        <li>
+          <h3>
+            5. 名前欄を「+Class」など、わかりやすいものに変更する
+          </h3>
+        </li>
+        <li>
+          <h3>
+            6. アドレス欄に入っているURLを一度すべて消去し、先程コピーしたコードを貼り付け保存する
+          </h3>
+        </li>
+      </ul>
+      <p class="m_intro_next">以上の手順で、Androidからも「+Class」ブックマークレットをご利用いただけます。次に「+Class」の使用方法を説明します。</p>
     <% else %>
       <ul class="list_explain">
         <li>
