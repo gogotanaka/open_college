@@ -1,7 +1,7 @@
 <div class="m_home">
   <div class="m_recommend">
-    <h1>おすすめの授業</h1>
     <% if @rakutan.present? || @egutan.present? %>
+      <h1>おすすめの授業</h1>
       <% if @rakutan.present? %>
         <div class="m_recommend_container">
           <h2 class="m_recommend_header">ラク単</h2>
@@ -113,7 +113,7 @@
         </div>
       <% end %>
     <% else %>
-      <% @user.department %> <% @user.school_year + 2 %>年の人がまだ登録していません。
+      <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year + 2 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
     <% end %>
   </div>
 </div>
