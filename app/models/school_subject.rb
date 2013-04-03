@@ -5,8 +5,8 @@ class SchoolSubject < ActiveRecord::Base
   has_many :users
   has_many :class_grades, through: :users, source: :class_grades
 
-  def recommend
-  	recommends = self.class_grades.select('class_room_id, 1.0 * sum(grade)/count(grade) gpa').group('class_room_id').to_a.select{|x| x.gpa.present? }.sort{|a, b| b.gpa <=> a.gpa}.map{|x|x.class_room_id}
+  def recommends
+  	recommend = self.class_grades.select('class_room_id, 1.0 * sum(grade)/count(grade) gpa').group('class_room_id').to_a.select{|x| x.gpa.present? }.sort{|a, b| b.gpa <=> a.gpa}.map{|x|x.class_room_id}
     if recommend.length >10
       @rakutan, @egutan = recommend[0..4], recommend[recommend.length-5..recommend.length-1]
     else
