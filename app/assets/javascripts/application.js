@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require highcharts
 //= require touch-tooltip-fix
+//= require jquery.ah-placeholder
 //= require_tree .
 
 $(document).ready(function() {
@@ -24,5 +25,13 @@ $(document).ready(function() {
     } else {
       return true;
     }
+  });
+});
+
+$(function() {
+  $('[placeholder]').ahPlaceholder({
+    placeholderColor : 'silver',
+    placeholderAttr : 'placeholder',
+    likeApple : false
   });
 });
