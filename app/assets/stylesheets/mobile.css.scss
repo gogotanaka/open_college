@@ -328,6 +328,20 @@
     margin: 10px 0;
     text-align: center;
   }
+  .m_welcome_buttom {
+    border-top: 1px solid #dddddd;
+    padding: 18px 10px;
+    .welcome_share {
+      float: right;
+      margin-top: -16px;
+      span {
+        float: left;
+      }
+      .welcome_twitter {
+        margin-right: -30px;
+      }
+    }
+  }
 }
 .m_auth_form {
   .m_message_box {
