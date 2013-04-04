@@ -262,90 +262,50 @@
   .m_welcome_middle {
     padding: 10px;
     .m_function_list {
-      li.left_image {
-        margin: 20px 0;
-        img {
-          width: 70%;
-          display: block;
-          float: left;
-          
-        }
+      li {
+        margin: 40px 0;
+        text-align: center;
         h2 {
           font-size: 16px;
           font-weight: bold;
-          text-align: center;
           margin: 10px 0;
         }
         p {
-          width: 30%;
-          float: left;
-          padding-top: 50px;
-          line-height: 19px;
-        }
-      }
-      li.right_image {
-        margin: 20px 0;
-        p {
-          width: 30%;
-          float: left;
-          padding-top: 30px;
-          line-height: 19px;
+          margin-bottom: 20px;
         }
         img {
-          width: 67%;
-          margin-left: 3%;
-          display: block;
-          float: left;
           box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.8);
         }
-        h2 {
-          font-size: 16px;
-          font-weight: bold;
+        .m_welcome_recommend {
+          width: 220px;
+          margin: 0 auto 20px;
+        }
+        p.m_welcome_easy_recommend {
+          margin-bottom: 0;
+          width: 100px;
+          height: 100px;
+          line-height: 100px;
+          border-radius: 50px;
+          background-color: rgb(0,133,194);
           text-align: center;
-          margin: 16px 0;
-        }
-      }
-      li.left_image_recommend {
-        margin: 40px 0;
-        h2 {
-          font-size: 16px;
+          color: #fff;
           font-weight: bold;
+          font-size: 14px;
+          float: left;
+        }
+        p.m_welcome_difficult_recommend {
+          margin-bottom: 0;
+          width: 100px;
+          height: 100px;
+          line-height: 100px;
+          border-radius: 50px;
+          background-color: rgb(0,133,194);
           text-align: center;
-          margin: 0 0 10px;
-        }
-        .left {
-          width: 67%;
-          margin-right: 3%;
+          color: #fff;
+          font-weight: bold;
+          font-size: 14px;
           float: left;
-          .m_welcome_easy_recommend {
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            border-radius: 50px;
-            background-color: rgb(0,133,194);
-            text-align: center;
-            color: #fff;
-            font-weight: bold;
-            font-size: 14px;
-            float: left;
-          }
-          .m_welcome_difficult_recommend {
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            border-radius: 50px;
-            background-color: rgb(0,133,194);
-            text-align: center;
-            color: #fff;
-            margin: 20px 0 0 6px;
-            font-weight: bold;
-            font-size: 14px;
-            float: left;
-          }
-        }
-        p {
-          width: 30%;
-          float: left;
+          margin-left: 20px;
         }
       }
     }
