@@ -61,6 +61,22 @@ class User < ActiveRecord::Base
     return @rakutan, @egutan
   end
 
+  def fourth_student_recommends
+    user = User.where('school_subject_id = ?', self.school_subject_id).first
+    if user
+      recommend = user.class_rooms.where('year = 2012').joins(:class_grades).select('class_grades.class_room_id, 1.0 * sum(class_grades.grade)/count(class_grades.grade) gpa').group('class_grades.class_room_id').to_a.select{|x| x.gpa.present? }.sort{|a, b| b.gpa <=> a.gpa}.map{|x|x.class_room_id}
+      if recommend.length >12
+        @rakutan, @egutan = recommend[0..5], recommend.reverse[0..5]
+      else
+        range = recommend.length/2 - 1
+        @rakutan, @egutan = recommend[0..range], recommend.reverse[0..range]
+      end
+    else
+      @rakutan, @egutan = [],[]
+    end
+    return @rakutan, @egutan
+  end
+
   private
 
     def create_remember_token

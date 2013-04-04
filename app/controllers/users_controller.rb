@@ -1,8 +1,8 @@
 # coding: utf-8
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :rank]
-  before_filter :correct_user, only: [:show, :profile, :edit, :update, :rank]
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :rank, :recommend]
+  before_filter :correct_user, only: [:show, :profile, :edit, :update, :rank, :recommend]
   before_filter :admin_user, only: [:index, :source, :destroy]
 
   def index
@@ -65,6 +65,7 @@ class UsersController < ApplicationController
   def recommend
     @user = User.find(params[:id])
     @rakutan, @egutan = @user.recommends
+    @fourth_rakutan, @fourth_egutan = @user.fourth_student_recommends
     respond_to do |format|
       format.html
       format.mobile
