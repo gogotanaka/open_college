@@ -28,5 +28,7 @@
       <p><span class="circle">5</span>解析が終わったら、自動でSTEP「3」にとびます</p>
       <%= image_tag 'step3.png', width: "600px"%>
     </div>
+    <p class="no_auto_link">自動でとばなかったら、以下のリンクからStep3にとんでください。</p>
+    <div class="text_center"><%= link_to "Step3", finish_guide_path(current_user), class: "btn btn_large btn_large_radius"  %></div> 
   </div>
 </div>
