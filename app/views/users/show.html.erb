@@ -38,8 +38,8 @@
               <tbody>
                 <% class_rooms.each do |class_room| %>
                   <tr>
-                    <td><%= link_to class_room.class_room_for_year.name, class_room_for_year_path(class_room.class_room_for_year.id) %></td>
-                    <td><%= class_room.class_room_for_year.teacher.name if class_room.class_room_for_year.teacher %></td>
+                    <td><%= link_to class_room.class_room_for_year.name, class_room.class_room_for_year %></td>
+                    <td><%= link_to class_room.class_room_for_year.teacher.name, class_room.class_room_for_year.teacher if class_room.class_room_for_year.teacher %></td>
                     <td><%= class_room.year %></td>
                     <td><%= class_room.get_grade(current_user) %></td>
                   </tr>

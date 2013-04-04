@@ -40,6 +40,12 @@
           box-shadow: 1px 0px 0px rgba(225,225,225,0) inset, -1px 0px 0px rgba(225,225,225,0) inset, 0px 1px 1px rgba(0,0,0,0.1) inset, 0px -1px 1px rgba(0,0,0,0.3) inset, 0px 1px 3px #666;
         }
       }
+      .selected {
+        background:#555;
+        background-image: -moz-linear-gradient(top, #555 0%, #444 50%, #333 50%, #444 100%);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #555), color-stop(0.50, #444), color-stop(0.50, #333), color-stop(1, #444));
+        box-shadow: 1px 0px 0px rgba(225,225,225,0) inset, -1px 0px 0px rgba(225,225,225,0) inset, 0px 1px 1px rgba(0,0,0,0.1) inset, 0px -1px 1px rgba(0,0,0,0.3) inset, 0px 1px 3px #666;
+      }
     }
     li:first-child {
       a {
@@ -642,7 +648,39 @@
         border-radius: 0 0 4px 4px;
       }
     }
+    .m_no_recommend {
+      .m_no_register_notice {
+        line-height: 19px;
+        margin: 0 0 20px 0;
+      }
+      .m_share_topic {
+        font-size: 14px;
+        margin: 8px 0;
+        line-height: 20px;
+      }
+      .m_social_button {       
+        span {
+          float: left;
+          margin-right: -30px;
+        }
+      }
+      .m_demo_recommend {
+        margin: 20px 0;
+        text-align: center;
+        .m_demo_topic {
+          text-align: left;
+          font-size: 18px;
+          line-height: 22px;
+          color: #666;
+          margin: 30px 0;
+        }
+        img {
+          box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
   }
+
   .m_edit {
     padding: 20px 10px 40px;
     h1 {
@@ -724,6 +762,15 @@
       }
     }
     .m_class_range {
+    }
+  }
+}
+.m_teachers {
+  padding: 20px 10px 40px;
+  .m_home {
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
     }
   }
 }

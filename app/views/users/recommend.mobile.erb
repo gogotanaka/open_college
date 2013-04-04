@@ -112,6 +112,26 @@
       </div>
     <% end %>
   <% else %>
-    <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year + 1 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
+    <div class="m_no_recommend">
+      <p class="m_no_register_notice">
+        <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year + 1 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
+      </p>
+      <p class="m_share_topic">
+        ・OpenCollegeをみんなに知らせる。（登録ユーザーが増えるほど、データの正確性が増します。）
+      </p>
+      <div class="m_social_button clearfix">
+        <span>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="まだレビューや噂で授業を選んでる？もっと客観的で正確なデータをもとに授業を選びたいよね。それがここならできるってわけ。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </span>
+        <span>
+          <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
+        </span>
+      </div>
+      <div class="m_demo_recommend">
+        <p class="m_demo_topic">おすすめの授業があれば、以下のように表示されます。</p>
+        <%= image_tag "no_recommend.png", width: "90%" %>
+      </div>
+    </div>
   <% end %>
 </div>
