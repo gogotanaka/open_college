@@ -112,4 +112,17 @@
       <div id="m_graph_container<%= i %>" style="width:100%; height:400px; margin: 20px 0 30px 0;"> </div>
     <% end %>
   </div>
+  <div class="class_room_info">
+  <p>関連授業のデータ</p>
+    <% class_rooms = ClassRoomForYear.where(name: "#{@class_room_for_year.name}") %>
+    <% class_rooms.each do |class_room|%>
+      <p><%= link_to "#{class_room.name}（#{class_room.teacher.name}）", class_room %></p>
+      <ul class="m_grade_rate clearfix">
+        <li><%= class_room.percents[0] %>%<br>A</li>
+        <li><%= class_room.percents[1] %>%<br>B</li>
+        <li><%= class_room.percents[2] %>%<br>C</li>
+        <li><%= class_room.percents[3] %>%<br>D</li>
+      </ul>
+    <% end %>
+  </div>
 </div>
