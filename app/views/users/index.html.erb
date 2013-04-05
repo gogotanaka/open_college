@@ -9,6 +9,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
+      <th>Detail</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -17,6 +18,9 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.email %></td>
+        <td>
+          <%= user.university.name if user.university %>&nbsp;<%= user.department.name if user.department %>&nbsp;<%= user.school_year %>年
+        </td>
         <td>
           <%= link_to "HTML", source_user_path(user), class: "btn btn_mini" %>
           <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn_mini" %>
