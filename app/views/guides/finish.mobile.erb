@@ -198,7 +198,7 @@
         <h2>順位をシェアする</h2>
         <div class="clearfix">
           <span>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="私の学業成績は、<%= current_user.university.name %>で<%= @rank_all_in_university %>位、<%= current_user.department.name %>で<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="私の学業成績は、<%= @user.university.name %>で<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_university %>位、<%= @user.department.name %>で<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           </span>
           <span>

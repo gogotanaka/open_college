@@ -2,6 +2,11 @@
   <div class="inside">
     <div id="slider_container" class="clearfix">
       <div id="slider_left">
+        <div id="desktop">
+          <%= image_tag 'imac2.png',width: "470px" %>
+        </div>
+      </div>     
+      <div id="slider_right">
         <h1 class="">大学の授業の新しい形</h1>
         <%= form_for(@user) do |f| %>
           <p>OpenCollegeを始めよう！<span>アカウント登録</span></p>
@@ -20,15 +25,12 @@
           </div>
           <%= f.submit "アカウント登録", class: "btn_primary welcome_reg_btn" %>
           <div class="terms">現在は慶應義塾大学のみに対応しています。<br>ご要望・フィードバックがあれば
-            <a href="https://twitter.com/yukihariguchi" target="_blank">@yukihariguchi</a>まで
+            <a href="https://twitter.com/yukihariguchi" target="_blank">@yukihariguchi</a>
+            まで。
           </div>
         <% end %>
       </div>
-      <div id="slider_right">
-        <div id="desktop">
-          <%= image_tag 'imac.png' %>
-        </div>
-      </div>
+      
     </div>  
   </div>
 </div>

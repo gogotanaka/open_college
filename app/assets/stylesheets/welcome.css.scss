@@ -16,12 +16,14 @@
     padding: 15px 0 0;
     overflow: hidden;
     #slider_container {
-      width: 862px;
+      width: 910px;
       margin: auto;
-      #slider_left {
+      #slider_right {
         float: left;
         width: 400px;
         color: #fff;
+        margin-top: 30px;
+        margin-left: 40px;
         h1 {
           font-weight: bold;
           text-shadow: 0 1px 3px #000;
@@ -85,9 +87,9 @@
           margin: 10px 0 6px 0;
         }
       }
-      #slider_right {
+      #slider_left {
         float: left;
-        width: 462px;
+        width: 470px;
         #desktop {
         }
       }
