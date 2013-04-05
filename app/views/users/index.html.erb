@@ -1,6 +1,8 @@
 <%- model_class = User -%>
 <div class="admin_info text_center">
-  Complete Bookmark: <%= University.find(1).users.count %>
+  User Count: <%= User.count %>&nbsp;&nbsp;
+  Complete Bookmark: <%= University.find(1).users.count %>&nbsp;&nbsp;
+  Department Null: <%= User.where("department_id IS NULL").count %>
 </div>
 <table class="table table-striped">
   <thead>
