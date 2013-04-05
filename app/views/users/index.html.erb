@@ -19,7 +19,7 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td>
-          <%= user.university.name if user.university %>&nbsp;<%= user.department.name if user.department %>&nbsp;<%= user.school_year %>年
+          <%= user.university.name if user.university %>&nbsp;<%= user.department.name if user.department %>&nbsp;<%= user.school_subject.name if user.school_subject %>&nbsp;<%= user.school_year %>年
         </td>
         <td>
           <%= link_to "HTML", source_user_path(user), class: "btn btn_mini" %>
