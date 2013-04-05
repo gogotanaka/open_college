@@ -241,6 +241,19 @@ ul.ui-autocomplete {
   }
   ul {
     float: right;
+    li.top_menu {
+      float: left;
+      height: 44px;
+      line-height: 44px;
+      margin-right: 20px;
+      a {
+        color: #fff;
+        font-weight: bold;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
     li.header_user_menu {
       float: left;
       position: relative;

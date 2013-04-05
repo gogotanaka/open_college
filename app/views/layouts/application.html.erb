@@ -38,6 +38,15 @@
               </div>
             </div>
             <ul>
+              <li class="top_menu">
+                <%= link_to "ホーム", user_path(current_user) %>
+              </li>
+              <li class="top_menu">
+                <%= link_to "おすすめ", recommend_user_path(current_user) %>
+              </li>
+              <li class="top_menu">
+                <%= link_to "順位", rank_user_path(current_user) %>
+              </li>
               <li class="header_user_menu">
                 <a href="#" class="drop">
   	              <% if current_user.first_name.present? && current_user.last_name.present? %>
@@ -48,8 +57,6 @@
   	              <span class="triangle">▼</span>
                 </a>
                 <ul>
-                  <li><%= link_to "おすすめ", recommend_user_path(current_user) %></li>
-                  <li><%= link_to "順位", rank_user_path(current_user) %></li>
                   <li><%= link_to "設定", edit_user_path(current_user) %></li>
                   <li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
                 </ul>
