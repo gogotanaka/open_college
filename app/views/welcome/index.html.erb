@@ -37,32 +37,238 @@
 <div id="middle_container">
   <div class="inside">
     <h1>大学の授業のすべてがオープンに</h1>
-    <ul class="clearfix">
-      <li>
-        <div class="brand">
-          <%= image_tag 'welcome_ratio.png', width: "300px"%>
+    <div class="left_graph_features_list">
+      <div class="clearfix mini_inside">
+        <div class="leftbox">
+          <script type="text/javascript">
+            $(function () {
+              var chart;
+              $(document).ready(function() {
+                var colors = Highcharts.getOptions().colors, 
+                categories = ['A', 'B', 'C', 'D'], 
+                name = '評価分布',
+                data = 
+                [
+                  {
+                    y: 18,
+                    color: colors[0]
+                  },
+                  {
+                    y: 29,
+                    color: colors[1]
+                  },
+                  {
+                    y: 41,
+                    color: colors[2]
+                  },
+                  {
+                    y: 32,
+                    color: colors[3]
+                  }
+                ];
+                function setChart(name, categories, data, color) {
+                  chart.xAxis[0].setCategories(categories, false);
+                  chart.series[0].remove(false);
+                  chart.addSeries({
+                    name: name,
+                    data: data,
+                    color: color || 'white'
+                  }, false);
+                  chart.redraw();
+                }
+                chart = new Highcharts.Chart({
+                  chart: {
+                    renderTo: 'welcome_class_graph_container',
+                    type: 'column'
+                  },
+                  title: {
+                    text: '2012年度'
+                  },
+                  subtitle: {
+                    text: '「経済学」の成績分布グラフ'
+                  },
+                  xAxis: {
+                    categories: categories
+                  },
+                  yAxis: {
+                    title: {
+                      text: '評定ごとの人数'
+                    }
+                  },
+                  legend: {
+                    enabled: false
+                  },
+                  plotOptions: {
+                    column: {
+                      cursor: 'pointer',
+                      dataLabels: {
+                        enabled: true,
+                        color: colors[0],
+                        style: {
+                          fontWeight: 'bold'
+                        },
+                        formatter: function() {
+                          return this.y +'人';
+                        }
+                      }
+                    }
+                  },
+                  tooltip: {
+                    formatter: function() {
+                      var point = this.point,
+                      s = this.x +':<b>'+ this.y +'人</b><br/>';
+                      return s;
+                    }
+                  },
+                  series: [{
+                    name: name,
+                    data: data,
+                    color: 'white'
+                  }],
+                  exporting: {
+                    enabled: false
+                  }
+                });
+              });
+            });
+          </script>
+          <div id="welcome_class_graph_container" style="width:100%; height:300px; margin: 0;"> </div>
         </div>
-        <h2>正確なデータ</h2>
-      </li>
-      <li>
-        <div class="rank_brand">
-          <div class="welcome_rank_container">
-            <div class="welcome_rank">100位</div>
-            <p>慶應義塾大学・10000人</p>
-          </div>
+        <div class="rightbox">
+          <h2>統計に基づいた履修選択</h2>
+          <p>誰が言ったかわからないレビューや口コミで授業を履修するっていつの時代の話？<br>ほら、こっちのほうがはるかに洗練されてる。</p>
         </div>
-        <h2>大学、学部、学科での順位がわかる</h2>
-      </li>
-      <li>
-        <div class="brand">
-          <div class="clearfix">
-            <p class="welcome_easy_recommend">ラク単</p>
-            <p class="welcome_difficult_recommend">エグ単</p>
-          </div>
+      </div>
+    </div>
+    <div class="right_graph_features_list">
+      <div class="clearfix mini_inside">
+        <div class="leftbox">
+          <h2>学内での順位がわかる</h2>
+          <p>やっぱり順位って気になるよね。オープンカレッジではめんどうな入力なしに、大学、学部、学科での順位がわかります。</p>
         </div>
-        <h2>おすすめの授業</h2>
-      </li>
-    </ul>
+        <div class="rightbox">
+          <script type="text/javascript">
+            (function($){ // encapsulate jQuery
+              $(function () {
+              $('#welcome_rank_container').highcharts({
+                  chart: {
+                      type: 'spline',
+                      style: {
+                          margin: '0 auto'
+                      }
+                  },
+                  title: {
+                      text: 'GPA分布図'
+                  },
+                  subtitle: {
+                      text: '慶応義塾大学'
+                  },
+                  xAxis: {
+                      reversed: false,
+                      title: {
+                          enabled: true,
+                          text: 'GPA'
+                      },
+                      labels: {
+                          formatter: function() {
+                              return this.value +'';
+                          }
+                      },
+                      maxPadding: 0.05,
+                      showLastLabel: true
+                  },
+                  yAxis: {
+                      title: {
+                          text: '人数'
+                      },
+                      labels: {
+                          formatter: function() {
+                              return this.value + '人';
+                          }
+                      },
+                      lineWidth: 2
+                  },
+                  legend: {
+                      enabled: false
+                  },
+                  tooltip: {
+                      headerFormat: '<b>{series.name}</b><br/>',
+                      pointFormat: '{point.x} : {point.y}人'
+                  },
+                  plotOptions: {
+                      spline: {
+                          marker: {
+                              enable: false
+                          }
+                      }
+                  },
+                  series: [{
+                      name: 'GPA',
+                      data: [
+                        [0, 2],[0.8, 18],[1.8, 104],[2.4, 210], [3.0, 186], [4.0, 10]
+                      ]
+                  }]
+              });
+          });
+            })(jQuery);
+          </script>
+          <div id="welcome_rank_container" style="width: 100%; height: 300px; margin: 0 auto"></div>
+        </div>
+      </div>
+    </div>
+    <div class="left_graph_features_list">
+      <div class="clearfix mini_inside">
+        <div class="leftbox">
+          <script type="text/javascript">
+            $(function () {
+              $('#welcome_ratio_container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'ラク単・英語１'
+                },
+                tooltip: {
+                  pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                  percentageDecimals: 1
+                },
+                plotOptions: {
+                  pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                      enabled: true,
+                      color: '#000000',
+                      connectorColor: '#000000',
+                      formatter: function() {
+                          return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                      }
+                    }
+                  }
+                },
+                series: [{
+                  type: 'pie',
+                  name: '割合',
+                  data: [
+                    ['A', 42],
+                    ['B', 38],
+                    ['C', 12],
+                    ['D', 8]
+                  ]
+                }]
+              });
+            });
+          </script>
+          <div id="welcome_ratio_container" style="width: 100%; height: 300px; margin: 0 auto;"></div>
+        </div>
+        <div class="rightbox">
+          <h2>おすすめの授業</h2>
+          <p>今年度履修授業からラク単、エグ単の授業を教えてくれます。時間があったら、Amazonのおすすめみたいに今までの授業履歴から個人の趣向にあった授業をおすすめする機能もつける予定。（あくまで予定）</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="buttom_container inside">

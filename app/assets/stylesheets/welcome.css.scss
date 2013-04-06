@@ -106,73 +106,46 @@
       padding: 0;
       text-align: center;
     }
-    ul {
-      li {
-        width: 310px;
-        margin-left: 15px;
+    .left_graph_features_list {
+      margin: 30px 0;
+      .leftbox {
+        width: 430px;
         float: left;
-        text-align: center;
-        h2 {
-          color: #555;
-          font-size: 18px;
-          margin-top: 20px;
-        }
-        .brand {
-          height: 210px;
-        }
-        .rank_brand {
-          height: 180px;
-        }
-        .welcome_easy_recommend {
-          width: 100px;
-          height: 100px;
-          line-height: 100px;
-          border-radius: 50px;
-          background-color: rgb(0,133,194);
-          text-align: center;
-          color: #fff;
-          font-weight: bold;
-          font-size: 14px;
-          float: left;
-          margin-left: 50px;
-          margin-top: 30px;
-        }
-        .welcome_difficult_recommend {
-          width: 100px;
-          height: 100px;
-          line-height: 100px;
-          border-radius: 50px;
-          background-color: rgb(0,133,194);
-          text-align: center;
-          color: #fff;
-          font-weight: bold;
-          font-size: 14px;
-          margin-left: 12px;
-          margin-top: 50px;
-          float: left;
-        }
-        .welcome_rank_container {
-          width: 240px;
-          margin: 30px auto 0;
-          background-color: #dcf7dd;
-          border: 1px solid #bbd2bc;
-          border-top-color: #d1ead2;
-          border-radius: 6px;
-          padding: 40px 10px;
-          text-align: center;
-          .welcome_rank {
-            text-shadow:1px 1px 0 #fff;
-            color: #4183C4;
-            font-size: 40px;
-            margin-bottom: 18px;
-          }
-          p {
-            font-size: 14px;
-          }
-        }
       }
-      li:first-child {
-        margin-left: 0;
+      .rightbox {
+        width: 300px;
+        float: left;
+        margin-left: 30px;
+      }
+      h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin: 80px 0 14px;
+      }
+      p {
+        font-size: 15px;
+        line-height: 22px;
+      }
+    }
+    .right_graph_features_list {
+      margin: 30px 0;
+      .leftbox {
+        width: 300px;
+        float: left;
+        margin-right: 30px;
+      }
+      .rightbox {
+        width: 430px;
+        float: left;
+      }
+      h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin: 80px 0 14px;
+      }
+      p {
+        font-size: 15px;
+        line-height: 22px;
       }
     }
   }
