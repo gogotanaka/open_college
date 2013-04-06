@@ -30,7 +30,6 @@ OpenCollege::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   get "welcome/index"
-  get "welcome/grade_down"
 
   root :to => 'welcome#index'
 
