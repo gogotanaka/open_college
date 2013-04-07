@@ -39,6 +39,249 @@
           </li>
         </ul>
       </div>
+      <script type="text/javascript">
+        (function($){ // encapsulate jQuery
+          $(function () {
+          $('#university_rank_container').highcharts({
+              chart: {
+                  type: 'spline',
+                  width: 640,
+                  style: {
+                      margin: '0 auto'
+                  }
+              },
+              title: {
+                  text: 'GPA分布図'
+              },
+              subtitle: {
+                  text: '<%= @user.university.name %>'
+              },
+              xAxis: {
+                  reversed: false,
+                  title: {
+                      enabled: true,
+                      text: 'GPA'
+                  },
+                  labels: {
+                      formatter: function() {
+                          return this.value +'';
+                      }
+                  },
+                  maxPadding: 0.05,
+                  showLastLabel: true
+              },
+              yAxis: {
+                  title: {
+                      text: '人数'
+                  },
+                  labels: {
+                      formatter: function() {
+                          return this.value + '人';
+                      }
+                  },
+                  lineWidth: 2
+              },
+              legend: {
+                  enabled: false
+              },
+              tooltip: {
+                  headerFormat: '<b>{series.name}</b><br/>',
+                  pointFormat: '{point.x} : {point.y}人'
+              },
+              plotOptions: {
+                  spline: {
+                      marker: {
+                          enable: false
+                      }
+                  }
+              },
+              series: [{
+                  name: 'GPA',
+                  data: [
+                    <% (0..4).step(0.1) do |n| %>
+                      <% if n != 4.0 %>
+                        [
+                          <% y = sprintf("%.1f", n).to_f %>
+                          <%= y %>,
+                          <%= @rank_range_university.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                        ],
+                      <% else %>
+                        [
+                          <% y = sprintf("%.1f", n).to_f %>
+                          <%= y %>,
+                          <%= @rank_range_university.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                        ]
+                      <% end %>
+                    <% end %>
+                  ]
+              }]
+          });
+      });
+        })(jQuery);
+      </script>
+      <div id="university_rank_container" style="min-width: 400px; height: 400px; margin: 30px auto"></div>
+      <script type="text/javascript">
+        (function($){ // encapsulate jQuery
+          $(function () {
+          $('#department_rank_container').highcharts({
+              chart: {
+                  type: 'spline',
+                  width: 640,
+                  style: {
+                      margin: '0 auto'
+                  }
+              },
+              title: {
+                  text: 'GPA分布図'
+              },
+              subtitle: {
+                  text: '<%= @user.department.name %>'
+              },
+              xAxis: {
+                  reversed: false,
+                  title: {
+                      enabled: true,
+                      text: 'GPA'
+                  },
+                  labels: {
+                      formatter: function() {
+                          return this.value +'';
+                      }
+                  },
+                  maxPadding: 0.05,
+                  showLastLabel: true
+              },
+              yAxis: {
+                  title: {
+                      text: '人数'
+                  },
+                  labels: {
+                      formatter: function() {
+                          return this.value + '人';
+                      }
+                  },
+                  lineWidth: 2
+              },
+              legend: {
+                  enabled: false
+              },
+              tooltip: {
+                  headerFormat: '<b>{series.name}</b><br/>',
+                  pointFormat: '{point.x} : {point.y}人'
+              },
+              plotOptions: {
+                  spline: {
+                      marker: {
+                          enable: false
+                      }
+                  }
+              },
+              series: [{
+                  name: 'GPA',
+                  data: [
+                    <% (0..4).step(0.1) do |n| %>
+                      <% if n != 4.0 %>
+                        [
+                          <% y = sprintf("%.1f", n).to_f %>
+                          <%= y %>,
+                          <%= @rank_range_department.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                        ],
+                      <% else %>
+                        [
+                          <% y = sprintf("%.1f", n).to_f %>
+                          <%= y %>,
+                          <%= @rank_range_department.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                        ]
+                      <% end %>
+                    <% end %>
+                  ]
+              }]
+          });
+      });
+        })(jQuery);
+      </script>
+      <div id="department_rank_container" style="min-width: 400px; height: 400px; margin: 30px auto"></div>
+      <script type="text/javascript">
+        (function($){ // encapsulate jQuery
+          $(function () {
+          $('#school_subject_rank_container').highcharts({
+              chart: {
+                  type: 'spline',
+                  width: 640,
+                  style: {
+                      margin: '0 auto'
+                  }
+              },
+              title: {
+                  text: 'GPA分布図'
+              },
+              subtitle: {
+                  text: '<%= @user.school_subject.name %>'
+              },
+              xAxis: {
+                  reversed: false,
+                  title: {
+                      enabled: true,
+                      text: 'GPA'
+                  },
+                  labels: {
+                      formatter: function() {
+                          return this.value +'';
+                      }
+                  },
+                  maxPadding: 0.05,
+                  showLastLabel: true
+              },
+              yAxis: {
+                  title: {
+                      text: '人数'
+                  },
+                  labels: {
+                      formatter: function() {
+                          return this.value + '人';
+                      }
+                  },
+                  lineWidth: 2
+              },
+              legend: {
+                  enabled: false
+              },
+              tooltip: {
+                  headerFormat: '<b>{series.name}</b><br/>',
+                  pointFormat: '{point.x} : {point.y}人'
+              },
+              plotOptions: {
+                  spline: {
+                      marker: {
+                          enable: false
+                      }
+                  }
+              },
+              series: [{
+                  name: 'GPA',
+                  data: [
+                    <% (0..4).step(0.1) do |n| %>
+                      <% if n != 4.0 %>
+                        [
+                          <% y = sprintf("%.1f", n).to_f %>
+                          <%= y %>,
+                          <%= @rank_range_school_subject.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                        ],
+                      <% else %>
+                        [
+                          <% y = sprintf("%.1f", n).to_f %>
+                          <%= y %>,
+                          <%= @rank_range_school_subject.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                        ]
+                      <% end %>
+                    <% end %>
+                  ]
+              }]
+          });
+      });
+        })(jQuery);
+      </script>
+      <div id="school_subject_rank_container" style="min-width: 400px; height: 400px; margin: 30px auto"></div>
     <% elsif current_user.play == "原級" %>
       <h2>普通の人生なんてつまらない、そう思わないかい？</h2>
       <div class="repeat_famous clearfix">

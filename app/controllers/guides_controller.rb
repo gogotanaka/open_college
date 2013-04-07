@@ -23,8 +23,11 @@ class GuidesController < ApplicationController
     if @user.university
     	@user = current_user
       @rank_all_in_university = @user.university.rank(@user.school_year).index(@user.calculate) + 1
+      @rank_range_university = @user.university.rank(@user.school_year).map(&:to_f)
       @rank_all_in_department = @user.department.rank(@user.school_year).index(@user.calculate) + 1
+      @rank_range_department = @user.department.rank(@user.school_year).map(&:to_f)
       @rank_all_in_school_subject = @user.school_subject.rank(@user.school_year).index(@user.calculate) + 1
+      @rank_range_school_subject = @user.school_subject.rank(@user.school_year).map(&:to_f)
       @page_title = "学業成績・総合"
       @meta_description = "大学の授業の新しい形、OpenCollege。"
       respond_to do |format|
