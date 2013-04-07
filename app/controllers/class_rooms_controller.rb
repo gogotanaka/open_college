@@ -1,6 +1,7 @@
 class ClassRoomsController < ApplicationController
 
   def index
+    @class_rooms = ClassRoomForYear.joins(:class_rooms).first
   end
 
   def show
