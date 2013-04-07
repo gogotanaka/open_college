@@ -1,7 +1,10 @@
 class ClassRoomsController < ApplicationController
 
+  before_filter :signed_in_user
+  before_filter :admin_user, only: [:index, :show]
+
   def index
-    @class_rooms = ClassRoomForYear.joins(:class_rooms).first
+    @class_room_for_years = ClassRoomForYear.includes(:users).sort_by{|u| u.users.size}.reverse[0..100]
   end
 
   def show
@@ -27,6 +30,19 @@ class ClassRoomsController < ApplicationController
 
   def update
   end
+
+  private
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def admin_user
+      redirect_to(root_path) unless current_user.id == 1 || current_user.admin?
+    end
 
 
 end

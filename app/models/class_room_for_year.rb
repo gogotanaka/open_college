@@ -5,6 +5,7 @@ class ClassRoomForYear < ActiveRecord::Base
   belongs_to :teacher
   has_many :class_rooms
   has_many :class_grades, through: :class_rooms
+  has_many :users, through: :class_rooms
 
   def self.terms_for(prefix)
     class_rooms = where("name like ?", "#{prefix}_%")

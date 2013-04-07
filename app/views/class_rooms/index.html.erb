@@ -1,1 +1,21 @@
-<%= debug(@class_rooms) %>
+<%- model_class = ClassRoomForYear -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>教授名</th>
+      <th>履修ユーザー数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @class_room_for_years.each do |class_room| %>
+      <tr>
+        <td><%= class_room.id %></td>
+        <td><%= class_room.name %></td>
+        <td><%= class_room.teacher.name %></td>
+        <td><%= class_room.users.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

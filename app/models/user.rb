@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :university
   belongs_to :department
   belongs_to :school_subject
-  has_many :class_rooms, through: :class_grades, source: :class_room
+  has_many :class_rooms, through: :class_grades
   has_many :class_grades
   before_save { |user| user.email = email.downcase }
   before_create :create_remember_token
