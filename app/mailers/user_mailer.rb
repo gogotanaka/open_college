@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "app13095918@heroku.com"
+  default from: "from@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

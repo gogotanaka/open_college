@@ -4,6 +4,8 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 OpenCollege::Application.initialize!
 
+ActionMailer::Base.delivery_method = :smtp
+
 ActionMailer::Base.smtp_settings = {
   :address        => 'smtp.sendgrid.net',
   :port           => '587',
@@ -14,4 +16,3 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-ActionMailer::Base.delivery_method = :smtp
