@@ -1,5 +1,7 @@
 OpenCollege::Application.routes.draw do
 
+  get "password_resets/new"
+
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       post "outsides/analyze"
@@ -18,6 +20,7 @@ OpenCollege::Application.routes.draw do
   resources :class_grades, only: [:create, :destroy]
   resources :relation_class_room_users, only: [:create, :destroy]
   resources :teachers
+  resources :password_resets
 
   resources :guides do
     member do
