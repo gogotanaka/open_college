@@ -25,7 +25,7 @@
     <header class="main_header">
       <div class="inside clearfix">
         <% if signed_in? %>
-          <% if controller.controller_name == "guides" %>
+          <% if controller.controller_name == "guides" || controller.controller_name == "confirmations" %>
             <%= link_to "OpenCollege", user_path(current_user), class: "logo" %>
           <% else %>
             <%= link_to "OpenCollege", user_path(current_user), class: "logo" %>
