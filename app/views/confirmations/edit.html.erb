@@ -1,0 +1,54 @@
+<div class="confirmation_complete">
+  <div class="inside">
+    <h1>Confirmation Complete!</h1>
+    <p>メールでの確認が終了しました。最後に基本情報を埋めてください。</p>
+    <%= form_for @user, :url => confirmation_path(params[:id]) do |f| %>
+      <div class="confirmation_user_info">
+        <h2>基本情報</h2>
+        <div class="confirmation_field_container">
+          <div class="clearfix">
+            <div class="confirmation_field_label">
+              <%= f.label :university, "大学" %>
+            </div>
+            <div class="confirmation_field">
+              <%= @user.university.name %>
+            </div>
+          </div>
+        </div>
+        <div class="confirmation_field_container">
+          <div class="clearfix">
+            <div class="confirmation_field_label">
+              <%= f.label :department, "学部" %>
+            </div>
+            <div class="confirmation_field">
+              <%= f.select(:department_id, options_from_collection_for_select(@user.university.departments, "id", "name"), include_blank: "学部を選択して下さい", class: "") %>
+            </div>
+          </div>
+        </div>
+        <div class="confirmation_field_container">
+          <div class="clearfix">
+            <div class="confirmation_field_label">
+              <%= f.label :school_subject, "学科" %>
+            </div>
+            <div class="confirmation_field">
+              <%= f.select(:school_subject_id, options_from_collection_for_select(SchoolSubject.all, "id", "name"), include_blank: "学科を選択して下さい", class: "") %>
+            </div>
+          </div>
+        </div>
+        <div class="confirmation_field_container">
+          <div class="clearfix">
+            <div class="confirmation_field_label">
+              <%= f.label :school_year, "学年" %>
+            </div>
+            <div class="confirmation_field">
+              <%= @user.school_year %>年
+            </div>
+          </div>
+        </div>
+        <div class="text_center">
+          <%= f.submit "Save Profile", class: "btn_primary btn_large" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

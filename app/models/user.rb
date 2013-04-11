@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
+  VALID_UNIVERSITY_EMAIL_REGEX = /\A[\w+\-.]+@(a|z)[0-9]\.keio\.jp\z/i
+
   def value?(class_room)
     class_grades.find_by_class_room_id(class_room.id)
   end
@@ -77,7 +79,27 @@ class User < ActiveRecord::Base
     return @rakutan, @egutan
   end
 
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  def send_confirmation
+    generate_token(:confirmation_token)
+    self.confirmation_sent_at = Time.zone.now
+    save!
+    UserMailer.confirmation(self).deliver
+  end
+
   private
+
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while User.exists?(column => self[column])
+    end
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

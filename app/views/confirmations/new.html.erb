@@ -1,0 +1,19 @@
+<div class="auth_form">
+  <%= form_tag confirmations_path, :method => :post do %>
+    <div class="auth_form_header">
+      <h1>Confirmation Mail</h1>
+    </div>
+    <div class="auth_form_body">
+      <% flash.each do |key, value| %>
+        <div class="message_box"><%= value %></div>
+      <% end %>
+      <div class="input_block">
+        <div class="input_label">
+          <%= label_tag :email %>
+        </div>
+        <%= text_field_tag :email, params[:email], class: "input_wide" %>
+      </div>
+      <%= submit_tag "Confirm", class: "btn btn_middle btn_large_radius" %>
+    </div>
+  <% end %>
+</div>

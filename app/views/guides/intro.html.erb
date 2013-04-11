@@ -8,7 +8,10 @@
     <% flash.each do |key, value| %>
       <div class="message_box_<%= key %>"><%= value %></div>
     <% end %>
-    <h2>「+Class」ブックマークレットを登録</h2>
+    <h2 class="clearfix">
+      「+Class」ブックマークレットを登録
+      <span><%= link_to "新入生はこちら", new_confirmation_path %></span>
+  </h2>
     <div class="clearfix bookmarklet_container">
       <a href="
       javascript:(function(){
@@ -46,7 +49,7 @@
       <%= image_tag 'drag_bookmark.png', width: "400px"%>
     </div>
     <div class="guide_link text_center">
-      <%= link_to "2. 「+Class」の使用方法", reader_guide_path(current_user), class: "btn btn_large btn_large_radius" %>
+      <%= link_to "Step2 「+Class」の使用方法へ", reader_guide_path(current_user), class: "btn btn_large btn_large_radius" %>
     </div>
   </div>
 </div>

@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "ようこそ、OpenCollegeへ！すべてのStepを終えたら、OpenCollegeを使うことができます。このブックマークレートという方法をとることで個人の匿名性を保ちます。また成績データは統計データ・順位の算出のみに利用され、公開されることはありません。所要時間は約3分です。"
+      flash[:success] = "ようこそ！全てのStepを終えたら、OpenCollegeを使うことができます。成績データは統計データ・順位の算出のみに利用され、公開されることはありません。所要時間は約3分です。新入生は、「新入生はこちら」のリンクをクリックしてください。"
       redirect_to intro_guide_url(@user)
     else
       render 'new'
@@ -78,12 +78,14 @@ class UsersController < ApplicationController
 
   def rank
     @user = User.find(params[:id])
-    @rank_all_in_university = @user.university.rank(@user.school_year).index(@user.calculate) + 1
-    @rank_range_university = @user.university.rank(@user.school_year).map(&:to_f)
-    @rank_all_in_department = @user.department.rank(@user.school_year).index(@user.calculate) + 1
-    @rank_range_department = @user.department.rank(@user.school_year).map(&:to_f)
-    @rank_all_in_school_subject = @user.school_subject.rank(@user.school_year).index(@user.calculate) + 1
-    @rank_range_school_subject = @user.school_subject.rank(@user.school_year).map(&:to_f)
+    if @user.school_year != 1
+      @rank_all_in_university = @user.university.rank(@user.school_year).index(@user.calculate) + 1
+      @rank_range_university = @user.university.rank(@user.school_year).map(&:to_f)
+      @rank_all_in_department = @user.department.rank(@user.school_year).index(@user.calculate) + 1
+      @rank_range_department = @user.department.rank(@user.school_year).map(&:to_f)
+      @rank_all_in_school_subject = @user.school_subject.rank(@user.school_year).index(@user.calculate) + 1
+      @rank_range_school_subject = @user.school_subject.rank(@user.school_year).map(&:to_f)
+    end
 
     respond_to do |format|
       format.html

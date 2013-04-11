@@ -6,8 +6,19 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.signup_confirmation.subject
   #
-  def signup_confirmation
-    @greeting = "Hi"
-    mail to: "yuki.hariguchi@gmail.com", subject: "Sign Up Confirmation"
+  def signup_confirmation(user)
+    @user = user
+    mail to: user.email, subject: "Sign Up Confirmation"
   end
+
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Password Reset"
+  end
+
+  def confirmation(user)
+    @user = user
+    mail to: user.university_email, subject: "Confirmation"
+  end
+  
 end
