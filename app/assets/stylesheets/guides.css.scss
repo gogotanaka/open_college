@@ -53,7 +53,7 @@
     padding: 40px;
     .message_box_success {
       padding: 10px 15px;
-      margin: 20px 0;
+      margin-bottom: 20px;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
       border: 1px solid #fbeed5;
       -webkit-border-radius: 4px;
@@ -83,6 +83,11 @@
       font-weight: normal;
       margin-bottom: 30px;
       line-height: 26px;
+      span {
+        float: right;
+        font-size: 15px;
+        letter-spacing: 0.11em;
+      }
     }
     h3 {
       color: #837A71;

@@ -1,7 +1,7 @@
 <div class="auth_form">
-  <%= form_tag password_resets_path, :method => :post do %>
+  <%= form_tag confirmations_path, :method => :post do %>
     <div class="auth_form_header">
-      <h1>Reset Password</h1>
+      <h1>Confirmation Mail</h1>
     </div>
     <div class="auth_form_body">
       <% flash.each do |key, value| %>
@@ -13,7 +13,7 @@
         </div>
         <%= text_field_tag :email, params[:email], class: "input_wide" %>
       </div>
-      <%= submit_tag "Reset Password", class: "btn btn_middle btn_large_radius" %>
+      <%= submit_tag "Confirm", class: "btn btn_middle btn_large_radius" %>
     </div>
   <% end %>
 </div>

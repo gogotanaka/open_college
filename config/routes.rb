@@ -1,5 +1,7 @@
 OpenCollege::Application.routes.draw do
 
+  get "confirmations/new"
+
   get "password_resets/new"
 
   namespace :api, defaults: {format: 'json'} do
@@ -21,6 +23,11 @@ OpenCollege::Application.routes.draw do
   resources :relation_class_room_users, only: [:create, :destroy]
   resources :teachers
   resources :password_resets
+  resources :confirmations do
+    member do
+      get :send_mail
+    end
+  end
 
   resources :guides do
     member do
