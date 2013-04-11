@@ -31,11 +31,18 @@
         margin: 25px 0;
         padding: 0 30px;
         .confirmation_field_label {
-          width: 100px;
+          width: 140px;
           float: left;
+          p {
+            color: #888;
+            font-size: 11px;
+            text-align: left;
+            line-height: 14px;
+            margin-top: 3px;
+          }
         }
         .confirmation_field {
-          width: 420px;
+          width: 380px;
           margin-left: 20px;
           float: left;
           select {
@@ -55,5 +62,8 @@
         }
       }
     }
+  }
+  .send_mail_link {
+    margin: 40px 0;
   }
 }

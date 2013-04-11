@@ -1,0 +1,54 @@
+<div class="admin_university">
+  <% @universities.each do |univeristy| %>
+    <h1 class="clearfix">
+      <%= univeristy.name %>
+    </h1>
+    <% univeristy.departments.each do |department| %>
+      <h2><%= department.name %></h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>学部</th>
+            <th>合計</th>
+            <th>4年生</th>
+            <th>3年生</th>
+            <th>2年生</th>
+            <th>1年生</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= department.name %></td>
+            <td><%= department.users.count %></td>
+            <td><%= department.users.where(school_year: 4).count %></td>
+            <td><%= department.users.where(school_year: 3).count %></td>
+            <td><%= department.users.where(school_year: 2).count %></td>
+            <td><%= department.users.where(school_year: 1).count %></td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th>学科</th>
+            <th>合計</th>
+            <th>4年生</th>
+            <th>3年生</th>
+            <th>2年生</th>
+            <th>1年生</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% department.school_subjects.each do |school_subject| %>
+            <tr>
+              <td><%= school_subject.name %></td>
+              <td><%= school_subject.users.count %></td>
+              <td><%= school_subject.users.where(school_year: 4).count %></td>
+              <td><%= school_subject.users.where(school_year: 3).count %></td>
+              <td><%= school_subject.users.where(school_year: 2).count %></td>
+              <td><%= school_subject.users.where(school_year: 1).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+</div>

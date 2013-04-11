@@ -7,6 +7,9 @@
       <% flash.each do |key, value| %>
         <div class="message_box"><%= value %></div>
       <% end %>
+      <p class="flash_success">
+        慶應義塾大学の学生であることを確認するために、keio.jpのメールアドレス宛に確認メールを送ります。下の欄にお持ちのkeio.jpのメールアドレスを入力してください。
+      </p>
       <div class="input_block">
         <div class="input_label">
           <%= label_tag :email %>

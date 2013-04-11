@@ -1,0 +1,12 @@
+<div class="new_or_edit_container">
+  <div class="mini_inside">
+    <h1>New SchoolSubject</h1>
+    <div class="form_container">
+      <%= form_tag admin_create_school_subject_path, :method => :post do %>
+        <%= select_tag :department_id, options_from_collection_for_select(@university.departments, :id, :name) %>
+        <%= text_field_tag :school_subject_name %>
+        <%= submit_tag "Save", class: "btn btn_middle btn_large_radius" %>
+      <% end %>
+    </div>
+  </div>
+</div>

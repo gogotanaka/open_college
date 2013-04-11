@@ -1,5 +1,7 @@
-To confirm click the URL below.
+OpenCollegeからのメールです。
 
-<%= edit_confirmation_url(@user.confirmation_token) %>
+アカウントを有効にするために以下のリンクをクリックしてください。
 
-If you did not request your confirmation please ignore this email.
+<%= edit_confirmation_url(@user.confirmation_token, target: "_blank") %>
+
+もしあなたがこの確認メールに心当たりがない場合は、無視してください。

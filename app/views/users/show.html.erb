@@ -12,8 +12,8 @@
           </li>
           <li class="info">
             <p class="university_name"><%= @user.university.name %></p>
-            <%= @user.department.name %>
-            <%= @user.school_subject.name %>
+            <%= @user.department.name if @user.department%>
+            <%= @user.school_subject.name if @user.school_subject %>
             <%= @user.school_year %>年
           </li>
         </ul>

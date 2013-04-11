@@ -21,7 +21,7 @@
               <%= f.label :department, "学部" %>
             </div>
             <div class="confirmation_field">
-              <%= f.select(:department_id, options_from_collection_for_select(@user.university.departments, "id", "name"), include_blank: "学部を選択して下さい", class: "") %>
+              <%= f.collection_select :department_id, @user.university.departments.order(:id), :id, :name, include_blank: "学部を選択して下さい" %>
             </div>
           </div>
         </div>
@@ -29,9 +29,10 @@
           <div class="clearfix">
             <div class="confirmation_field_label">
               <%= f.label :school_subject, "学科" %>
+              <p>まだ学科が決まってない人は、行きたい学科を選択してください。</p>
             </div>
             <div class="confirmation_field">
-              <%= f.select(:school_subject_id, options_from_collection_for_select(SchoolSubject.all, "id", "name"), include_blank: "学科を選択して下さい", class: "") %>
+              <%= f.grouped_collection_select :school_subject_id, @user.university.departments.order(:id), :school_subjects, :name, :id, :name, include_blank: "学科を選択して下さい" %>
             </div>
           </div>
         </div>

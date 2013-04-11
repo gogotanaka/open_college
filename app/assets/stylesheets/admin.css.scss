@@ -1,0 +1,22 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin {
+  .admin_university {
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px;
+    }
+    h2 {
+      width: 100%;
+      background-color: rgb(17,137,157);
+      padding: 10px 0 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: bold;
+      margin: 20px 0 0;
+    }
+  }
+}

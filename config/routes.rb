@@ -1,5 +1,12 @@
 OpenCollege::Application.routes.draw do
 
+  get "admin/control_panel"
+
+  get "admin/user"
+
+  get "admin/university"
+  get "admin/new_school_subject"
+
   get "confirmations/new"
 
   get "password_resets/new"

@@ -113,7 +113,7 @@
         <div class="mini_inside">
           <div class="no_recommend">
             <p class="no_register_notice">
-              <%= @user.university.name %><%= @user.department.name %><%= @user.school_subject.name %><%= @user.school_year + 1 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
+              <%= @user.university.name %><%= @user.department.name if @user.department %><%= @user.school_subject.name if @user.school_subject %><%= @user.school_year + 1 %>年の人がまだ登録していないので、おすすめの授業を表示することができません。友達・先輩に該当者がいたら招待してみてください。あなたが今年度履修する授業の正確な単位の分布がわかります。
             </p>
             <p class="share_topic">
               ・OpenCollegeをみんなに知らせる。（登録ユーザーが増えるほど、データの正確性が増します。）

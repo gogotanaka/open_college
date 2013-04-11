@@ -1,3 +1,4 @@
+# coding: utf-8
 class ConfirmationsController < ApplicationController
 
   def new
@@ -12,13 +13,18 @@ class ConfirmationsController < ApplicationController
   end
 
   def create
-    current_user.university_email = params[:email]
-    if current_user.save
-      current_user.send_confirmation
-      flash[:success] = "Email sent with confirmation instructions."
-      redirect_to send_mail_confirmation_url(current_user.id)
+    unless params[:email].blank?
+      current_user.university_email = params[:email]
+      if current_user.save
+        current_user.send_confirmation
+        flash[:success] = "入力いただいたメールアドレス宛に確認メールを送信しました。メールに書かれているリンクをクリックすると、オープンカレッジをご利用いただけます。"
+        redirect_to send_mail_confirmation_url(current_user.id)
+      else
+        flash.now[:error] = 'メールアドレスのフォーマットが間違っています。'
+        render 'new'
+      end
     else
-      flash.now[:error] = 'Invalid email format'
+      flash.now[:error] = 'メールアドレスを入力してください。'
       render 'new'
     end
   end
@@ -26,10 +32,10 @@ class ConfirmationsController < ApplicationController
   def update
     @user = User.find_by_confirmation_token!(params[:id])
     if @user.confirmation_sent_at < 2.hours.ago
-      flash.now[:error] = 'confirmation reset has expired.'
+      flash[:error] = 'confirmation has expired.'
       redirect_to new_confirmation_path
     elsif @user.update_attributes(params[:user])
-      flash[:success] = "confirmation has been reset!"
+      flash[:success] = "確認が終了いたしました。オープンカレッジをご利用いただけます。"
       redirect_to @user
     else
       render :edit
