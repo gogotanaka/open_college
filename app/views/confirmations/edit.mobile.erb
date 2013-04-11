@@ -29,7 +29,7 @@
         </div>
         <%= f.grouped_collection_select :school_subject_id, @user.university.departments.order(:id), :school_subjects, :name, :id, :name, include_blank: "学科を選択して下さい" %>
       </div>
-      <%= submit_tag "Save", class: "m_btn m_btn_large" %>
+      <%= submit_tag "Save", class: "m_btn_primary m_btn_large" %>
     </div>
   <% end %>
 </div>
