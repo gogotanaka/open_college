@@ -49,7 +49,8 @@
     <div class="m_main_container">
       <%= yield %>
       <% if signed_in? %>
-        <% unless controller.controller_name == "guides" %>
+        <% if controller.controller_name == "guides" || controller.controller_name == "confirmations"%>
+        <% else %>
           <ul class="m_user_menu">
             <li>
               <% if controller.controller_name == "users" && controller.action_name == "show" %>
