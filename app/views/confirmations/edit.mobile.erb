@@ -1,0 +1,35 @@
+<div class="m_auth_form">
+  <%= form_for @user, :url => confirmation_path(params[:id]) do |f| %>
+    <div class="m_auth_form_header">
+      <h2>Confirmation Complete!</h2>
+    </div>
+    <div class="m_auth_form_body">
+      <% flash.each do |key, value| %>
+        <div class="m_message_box"><%= value %></div>
+      <% end %>
+      <p class="m_flash_success">
+        メールでの確認が終了しました。最後に基本情報を埋めてください。
+      </p>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= f.label :university, "大学" %>
+        </div>
+        <%= @user.university.name %>
+      </div>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= f.label :department, "学部" %>
+        </div>
+        <%= f.collection_select :department_id, @user.university.departments.order(:id), :id, :name, include_blank: "学部を選択して下さい" %>
+      </div>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= f.label :school_subject, "学科" %>
+          <p>まだ学科が決まってない人は、行きたい学科を選択してください。</p>
+        </div>
+        <%= f.grouped_collection_select :school_subject_id, @user.university.departments.order(:id), :school_subjects, :name, :id, :name, include_blank: "学科を選択して下さい" %>
+      </div>
+      <%= submit_tag "Save", class: "m_btn m_btn_large" %>
+    </div>
+  <% end %>
+</div>

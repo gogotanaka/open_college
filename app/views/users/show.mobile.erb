@@ -1,48 +1,69 @@
 <div class="m_home">
-  <div class="m_user_info">
-    <p>
-      <% if current_user.first_name.present? && current_user.last_name.present? %>
-        <%= current_user.last_name %> <%= current_user.first_name %>
-      <% else %>
-        You
-      <% end %>
-    </p>
-    <p>
-      <%= @user.university.name %>
-      <%= @user.department.name %>
-      <%= @user.school_subject.name %>
-      <%= @user.school_year %>年
-    </p>
-    <p>
-      <span>GPA</span><%= @user.calculate %>
-    </p>
-  </div>
-  <dic class="m_class_grade">
-    <% class_year = @user.class_rooms.order('year DESC').group_by { |t| t.year } %>
-    <% class_year.each do |year, class_rooms| %>
-      <div class="m_each_school_year">
-        <h2><%= year %>年度</h2>
-        <div class="m_class_body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>授業名</th>
-                <th>教授名</th>
-                <th>評定</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% class_rooms.each do |class_room| %>
+  <% if @user.school_year == 1 %>
+    <div class="m_user_info">
+      <p>
+        <% if current_user.first_name.present? && current_user.last_name.present? %>
+          <%= current_user.last_name %> <%= current_user.first_name %>
+        <% else %>
+          You
+        <% end %>
+      </p>
+      <p>
+        <%= @user.university.name %>
+        <%= @user.department.name if @user.department %>
+        <%= @user.school_subject.name if @user.school_subject %>
+        <%= @user.school_year %>年
+      </p>
+      <p>
+        春学期が終わり成績を解析すれば、ここに成績が表示され自動的にGPAも計算してくれます。
+      </p>
+    </div>
+  <% else %>
+    <div class="m_user_info">
+      <p>
+        <% if current_user.first_name.present? && current_user.last_name.present? %>
+          <%= current_user.last_name %> <%= current_user.first_name %>
+        <% else %>
+          You
+        <% end %>
+      </p>
+      <p>
+        <%= @user.university.name %>
+        <%= @user.department.name %>
+        <%= @user.school_subject.name %>
+        <%= @user.school_year %>年
+      </p>
+      <p>
+        <span>GPA</span><%= @user.calculate %>
+      </p>
+    </div>
+    <div class="m_class_grade">
+      <% class_year = @user.class_rooms.order('year DESC').group_by { |t| t.year } %>
+      <% class_year.each do |year, class_rooms| %>
+        <div class="m_each_school_year">
+          <h2><%= year %>年度</h2>
+          <div class="m_class_body">
+            <table class="table table-striped">
+              <thead>
                 <tr>
-                  <td><%= link_to class_room.class_room_for_year.name, class_room_for_year_path(class_room.class_room_for_year.id) %></td>
-                  <td><%= link_to class_room.class_room_for_year.teacher.name, class_room.class_room_for_year.teacher if class_room.class_room_for_year.teacher %></td>
-                  <td><%= class_room.get_grade(current_user) %></td>
+                  <th>授業名</th>
+                  <th>教授名</th>
+                  <th>評定</th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% class_rooms.each do |class_room| %>
+                  <tr>
+                    <td><%= link_to class_room.class_room_for_year.name, class_room_for_year_path(class_room.class_room_for_year.id) %></td>
+                    <td><%= link_to class_room.class_room_for_year.teacher.name, class_room.class_room_for_year.teacher if class_room.class_room_for_year.teacher %></td>
+                    <td><%= class_room.get_grade(current_user) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </dic>
+      <% end %>
+    </div>
+  <% end %>
 </div>

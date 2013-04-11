@@ -1,436 +1,442 @@
 <div class="m_user_page_rank">
-  <div class="m_rank_container">
-    <h1>
-      あなたの学業成績
-    </h1>
-    <div class="m_rank">
-      <div class="m_rank_header">
-        <h2><%= current_user.university.name %>・<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人</h2>
+  <% if @user.school_year == 1 %>
+    <div class="m_rank_container">
+      <h1>1年生はまだこの機能をご利用いただけません。</h1>
+    </div>
+  <% else %>
+    <div class="m_rank_container">
+      <h1>
+        あなたの学業成績
+      </h1>
+      <div class="m_rank">
+        <div class="m_rank_header">
+          <h2><%= current_user.university.name %>・<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人</h2>
+        </div>
+        <div class="m_rank_body">
+          <% if @rank_all_in_university == 1 %>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_university %>位
+              </div>
+              <div class="m_user_name">
+                You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+              </div>
+            </div>
+          <% else %>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                1位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.university.rank(current_user.school_year)[0] %>
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_university %>位
+              </div>
+              <div class="m_user_name">
+                You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div class="m_rank_body">
-        <% if @rank_all_in_university == 1 %>
-          <div class="m_current_user_rank clearfix">
-            <div class="m_user_rank">
-              <%= @rank_all_in_university %>位
+      <div class="m_rank">
+        <div class="m_rank_header">
+          <h2><%= current_user.department.name %>・<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人</h2>
+        </div>
+        <div class="m_rank_body">
+          <% if @rank_all_in_department == 1 %>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_department %>位
+              </div>
+              <div class="m_user_name">
+                You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+              </div>
             </div>
-            <div class="m_user_name">
-              You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
             </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              最下位
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
+              </div>
             </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+          <% else %>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                1位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.department.rank(current_user.school_year)[0] %>
+              </div>
             </div>
-          </div>
-        <% else %>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              1位
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
             </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.university.rank(current_user.school_year)[0] %>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_department %>位
+              </div>
+              <div class="m_user_name">
+                You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+              </div>
             </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_current_user_rank clearfix">
-            <div class="m_user_rank">
-              <%= @rank_all_in_university %>位
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
             </div>
-            <div class="m_user_name">
-              You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
+              </div>
             </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              最下位
+          <% end %>
+        </div>
+      </div>
+      <div class="m_rank">
+        <div class="m_rank_header">
+          <h2><%= current_user.school_subject.name %>・<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人</h2>
+        </div>
+        <div class="m_rank_body">
+          <% if @rank_all_in_school_subject == 1 %>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_school_subject %>位
+              </div>
+              <div class="m_user_name">
+                You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+              </div>
             </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.university.rank(current_user.school_year).reverse[0] %>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
             </div>
-          </div>
-        <% end %>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
+              </div>
+            </div>
+          <% else %>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                1位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.school_subject.rank(current_user.school_year)[0] %>
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_current_user_rank clearfix">
+              <div class="m_user_rank">
+                <%= @rank_all_in_school_subject %>位
+              </div>
+              <div class="m_user_name">
+                You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
+              </div>
+            </div>
+            <div class="m_tententen clearfix">
+              ・<br>・<br>・
+            </div>
+            <div class="m_user_rank_container clearfix">
+              <div class="m_user_rank">
+                最下位
+              </div>
+              <div class="m_user_name">
+                GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="m_rank">
-      <div class="m_rank_header">
-        <h2><%= current_user.department.name %>・<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人</h2>
-      </div>
-      <div class="m_rank_body">
-        <% if @rank_all_in_department == 1 %>
-          <div class="m_current_user_rank clearfix">
-            <div class="m_user_rank">
-              <%= @rank_all_in_department %>位
-            </div>
-            <div class="m_user_name">
-              You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
-            </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              最下位
-            </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
-            </div>
-          </div>
-        <% else %>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              1位
-            </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.department.rank(current_user.school_year)[0] %>
-            </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_current_user_rank clearfix">
-            <div class="m_user_rank">
-              <%= @rank_all_in_department %>位
-            </div>
-            <div class="m_user_name">
-              You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
-            </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              最下位
-            </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.department.rank(current_user.school_year).reverse[0] %>
-            </div>
-          </div>
-        <% end %>
+    <div class="m_user_page_rank_share">
+      <h2>シェアする</h2>
+      <div class="clearfix">
+        <span>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="私の学業成績は、<%= @user.university.name %>で<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_university %>位、<%= @user.department.name %>で<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </span>
+        <span>
+          <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
+        </span>
       </div>
     </div>
-    <div class="m_rank">
-      <div class="m_rank_header">
-        <h2><%= current_user.school_subject.name %>・<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人</h2>
-      </div>
-      <div class="m_rank_body">
-        <% if @rank_all_in_school_subject == 1 %>
-          <div class="m_current_user_rank clearfix">
-            <div class="m_user_rank">
-              <%= @rank_all_in_school_subject %>位
-            </div>
-            <div class="m_user_name">
-              You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
-            </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              最下位
-            </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
-            </div>
-          </div>
-        <% else %>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              1位
-            </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.school_subject.rank(current_user.school_year)[0] %>
-            </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_current_user_rank clearfix">
-            <div class="m_user_rank">
-              <%= @rank_all_in_school_subject %>位
-            </div>
-            <div class="m_user_name">
-              You&nbsp;&nbsp;GPA : <%= current_user.calculate %>
-            </div>
-          </div>
-          <div class="m_tententen clearfix">
-            ・<br>・<br>・
-          </div>
-          <div class="m_user_rank_container clearfix">
-            <div class="m_user_rank">
-              最下位
-            </div>
-            <div class="m_user_name">
-              GPA : <%= current_user.school_subject.rank(current_user.school_year).reverse[0] %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="m_user_page_rank_share">
-    <h2>シェアする</h2>
-    <div class="clearfix">
-      <span>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://open-college.herokuapp.com" data-text="私の学業成績は、<%= @user.university.name %>で<%= @user.university.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_university %>位、<%= @user.department.name %>で<%= @user.department.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_department %>位、<%= current_user.school_subject.name %>で<%= @user.school_subject.users.where('school_year = ?', @user.school_year).count%>人中<%= @rank_all_in_school_subject %>位でした。大学の授業の新しい形、OpenCollege。" data-via="yukihariguchi" data-lang="ja">ツイート</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </span>
-      <span>
-        <div class="fb-like" data-href="https://open-college.herokuapp.com" data-send="false" data-width="250" data-show-faces="false" data-layout="button_count"></div>
-      </span>
-    </div>
-  </div>
-  <script type="text/javascript">
-        (function($){ // encapsulate jQuery
-          $(function () {
-          $('#m_university_rank_container').highcharts({
-              chart: {
-                  type: 'spline',
-                  style: {
-                      margin: '0 auto'
-                  }
-              },
-              title: {
-                  text: 'GPA分布図'
-              },
-              subtitle: {
-                  text: '<%= @user.university.name %>'
-              },
-              xAxis: {
-                  reversed: false,
-                  title: {
-                      enabled: true,
-                      text: 'GPA'
-                  },
-                  labels: {
-                      formatter: function() {
-                          return this.value +'';
-                      }
-                  },
-                  maxPadding: 0.05,
-                  showLastLabel: true
-              },
-              yAxis: {
-                  title: {
-                      text: '人数'
-                  },
-                  labels: {
-                      formatter: function() {
-                          return this.value + '人';
-                      }
-                  },
-                  lineWidth: 2
-              },
-              legend: {
-                  enabled: false
-              },
-              tooltip: {
-                  headerFormat: '<b>{series.name}</b><br/>',
-                  pointFormat: '{point.x} : {point.y}人'
-              },
-              plotOptions: {
-                  spline: {
-                      marker: {
-                          enable: false
-                      }
-                  }
-              },
-              series: [{
-                  name: 'GPA',
-                  data: [
-                    <% (0..4).step(0.1) do |n| %>
-                      <% if n != 4.0 %>
-                        [
-                          <% y = sprintf("%.1f", n).to_f %>
-                          <%= y %>,
-                          <%= @rank_range_university.select{ |x| x >= y && x <= y + 0.1 }.count %>
-                        ],
-                      <% else %>
-                        [
-                          <% y = sprintf("%.1f", n).to_f %>
-                          <%= y %>,
-                          <%= @rank_range_university.select{ |x| x >= y && x <= y + 0.1 }.count %>
-                        ]
-                      <% end %>
+    <script type="text/javascript">
+      (function($){ // encapsulate jQuery
+        $(function () {
+        $('#m_university_rank_container').highcharts({
+            chart: {
+                type: 'spline',
+                style: {
+                    margin: '0 auto'
+                }
+            },
+            title: {
+                text: 'GPA分布図'
+            },
+            subtitle: {
+                text: '<%= @user.university.name %>'
+            },
+            xAxis: {
+                reversed: false,
+                title: {
+                    enabled: true,
+                    text: 'GPA'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value +'';
+                    }
+                },
+                maxPadding: 0.05,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: '人数'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value + '人';
+                    }
+                },
+                lineWidth: 2
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br/>',
+                pointFormat: '{point.x} : {point.y}人'
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        enable: false
+                    }
+                }
+            },
+            series: [{
+                name: 'GPA',
+                data: [
+                  <% (0..4).step(0.1) do |n| %>
+                    <% if n != 4.0 %>
+                      [
+                        <% y = sprintf("%.1f", n).to_f %>
+                        <%= y %>,
+                        <%= @rank_range_university.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                      ],
+                    <% else %>
+                      [
+                        <% y = sprintf("%.1f", n).to_f %>
+                        <%= y %>,
+                        <%= @rank_range_university.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                      ]
                     <% end %>
-                  ]
-              }]
-          });
-      });
-        })(jQuery);
-      </script>
-      <div id="m_university_rank_container" style="width: 100%; height: 340px; margin: 30px auto"></div>
-      <script type="text/javascript">
-        (function($){ // encapsulate jQuery
-          $(function () {
-          $('#m_department_rank_container').highcharts({
-              chart: {
-                  type: 'spline',
-                  style: {
-                      margin: '0 auto'
-                  }
-              },
-              title: {
-                  text: 'GPA分布図'
-              },
-              subtitle: {
-                  text: '<%= @user.department.name %>'
-              },
-              xAxis: {
-                  reversed: false,
-                  title: {
-                      enabled: true,
-                      text: 'GPA'
-                  },
-                  labels: {
-                      formatter: function() {
-                          return this.value +'';
-                      }
-                  },
-                  maxPadding: 0.05,
-                  showLastLabel: true
-              },
-              yAxis: {
-                  title: {
-                      text: '人数'
-                  },
-                  labels: {
-                      formatter: function() {
-                          return this.value + '人';
-                      }
-                  },
-                  lineWidth: 2
-              },
-              legend: {
-                  enabled: false
-              },
-              tooltip: {
-                  headerFormat: '<b>{series.name}</b><br/>',
-                  pointFormat: '{point.x} : {point.y}人'
-              },
-              plotOptions: {
-                  spline: {
-                      marker: {
-                          enable: false
-                      }
-                  }
-              },
-              series: [{
-                  name: 'GPA',
-                  data: [
-                    <% (0..4).step(0.1) do |n| %>
-                      <% if n != 4.0 %>
-                        [
-                          <% y = sprintf("%.1f", n).to_f %>
-                          <%= y %>,
-                          <%= @rank_range_department.select{ |x| x >= y && x <= y + 0.1 }.count %>
-                        ],
-                      <% else %>
-                        [
-                          <% y = sprintf("%.1f", n).to_f %>
-                          <%= y %>,
-                          <%= @rank_range_department.select{ |x| x >= y && x <= y + 0.1 }.count %>
-                        ]
-                      <% end %>
+                  <% end %>
+                ]
+            }]
+        });
+    });
+      })(jQuery);
+    </script>
+    <div id="m_university_rank_container" style="width: 100%; height: 340px; margin: 30px auto"></div>
+    <script type="text/javascript">
+      (function($){ // encapsulate jQuery
+        $(function () {
+        $('#m_department_rank_container').highcharts({
+            chart: {
+                type: 'spline',
+                style: {
+                    margin: '0 auto'
+                }
+            },
+            title: {
+                text: 'GPA分布図'
+            },
+            subtitle: {
+                text: '<%= @user.department.name %>'
+            },
+            xAxis: {
+                reversed: false,
+                title: {
+                    enabled: true,
+                    text: 'GPA'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value +'';
+                    }
+                },
+                maxPadding: 0.05,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: '人数'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value + '人';
+                    }
+                },
+                lineWidth: 2
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br/>',
+                pointFormat: '{point.x} : {point.y}人'
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        enable: false
+                    }
+                }
+            },
+            series: [{
+                name: 'GPA',
+                data: [
+                  <% (0..4).step(0.1) do |n| %>
+                    <% if n != 4.0 %>
+                      [
+                        <% y = sprintf("%.1f", n).to_f %>
+                        <%= y %>,
+                        <%= @rank_range_department.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                      ],
+                    <% else %>
+                      [
+                        <% y = sprintf("%.1f", n).to_f %>
+                        <%= y %>,
+                        <%= @rank_range_department.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                      ]
                     <% end %>
-                  ]
-              }]
-          });
-      });
-        })(jQuery);
-      </script>
-      <div id="m_department_rank_container" style="width: 100%; height: 340px; margin: 30px auto"></div>
-      <script type="text/javascript">
-        (function($){ // encapsulate jQuery
-          $(function () {
-          $('#m_school_subject_rank_container').highcharts({
-              chart: {
-                  type: 'spline',
-                  style: {
-                      margin: '0 auto'
-                  }
-              },
-              title: {
-                  text: 'GPA分布図'
-              },
-              subtitle: {
-                  text: '<%= @user.school_subject.name %>'
-              },
-              xAxis: {
-                  reversed: false,
-                  title: {
-                      enabled: true,
-                      text: 'GPA'
-                  },
-                  labels: {
-                      formatter: function() {
-                          return this.value +'';
-                      }
-                  },
-                  maxPadding: 0.05,
-                  showLastLabel: true
-              },
-              yAxis: {
-                  title: {
-                      text: '人数'
-                  },
-                  labels: {
-                      formatter: function() {
-                          return this.value + '人';
-                      }
-                  },
-                  lineWidth: 2
-              },
-              legend: {
-                  enabled: false
-              },
-              tooltip: {
-                  headerFormat: '<b>{series.name}</b><br/>',
-                  pointFormat: '{point.x} : {point.y}人'
-              },
-              plotOptions: {
-                  spline: {
-                      marker: {
-                          enable: false
-                      }
-                  }
-              },
-              series: [{
-                  name: 'GPA',
-                  data: [
-                    <% (0..4).step(0.1) do |n| %>
-                      <% if n != 4.0 %>
-                        [
-                          <% y = sprintf("%.1f", n).to_f %>
-                          <%= y %>,
-                          <%= @rank_range_school_subject.select{ |x| x >= y && x <= y + 0.1 }.count %>
-                        ],
-                      <% else %>
-                        [
-                          <% y = sprintf("%.1f", n).to_f %>
-                          <%= y %>,
-                          <%= @rank_range_school_subject.select{ |x| x >= y && x <= y + 0.1 }.count %>
-                        ]
-                      <% end %>
+                  <% end %>
+                ]
+            }]
+        });
+    });
+      })(jQuery);
+    </script>
+    <div id="m_department_rank_container" style="width: 100%; height: 340px; margin: 30px auto"></div>
+    <script type="text/javascript">
+      (function($){ // encapsulate jQuery
+        $(function () {
+        $('#m_school_subject_rank_container').highcharts({
+            chart: {
+                type: 'spline',
+                style: {
+                    margin: '0 auto'
+                }
+            },
+            title: {
+                text: 'GPA分布図'
+            },
+            subtitle: {
+                text: '<%= @user.school_subject.name %>'
+            },
+            xAxis: {
+                reversed: false,
+                title: {
+                    enabled: true,
+                    text: 'GPA'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value +'';
+                    }
+                },
+                maxPadding: 0.05,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: '人数'
+                },
+                labels: {
+                    formatter: function() {
+                        return this.value + '人';
+                    }
+                },
+                lineWidth: 2
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br/>',
+                pointFormat: '{point.x} : {point.y}人'
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        enable: false
+                    }
+                }
+            },
+            series: [{
+                name: 'GPA',
+                data: [
+                  <% (0..4).step(0.1) do |n| %>
+                    <% if n != 4.0 %>
+                      [
+                        <% y = sprintf("%.1f", n).to_f %>
+                        <%= y %>,
+                        <%= @rank_range_school_subject.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                      ],
+                    <% else %>
+                      [
+                        <% y = sprintf("%.1f", n).to_f %>
+                        <%= y %>,
+                        <%= @rank_range_school_subject.select{ |x| x >= y && x <= y + 0.1 }.count %>
+                      ]
                     <% end %>
-                  ]
-              }]
-          });
-      });
-        })(jQuery);
-      </script>
-      <div id="m_school_subject_rank_container" style="width: 100%; height: 340px; margin: 30px auto"></div>
+                  <% end %>
+                ]
+            }]
+        });
+    });
+      })(jQuery);
+    </script>
+    <div id="m_school_subject_rank_container" style="width: 100%; height: 340px; margin: 30px auto"></div>
+  <% end %>
 </div>

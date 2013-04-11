@@ -1,0 +1,22 @@
+<div class="m_auth_form">
+  <%= form_tag confirmations_path, :method => :post do %>
+    <div class="m_auth_form_header">
+      <h2>Confirmation Mail</h2>
+    </div>
+    <div class="m_auth_form_body">
+      <% flash.each do |key, value| %>
+        <div class="m_message_box"><%= value %></div>
+      <% end %>
+      <p class="m_flash_success">
+        慶應義塾大学の学生であることを確認するために、keio.jpのメールアドレス宛に確認メールを送ります。下の欄にお持ちのkeio.jpのメールアドレスを入力してください。
+      </p>
+      <div class="m_input_block">
+        <div class="input_label">
+          <%= label_tag :email %>
+        </div>
+        <%= text_field_tag :email, params[:email], class: "input_wide" %>
+      </div>
+      <%= submit_tag "Confirm", class: "m_btn m_btn_large" %>
+    </div>
+  <% end %>
+</div>

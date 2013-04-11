@@ -1,0 +1,6 @@
+<div class="m_send_mail">
+  <% flash.each do |key, value| %>
+    <div class="m_flash_<%= key %>"><%= value %></div>
+  <% end %>
+  <%= link_to "keio.jpへ", "https://login.keio.jp/koid/", class: "m_btn m_btn_large" %>
+</div>

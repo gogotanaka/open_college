@@ -11,6 +11,7 @@
     <% flash.each do |key, value| %>
       <div class="m_message_box_<%= key %>"><%= value %></div>
     <% end %>
+    <%= link_to "新入生はこちら", new_confirmation_path, class: "m_btn m_btn_large"  %>
     <h2 class="topic">「+Class」ブックマークレットを登録</h2>
     <% if request.env["HTTP_USER_AGENT"].include?('Android') %>
       <p>端末の種類やOSのバージョンにより、多少異なる部分もあるので、あらかじめご了承ください。現在一部Android機種で「+Class」機能を使えない状況です。PCをお持ちの方は、PCで利用してみてください。モバイルで登録してしまっても、再度そのアカウントでPCからログインして、誘導を終了すれば、モバイルからもアクセスできるようになります。</p>

@@ -383,6 +383,19 @@
   }
   .m_auth_form_body {
     padding: 15px 10px;
+    .m_flash_success {
+      padding: 10px 15px;
+      margin: 0 0 20px 0;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      color: #468847;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      line-height: 19px;
+    }
   }
 }
 .m_input_block {
@@ -390,10 +403,30 @@
   .input_label {
     font-weight: bold;
     margin-bottom: 8px;
+    p {
+      font-weight: normal;
+      font-size: 12px;
+      margin-top: 4px;
+    }
   }
   .input_wide {
     display: block;
     width: 100%;
+  }
+  select {
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #cfcfcf;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    height: 28px;
+    padding: 4px 4px 4px 14px;
+    margin-bottom: 6px;
   }
 }
 .m_guides {
@@ -401,6 +434,7 @@
     padding: 20px 0 60px;
     ul.m_guide_nav_container {
       text-align: center;
+      margin-bottom: 10px;
       li {
         display: inline-block;
         margin: 0 3px;
@@ -785,6 +819,24 @@
     h1 {
       font-size: 16px;
       font-weight: bold;
+    }
+  }
+}
+.m_confirmations {
+  .m_send_mail {
+    padding: 15px 10px;
+    .m_flash_success {
+      padding: 10px 15px;
+      margin: 0 0 20px 0;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      color: #468847;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      line-height: 19px;
     }
   }
 }
